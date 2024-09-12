@@ -1,0 +1,6 @@
+{
+  "appTitle": "kasm",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
