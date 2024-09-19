@@ -1,0 +1,77 @@
+* The Maintenence Crew
+
+* Concept Statement
+  You are an independent worker who specializes in maintaining critical systems. You are tasked with
+  taking on jobs to repair various equipment across many planets.  Though these planets have some guests
+  who can sometimes seem a bit unfriendly.
+
+* Genre 
+  - Horror
+** Tags
+   - Multiplayer & Singleplayer
+   - Co-Op
+   - PvE
+   - First-Person
+   - Procedural Generation
+
+* Target Audience
+  - More mature players due to the various ways which the player can die
+
+* Unique Selling Points
+  - Fully Co-Op experience where teamwork is absolutely necessary, but singleplayer is still standout though far more difficult
+  - Tiered reward system which encourages speed and efficiency
+  - Equipment which can help accelerate the completion of the job, but not directly combat foes.
+  - NPC behavior changes based on behavior which player exhibits.
+
+* Player Experience and Game POV
+** The Player
+   The player and his friends work together to fufill job requests at a small systems maintenence company
+   they have established.  The player is an expert at fixing and repairing electrical systems at any time, even at night.
+
+   The player's crew specialize in night jobs due to the urgency in their completion and are more than happy
+   to recieve additional compensation for their work.
+
+** The Setting
+   Humanity have colonized many planets in a new solar system.  There have been many technological challenges
+   in achieving stability due to the various obstacles each planet poses.  Much of the burden in stability has thus
+   been placed on maintennce workers across large companies and independent contracters such as the main party.
+  
+   Each planet has a unique set of creatures and plant life, however as people continued to colonize these planets
+   it began to become apparent that they were not the only ones. These creatures are referred to as the *Vexi*
+
+*** Planets
+**** Orion
+     Orion is characterized by overscaled and massive plantlife with equally overscaled creatures to match.
+**** Dunst
+     Dunst is characterized by deadly and hot deserts with huge canyon scapes.
+**** Aquarius
+     Aquarious is fully submerged in liquid water with lots of aquatic life.
+
+** Game POV
+   Once the player lands on the work location, the player needs to explore to find the areas that need their
+   assistance.  These areas are given in the mission statement by the NPC requesting the service.  Through exploration,
+   players may find parts disheveled from where they are supposed to be and need to return them and apply a
+   repair.  Repairs consist of mini-task like games where the player needs to commit some level of time to repair.
+   Time is a resource since the more time the player spends on the mission, the more dangerous it begins.
+
+* Core Loops
+** Work Based Economy Loop
+   - Completing missions earns money
+   - Obtaining items which make more missions available and/or easier requires money.
+** Internal Mission Feedback Loop
+   - Completing objectives results in difficulty increases as the mission progresses
+   - Time restrictions enforces efficiency before the mission difficulty goes too high
+* Objectives and Progression
+  - Items open the door to more dangerous and higher paying missions but also increase risk since items are permanently lost after death.
+** Items and Replacement-Parts 
+   - Items are tools for the player, whilst parts are used to complete missions with higher requirements.
+*** Items
+    - *Flashlight*: helps player complete objectives by providing a layer of safety
+    - *Compass*: helps player not get lost.
+    - *Backpack*: helps player transport more items deeper into the level
+*** Replacement-Parts 
+    - *Small Generator*: restore power to key locations
+    - *Medium Generator*: larger generator for more power hungry objectives
+    - *Large Generator*: largest generator for the most power hungry objectives
+
+
