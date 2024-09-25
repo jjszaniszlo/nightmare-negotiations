@@ -3,8 +3,17 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
-	public const float Speed = 5.0f;
-	public const float JumpVelocity = 4.5f;
+	[ExportCategory("Player Movement Options")]
+	
+	[Export]
+	private float speed = 5.0f;
+	[Export]
+	private float jumpVelocity = 4.5f;
+	
+	[Export]
+	private bool shouldFollowDirection;
+	[Export]
+	private Node3D followDirectionParent;
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -19,22 +28,31 @@ public partial class Player : CharacterBody3D
 		// Handle Jump.
 		if (Input.IsActionJustPressed("ui_accept") && IsOnFloor())
 		{
-			velocity.Y = JumpVelocity;
+			velocity.Y = jumpVelocity;
 		}
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
-		Vector2 inputDir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		Vector3 direction = (Transform.Basis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
+		Vector2 inputDir = Input.GetVector(
+			"move_left",
+			"move_right",
+			"move_forward",
+			"move_backward");
+		Vector3 direction = (
+			(shouldFollowDirection 
+				? followDirectionParent.GlobalTransform.Basis
+				: Transform.Basis)
+			* new Vector3(inputDir.X, 0, inputDir.Y)).Normalized(); 
+		
 		if (direction != Vector3.Zero)
 		{
-			velocity.X = direction.X * Speed;
-			velocity.Z = direction.Z * Speed;
+			velocity.X = direction.X * speed;
+			velocity.Z = direction.Z * speed;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
-			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Speed);
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, speed);
+			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, speed);
 		}
 
 		Velocity = velocity;
