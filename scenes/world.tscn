@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxp1rkolbqlvf"]
+[gd_scene load_steps=10 format=3 uid="uid://bxp1rkolbqlvf"]
 
 [ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://scenes/player.tscn" id="2_d0u6r"]
 [ext_resource type="PackedScene" uid="uid://b6mlaef4yaoyn" path="res://scenes/terrain.tscn" id="2_ybvbe"]
+[ext_resource type="PackedScene" uid="uid://c2au8sgfkivdx" path="res://world/trees/tree_01.tscn" id="3_tmsly"]
+[ext_resource type="PackedScene" uid="uid://bu85kbh7q540o" path="res://world/bushes/bush_01.tscn" id="4_qtfc2"]
+[ext_resource type="Shader" path="res://shaders/retro_style.gdshader" id="5_bgdyt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b4m1b"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -13,8 +16,21 @@ sky_material = SubResource("ProceduralSkyMaterial_b4m1b")
 [sub_resource type="Environment" id="Environment_t415h"]
 background_mode = 2
 sky = SubResource("Sky_kfufq")
-tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u6fx8"]
+shader = ExtResource("5_bgdyt")
+shader_parameter/shake = 0.133
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.002
+shader_parameter/offsetIntensity = 0.0045
+shader_parameter/colorOffsetIntensity = 0.1
+shader_parameter/pixelSize = 200.0
+shader_parameter/grainIntensity = 0.04
+shader_parameter/use_overlay = false
+shader_parameter/use_lens_distortion = false
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.05
 
 [node name="World" type="Node3D"]
 
@@ -22,7 +38,7 @@ glow_enabled = true
 environment = SubResource("Environment_t415h")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 4.32284, 3.87899)
+transform = Transform3D(1, 0, 0, 0, 0.73152, 0.68182, 0, -0.68182, 0.73152, 0, 4.32284, 3.87899)
 shadow_enabled = true
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_d0u6r")]
@@ -30,3 +46,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48815, 0)
 
 [node name="Terrain" parent="." instance=ExtResource("2_ybvbe")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="Natura" type="Node3D" parent="."]
+
+[node name="tree01" parent="Natura" instance=ExtResource("3_tmsly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.803958, 0, -16.05)
+
+[node name="tree02" parent="Natura" instance=ExtResource("3_tmsly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -16)
+
+[node name="tree03" parent="Natura" instance=ExtResource("3_tmsly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -14)
+
+[node name="tree04" parent="Natura" instance=ExtResource("3_tmsly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -11)
+
+[node name="tree05" parent="Natura" instance=ExtResource("3_tmsly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -9)
+
+[node name="bush01" parent="." instance=ExtResource("4_qtfc2")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.79594, -0.00121021, -7.60015)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_u6fx8")
+offset_right = 1152.0
+offset_bottom = 648.0
