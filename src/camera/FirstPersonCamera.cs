@@ -7,9 +7,12 @@ public partial class FirstPersonCamera : Node3D
 	[Export]
 	public Camera3D camera;
 
-	[Export] public float cameraSensitivity;
-	[Export] public float minCameraElevation;
-	[Export] public float maxCameraElevation;
+	[Export]
+	public float cameraSensitivity;
+	[Export]
+	public float minCameraElevation;
+	[Export]
+	public float maxCameraElevation;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
