@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpkcyig0ljrcs"]
+
+[ext_resource type="PackedScene" uid="uid://d0qefr7d0ofr2" path="res://assets/models/trees/tree32.fbx" id="1_gr3m8"]
+[ext_resource type="Texture2D" uid="uid://bo70pw8li1t62" path="res://assets/textures/trees/tree32.png" id="2_hsl6y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3ji6"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_hsl6y")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_88w4t"]
+height = 3.27167
+radius = 0.355889
+
+[node name="tree32" instance=ExtResource("1_gr3m8")]
+
+[node name="tree32" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_w3ji6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68652, 0)
+shape = SubResource("CylinderShape3D_88w4t")
