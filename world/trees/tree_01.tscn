@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2au8sgfkivdx"]
+[gd_scene load_steps=5 format=3 uid="uid://c2au8sgfkivdx"]
 
 [ext_resource type="PackedScene" uid="uid://bwhrhxeqdv4v2" path="res://assets/models/trees/tree01.fbx" id="1_ro8g7"]
 [ext_resource type="Texture2D" uid="uid://dytiq01uy43ms" path="res://assets/textures/trees/tree01.png" id="2_55thn"]
@@ -12,7 +12,18 @@ albedo_texture = ExtResource("2_55thn")
 texture_filter = 0
 texture_repeat = false
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nkjk1"]
+height = 9.55977
+radius = 0.348635
+
 [node name="tree01" instance=ExtResource("1_ro8g7")]
 
 [node name="tree01" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.62921e-07, 0, -1.62921e-07, 1, 0, -2.38419e-07, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_m67iy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.76822, 0)
+shape = SubResource("CylinderShape3D_nkjk1")
