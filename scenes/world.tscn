@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_utm6d"]
 [ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://scenes/player.tscn" id="2_d0u6r"]
 [ext_resource type="PackedScene" uid="uid://b6mlaef4yaoyn" path="res://scenes/terrain.tscn" id="2_ybvbe"]
-[ext_resource type="Texture2D" uid="uid://kqwn4l6ayr2u" path="res://stars.png" id="3_k8lpk"]
+[ext_resource type="Texture2D" uid="uid://kqwn4l6ayr2u" path="res://assets/textures/stars.png" id="3_k8lpk"]
 [ext_resource type="PackedScene" uid="uid://c2au8sgfkivdx" path="res://world/trees/tree_01.tscn" id="3_tmsly"]
 [ext_resource type="PackedScene" uid="uid://bu85kbh7q540o" path="res://world/bushes/bush_01.tscn" id="4_qtfc2"]
 [ext_resource type="Shader" path="res://shaders/retro_style.gdshader" id="5_bgdyt"]
