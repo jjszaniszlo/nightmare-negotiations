@@ -46,3 +46,4 @@ layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="Main Buttons/Single Player" to="." method="OnSinglePlayerButtonPressed"]
+[connection signal="pressed" from="Main Buttons/Multiplayer" to="." method="OnMultiPlayerButtonPressed"]
