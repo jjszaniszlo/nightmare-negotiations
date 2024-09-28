@@ -110,5 +110,6 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Proceed"
 
+[connection signal="pressed" from="Main Buttons/Single Player" to="." method="OnSinglePlayerButtonPressed"]
 [connection signal="text_submitted" from="UsernameEntryBox/Panel/Enter Username" to="." method="OnUserNameEntryTextSubmitted"]
 [connection signal="pressed" from="UsernameEntryBox/Panel/Proceed Button" to="." method="OnUserNameEntryProceedPressed"]

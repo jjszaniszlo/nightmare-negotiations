@@ -30,4 +30,10 @@ public partial class MainMenu : Node
         // submit
         OnUserNameEntryProceedPressed();
     }
+
+    private void OnSinglePlayerButtonPressed()
+    {
+        GetParent().AddChild(worldTemplate.Instantiate());
+        QueueFree();
+    }
 }
