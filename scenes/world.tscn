@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxp1rkolbqlvf"]
+[gd_scene load_steps=22 format=3 uid="uid://bxp1rkolbqlvf"]
 
 [ext_resource type="Shader" path="res://shaders/sky.gdshader" id="1_febr7"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_utm6d"]
@@ -8,13 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://c2au8sgfkivdx" path="res://world/trees/tree_01.tscn" id="3_tmsly"]
 [ext_resource type="PackedScene" uid="uid://bu85kbh7q540o" path="res://world/bushes/bush_01.tscn" id="4_qtfc2"]
 [ext_resource type="Shader" path="res://shaders/retro_style.gdshader" id="5_bgdyt"]
+[ext_resource type="PackedScene" uid="uid://boy0mm4422x3f" path="res://world/trees/tree_30.tscn" id="7_bktxa"]
 [ext_resource type="PackedScene" uid="uid://b5pfvrkm2xots" path="res://world/trees/tree_31.tscn" id="8_2mxt2"]
 [ext_resource type="PackedScene" uid="uid://dkdgutpx2xouf" path="res://world/trees/tree_35.tscn" id="8_6gugd"]
 [ext_resource type="PackedScene" uid="uid://oh4kj5vj4x7h" path="res://world/trees/tree_33.tscn" id="8_8tpmq"]
 [ext_resource type="PackedScene" uid="uid://t5pl6oln7hcj" path="res://world/trees/tree_36.tscn" id="8_erh4b"]
 [ext_resource type="PackedScene" uid="uid://cpkcyig0ljrcs" path="res://world/trees/tree_32.tscn" id="9_03iyn"]
 [ext_resource type="PackedScene" uid="uid://ca10q3rvkhouo" path="res://world/trees/tree_34.tscn" id="9_m1ijd"]
-[ext_resource type="PackedScene" uid="uid://qvw1y2xa3b6d" path="res://assets/models/trees/bush02.fbx" id="14_1lmay"]
+[ext_resource type="PackedScene" uid="uid://db8qauykwlgoh" path="res://world/bushes/bush_02.tscn" id="14_wbjg8"]
+[ext_resource type="PackedScene" uid="uid://ctypvu7fwc0q4" path="res://world/trees/tree_29.tscn" id="16_owryv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vscm0"]
 shader = ExtResource("1_febr7")
@@ -108,6 +110,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -11)
 [node name="tree05" parent="Natura" instance=ExtResource("3_tmsly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -9)
 
+[node name="tree30" parent="Natura" instance=ExtResource("7_bktxa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.478, 0, -7.064)
+
 [node name="tree31" parent="Natura" instance=ExtResource("8_2mxt2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.591, 0, 7.934)
 
@@ -127,10 +132,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6217, -0.155105, -18.5572
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23, 0, -18.096)
 
 [node name="bush01" parent="Natura" instance=ExtResource("4_qtfc2")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.796, 0, -7.6)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -4.06486, 0.366313, -9.34307)
 
-[node name="bush02" parent="Natura" instance=ExtResource("14_1lmay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
+[node name="bush02" parent="Natura" instance=ExtResource("14_wbjg8")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6.53573, 0, -1.427)
+
+[node name="tree29" parent="Natura" instance=ExtResource("16_owryv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4, 0, 4.309)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
