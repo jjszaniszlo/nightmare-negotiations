@@ -1,0 +1,153 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl2sywl73lxij"]
+
+[ext_resource type="Texture2D" uid="uid://cgnklo05rbjgw" path="res://assets/icons/refresh.png" id="1_lptqx"]
+
+[node name="LobbySelectionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.188371, 0.188371, 0.188371, 1)
+
+[node name="Join" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.259
+anchor_top = 0.042
+anchor_right = 0.372
+anchor_bottom = 0.09
+offset_left = 2.63199
+offset_top = -0.216002
+offset_right = -0.544006
+offset_bottom = -0.320004
+text = "Join"
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 31)
+layout_mode = 0
+offset_left = 439.0
+offset_top = 27.0
+offset_right = 631.0
+offset_bottom = 58.0
+text = "Create Lobby
+"
+
+[node name="Lobby Name" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.041
+anchor_right = 0.251
+anchor_bottom = 0.089
+offset_left = -0.0800018
+offset_top = -0.0680008
+offset_right = -0.152008
+offset_bottom = -0.172001
+placeholder_text = "Enter lobby code here"
+
+[node name="PublicLobbyListContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.099
+anchor_right = 0.96
+anchor_bottom = 0.937
+offset_left = -0.0800018
+offset_top = -0.152008
+offset_right = 0.0799561
+offset_bottom = -0.176025
+
+[node name="LobbyListHeader" type="Control" parent="PublicLobbyListContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="PublicLobbyListContainer/LobbyListHeader"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.326679, 0.326679, 0.326679, 1)
+
+[node name="Label" type="Label" parent="PublicLobbyListContainer/LobbyListHeader"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.006
+anchor_top = 0.171
+anchor_right = 0.135
+anchor_bottom = 0.829
+offset_left = -0.36
+offset_top = 0.0149999
+offset_right = -0.100006
+offset_bottom = -0.0150013
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lobby Description"
+
+[node name="Refresh" type="Button" parent="PublicLobbyListContainer/LobbyListHeader"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.968
+anchor_top = 0.057
+anchor_right = 0.998
+anchor_bottom = 0.943
+offset_left = -70.0801
+offset_top = 0.00499988
+offset_right = -0.880005
+offset_bottom = -0.00500107
+grow_horizontal = 0
+grow_vertical = 2
+text = "Refresh
+"
+icon = ExtResource("1_lptqx")
+expand_icon = true
+
+[node name="LobbyList" type="ScrollContainer" parent="PublicLobbyListContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Container" type="VBoxContainer" parent="PublicLobbyListContainer/LobbyList"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AvailableLobbyTemplate" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 35)
+anchors_preset = 0
+offset_left = 46.0
+offset_top = 108.0
+offset_right = 1093.0
+offset_bottom = 143.0
+
+[node name="Label" type="Label" parent="AvailableLobbyTemplate"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.004
+anchor_right = 0.825
+anchor_bottom = 1.0
+offset_left = -0.188
+offset_right = 0.224976
+text = "Lobby Description"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="AvailableLobbyTemplate"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.825
+anchor_right = 0.999
+anchor_bottom = 1.0
+offset_left = 0.324951
+offset_right = -0.333008
+text = "Join"
