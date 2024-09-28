@@ -1,15 +1,32 @@
 using Godot;
-using System;
+
+namespace NightmareNegotiations.scenes.LobbySelectionMenu;
 
 public partial class LobbySelectionMenu : Control
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+    private PackedScene mainMenuTemplate = GD.Load<PackedScene>("res://scenes/MainMenu/MainMenu.tscn");
+    private void OnJoinButtonPressed()
+    {
+        
+    }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+    private void OnLobbyCodeTextSubmitted(string text)
+    {
+        OnJoinButtonPressed();
+    }
+    
+    private void OnCreateLobbyButtonPressed()
+    {
+    }
+    
+    private void OnBackButtonPressed()
+    {
+        GetParent().AddChild(mainMenuTemplate.Instantiate());
+        QueueFree();
+    }
+    
+    private void OnRefreshLobbyListButtonPressed()
+    {
+        
+    }
 }
