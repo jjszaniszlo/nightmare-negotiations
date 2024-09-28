@@ -4,9 +4,11 @@ namespace NightmareNegotiations;
 
 public partial class Main : Node3D
 {
-	// Called when the node enters the scene tree for the first time.
+	private PackedScene mainMenuTemplate = GD.Load<PackedScene>("res://scenes/MainMenu/MainMenu.tscn");
+	
 	public override void _Ready()
 	{
+		AddChild(mainMenuTemplate.Instantiate());
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
