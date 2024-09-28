@@ -6,7 +6,7 @@ namespace NightmareNegotiations.net;
 
 public partial class Client : Node
 {
-	private WebRtcMultiplayerPeer rtcMulitplayerPeer = new();
+	private WebRtcMultiplayerPeer rtcMultiplayerPeer = new();
 	private WebSocketPeer wsPeer = new();
 	private string url = "ws://127.0.0.1:4556";
 	private bool connected = false;
