@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5pfvrkm2xots"]
+[gd_scene load_steps=5 format=3 uid="uid://c6gnkm05wjru5"]
 
 [ext_resource type="PackedScene" uid="uid://bsiiqj4s4huj1" path="res://assets/models/trees/tree31.fbx" id="1_4cg5y"]
 [ext_resource type="Texture2D" uid="uid://pfvhtvlakko8" path="res://assets/textures/trees/tree31.png" id="2_qqbm7"]
@@ -8,6 +8,7 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_qqbm7")
+texture_filter = 0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_u6mgf"]
 height = 3.97906

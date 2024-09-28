@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://t5pl6oln7hcj"]
+[gd_scene load_steps=5 format=3 uid="uid://bsqqkkljd102"]
 
 [ext_resource type="PackedScene" uid="uid://ptm3cq340h6i" path="res://assets/models/trees/tree36.fbx" id="1_obggh"]
 [ext_resource type="Texture2D" uid="uid://udsied5ki7xo" path="res://assets/textures/trees/tree36.png" id="2_mpg2n"]
