@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://db8qauykwlgoh"]
+[gd_scene load_steps=4 format=3 uid="uid://v0wqg34hked7"]
 
 [ext_resource type="PackedScene" uid="uid://qvw1y2xa3b6d" path="res://assets/models/trees/bush02.fbx" id="1_auj56"]
 [ext_resource type="Texture2D" uid="uid://duy1rco3xmwyo" path="res://assets/textures/bushes/bush02.png" id="2_3ucbf"]
@@ -8,6 +8,7 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_3ucbf")
+texture_filter = 0
 
 [node name="bush02" instance=ExtResource("1_auj56")]
 
