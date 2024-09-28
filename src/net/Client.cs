@@ -12,52 +12,52 @@ public partial class Client : Node
 	private bool connected = false;
 
 	[Signal]
-	private delegate void InvalidNewLobbyNameEventHandler();
+	public delegate void InvalidNewLobbyNameEventHandler();
 	
 	[Signal]
-	private delegate void InvalidJoinLobbyNameEventHandler();
+	public delegate void InvalidJoinLobbyNameEventHandler();
 	
 	[Signal]
-	private delegate void NewLobbyEventHandler(string lobbyName);
+	public delegate void NewLobbyEventHandler(string lobbyName);
 	
 	[Signal]
-	private delegate void JoinLobbyEventHandler(string lobbyName);
+	public delegate void JoinLobbyEventHandler(string lobbyName);
 	
 	[Signal]
-	private delegate void LobbyListReceivedEventHandler(List<string> lobbyList);
+	public delegate void LobbyListReceivedEventHandler(string[] lobbyList);
 	
 	[Signal]
-	private delegate void LobbyMessageReceivedEventHandler(string userName, string message);
+	public delegate void LobbyMessageReceivedEventHandler(string userName, string message);
 
 	[Signal]
-	private delegate void AnotherUserJoinedLobbyEventHandler(string anotherUserName);
+	public delegate void AnotherUserJoinedLobbyEventHandler(string anotherUserName);
 	
 	[Signal]
-	private delegate void HostNameReceivedEventHandler(string hostName);
+	public delegate void HostNameReceivedEventHandler(string hostName);
 	
 	[Signal]
-	private delegate void AnotherUserLeftLobbyEventHandler(string anotherUserName);
+	public delegate void AnotherUserLeftLobbyEventHandler(string anotherUserName);
 	
 	[Signal]
-	private delegate void RtcOfferReceivedEventHandler(string type, string sdp);
+	public delegate void RtcOfferReceivedEventHandler(string type, string sdp);
 	
 	[Signal]
-	private delegate void RtcAnswerReceivedEventHandler(string type, string sdp);
+	public delegate void RtcAnswerReceivedEventHandler(string type, string sdp);
 	
 	[Signal]
-	private delegate void RtcIceReceivedEventHandler(string media, int index, string name);
+	public delegate void RtcIceReceivedEventHandler(string media, int index, string name);
 
 	[Signal]
-	private delegate void GameStartReceivedEventHandler(string peers);
+	public delegate void GameStartReceivedEventHandler(string peers);
 
 	[Signal]
-	private delegate void ServerChangedHostEventHandler();
+	public delegate void ServerChangedHostEventHandler();
 	
 	[Signal]
-	private delegate void UserNameFeedbackReceivedEventHandler();
+	public delegate void UserNameFeedbackReceivedEventHandler();
 	
 	[Signal]
-	private delegate void ResetConnectionEventHandler();
+	public delegate void ResetConnectionEventHandler();
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
