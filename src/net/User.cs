@@ -14,9 +14,9 @@ public partial class User : Node
 
     private bool isHost;
     private int id;
-    private System.Collections.Generic.Dictionary<int, string> peers;
+    private readonly System.Collections.Generic.Dictionary<int, string> peers = new();
 
-    private System.Collections.Generic.Dictionary<int, WebRtcPeerConnection> connections;
+    private readonly System.Collections.Generic.Dictionary<int, WebRtcPeerConnection> connections = new();
     private WebRtcMultiplayerPeer rtcPeer;
 
     private void InitConnection()
