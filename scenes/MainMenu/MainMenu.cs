@@ -5,6 +5,7 @@ namespace NightmareNegotiations.scenes.MainMenu;
 public partial class MainMenu : Node
 {
     private PackedScene popUpTemplate = GD.Load<PackedScene>("res://scenes/PopUp/PopUp.tscn");
+    private PackedScene worldTemplate = GD.Load<PackedScene>("res://scenes/world.tscn");
     private void OnUserNameEntryProceedPressed()
     {
         var usernameText = GetNode<LineEdit>("UsernameEntryBox/Panel/Enter Username").Text;
