@@ -1,16 +1,16 @@
 [gd_scene load_steps=13 format=3 uid="uid://bxp1rkolbqlvf"]
 
-[ext_resource type="Script" path="res://scenes/World/World.gd" id="1_nlkbc"]
-[ext_resource type="Shader" path="res://shaders/sky.gdshader" id="2_m6v6f"]
-[ext_resource type="Texture2D" uid="uid://kqwn4l6ayr2u" path="res://assets/textures/stars.png" id="3_fld8c"]
-[ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://scenes/player.tscn" id="4_cpaso"]
-[ext_resource type="PackedScene" uid="uid://b6mlaef4yaoyn" path="res://scenes/terrain.tscn" id="5_n0hc7"]
-[ext_resource type="PackedScene" uid="uid://c2au8sgfkivdx" path="res://world/trees/tree_01.tscn" id="6_8vy6k"]
-[ext_resource type="PackedScene" uid="uid://bu85kbh7q540o" path="res://world/bushes/bush_01.tscn" id="7_sflq1"]
-[ext_resource type="Shader" path="res://shaders/retro_style.gdshader" id="8_wra1r"]
+[ext_resource type="Shader" path="res://shaders/sky.gdshader" id="1_febr7"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_utm6d"]
+[ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://scenes/player.tscn" id="2_d0u6r"]
+[ext_resource type="PackedScene" uid="uid://b6mlaef4yaoyn" path="res://scenes/terrain.tscn" id="2_ybvbe"]
+[ext_resource type="Texture2D" uid="uid://kqwn4l6ayr2u" path="res://assets/textures/stars.png" id="3_k8lpk"]
+[ext_resource type="PackedScene" uid="uid://c2au8sgfkivdx" path="res://world/trees/tree_01.tscn" id="3_tmsly"]
+[ext_resource type="PackedScene" uid="uid://bu85kbh7q540o" path="res://world/bushes/bush_01.tscn" id="4_qtfc2"]
+[ext_resource type="Shader" path="res://shaders/retro_style.gdshader" id="5_bgdyt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vscm0"]
-shader = ExtResource("2_m6v6f")
+shader = ExtResource("1_febr7")
 shader_parameter/day_top_color = Color(0.1, 0.6, 1, 1)
 shader_parameter/day_bottom_color = Color(0.4, 0.8, 1, 1)
 shader_parameter/sunset_top_color = Color(0.7, 0.75, 1, 1)
@@ -40,7 +40,7 @@ shader_parameter/clouds_blur = 0.25
 shader_parameter/stars_speed = 1.0
 shader_parameter/stars_scale = 1.0
 shader_parameter/stars_opacity = 1.0
-shader_parameter/stars_texture = ExtResource("3_fld8c")
+shader_parameter/stars_texture = ExtResource("3_k8lpk")
 shader_parameter/overwritten_time = 3289.44
 
 [sub_resource type="Sky" id="Sky_y0jol"]
@@ -54,7 +54,7 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.0225
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u6fx8"]
-shader = ExtResource("8_wra1r")
+shader = ExtResource("5_bgdyt")
 shader_parameter/shake = 0.0
 shader_parameter/noiseQuality = 250.0
 shader_parameter/noiseIntensity = 0.001
@@ -68,7 +68,7 @@ shader_parameter/overlay_color = Color(1, 1, 1, 10)
 shader_parameter/lens_distortion_strength = 0.05
 
 [node name="World" type="Node3D"]
-script = ExtResource("1_nlkbc")
+script = ExtResource("1_utm6d")
 day_time = 8.8944
 use_day_time_for_shader = true
 time_scale = 1.0
@@ -78,30 +78,30 @@ moon_base_enegry = 0.1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1rxqi")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("4_cpaso")]
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_d0u6r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48815, 0)
 
-[node name="Terrain" parent="." instance=ExtResource("5_n0hc7")]
+[node name="Terrain" parent="." instance=ExtResource("2_ybvbe")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="Natura" type="Node3D" parent="."]
 
-[node name="tree01" parent="Natura" instance=ExtResource("6_8vy6k")]
+[node name="tree01" parent="Natura" instance=ExtResource("3_tmsly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.803958, 0, -16.05)
 
-[node name="tree02" parent="Natura" instance=ExtResource("6_8vy6k")]
+[node name="tree02" parent="Natura" instance=ExtResource("3_tmsly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -16)
 
-[node name="tree03" parent="Natura" instance=ExtResource("6_8vy6k")]
+[node name="tree03" parent="Natura" instance=ExtResource("3_tmsly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -14)
 
-[node name="tree04" parent="Natura" instance=ExtResource("6_8vy6k")]
+[node name="tree04" parent="Natura" instance=ExtResource("3_tmsly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -11)
 
-[node name="tree05" parent="Natura" instance=ExtResource("6_8vy6k")]
+[node name="tree05" parent="Natura" instance=ExtResource("3_tmsly")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -9)
 
-[node name="bush01" parent="Natura" instance=ExtResource("7_sflq1")]
+[node name="bush01" parent="Natura" instance=ExtResource("4_qtfc2")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.79594, -0.00121021, -7.60015)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
