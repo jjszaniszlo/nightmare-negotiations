@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
-run/main_scene="res://scenes/world.tscn"
+config/name="NightmareNegotiations"
+run/main_scene="res://scenes/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,7 +22,7 @@ window/size/viewport_height=1440
 
 [dotnet]
 
-project/assembly_name="New Game Project"
+project/assembly_name="NightmareNegotiations"
 
 [editor]
 
