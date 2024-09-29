@@ -76,12 +76,7 @@ public partial class Client : Node
 
 	public bool IsConnectionOpen()
 	{
-		if (wsPeer.GetReadyState() == WebSocketPeer.State.Open)
-		{
-			GD.Print("[Log] Connection open and ready to use!");
-			return true;
-		}
-		return false;
+		return wsPeer.GetReadyState() == WebSocketPeer.State.Open;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
