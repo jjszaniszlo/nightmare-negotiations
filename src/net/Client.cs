@@ -1,6 +1,9 @@
+using System;
+using System.Linq;
 using System.Text.Json;
 using Godot;
-using NightmareNegotiations.scenes.Main;
+using Newtonsoft.Json;
+using NightmareNegotiations.scenes;
 
 namespace NightmareNegotiations.net;
 
