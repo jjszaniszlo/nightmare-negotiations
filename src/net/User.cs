@@ -7,14 +7,15 @@ namespace NightmareNegotiations.net;
 
 public partial class User : Node
 {
-    private Client client;
-    private string userName;
-    private string hostUserName;
-    private string currentLobbyCode;
+    public Client Client { get; set; }
+    public string UserName { get; set; }
+    public string HostUserName { get; set; }
+    public string CurrentLobbyCode { get; set; }
 
-    private bool isHost;
-    private int id;
-    private readonly System.Collections.Generic.Dictionary<int, string> peers = new();
+    public bool IsHost { get; set; }
+    public int Id { get; set; }
+    
+    public readonly System.Collections.Generic.Dictionary<int, string> Peers = new();
 
     private readonly System.Collections.Generic.Dictionary<int, WebRtcPeerConnection> connections = new();
     private WebRtcMultiplayerPeer rtcPeer;
@@ -22,11 +23,11 @@ public partial class User : Node
     private void InitConnection()
     {
         rtcPeer = new WebRtcMultiplayerPeer();
-        rtcPeer.CreateMesh(id);
+        rtcPeer.CreateMesh(Id);
 
         connections.Clear();
 
-        foreach (var peerId in peers.Keys)
+        foreach (var peerId in Peers.Keys)
         {
             var connection = new WebRtcPeerConnection();
             
@@ -68,7 +69,7 @@ public partial class User : Node
 
     public void CreateClient()
     {
-        client = new Client();
+        Client = new Client();
     }
     
     private void OnSignalSessionCreated(string type, string sdp, WebRtcPeerConnection connection)
