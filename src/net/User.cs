@@ -66,11 +66,6 @@ public partial class User : Node
         // Enable the godot high level multiplayer api, but utilizing WebRTC.
         GetTree().GetMultiplayer().MultiplayerPeer = rtcPeer;
     }
-
-    public void CreateClient()
-    {
-        Client = new Client();
-    }
     
     private void OnSignalSessionCreated(string type, string sdp, WebRtcPeerConnection connection)
     {
