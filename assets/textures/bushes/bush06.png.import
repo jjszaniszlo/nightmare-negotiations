@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ck8okeu8n6ace"
-path="res://.godot/imported/bush06.png-68122186277f96f9364d12c2d6a37519.ctex"
+path="res://.godot/imported/bush06.png-e550815ca8b6780bc4f65a160e5623fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/textures/bushes/bush06.png"
-dest_files=["res://.godot/imported/bush06.png-68122186277f96f9364d12c2d6a37519.ctex"]
+source_file="res://assets/textures/bushes/bush06.png"
+dest_files=["res://.godot/imported/bush06.png-e550815ca8b6780bc4f65a160e5623fd.ctex"]
 
 [params]
 
