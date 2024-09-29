@@ -105,7 +105,7 @@ public partial class Client : Node
 	private void ParseMessage()
 	{
 		var packetBuffer = wsPeer.GetPacket().GetStringFromUtf8();
-		var packet = JsonSerializer.Deserialize<Packet>(packetBuffer);
+		var packet = JsonConvert.DeserializeObject<BasicPacket>(packetBuffer, new JsonPacketConverter());
 		if (packet is null)
 		{
 			return;
