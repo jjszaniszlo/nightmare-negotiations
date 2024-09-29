@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxp1rkolbqlvf"]
+[gd_scene load_steps=23 format=3 uid="uid://bxp1rkolbqlvf"]
 
 [ext_resource type="Script" path="res://src/scenes/World.gd" id="1_ed708"]
 [ext_resource type="Shader" path="res://Shaders/sky.gdshader" id="2_liqes"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://v0wqg34hked7" path="res://WorldObjects/bushes/bush_02.tscn" id="15_gbydm"]
 [ext_resource type="PackedScene" uid="uid://biu7foqcuchwj" path="res://WorldObjects/trees/tree_29.tscn" id="16_d35ql"]
 [ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="17_8ucb7"]
+[ext_resource type="Script" path="res://src/PauseHandler.cs" id="18_ef6c5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vscm0"]
 shader = ExtResource("2_liqes")
@@ -60,7 +61,7 @@ background_mode = 2
 sky = SubResource("Sky_y0jol")
 ambient_light_source = 3
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0225
+volumetric_fog_density = 0.0774
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u6fx8"]
 shader = ExtResource("17_8ucb7")
@@ -145,8 +146,11 @@ follow_viewport_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_u6fx8")
-offset_right = 2560.0
-offset_bottom = 1440.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.92083, 0, -0.389965, 0.268019, 0.726383, 0.632877, 0.283264, -0.68729, 0.668875, 0, 0, 0)
@@ -167,3 +171,6 @@ directional_shadow_fade_start = 0.1
 
 [node name="tree31" parent="." instance=ExtResource("8_rcaue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9481, -0.00121021, 11.6736)
+
+[node name="PauseHandler" type="Node" parent="."]
+script = ExtResource("18_ef6c5")
