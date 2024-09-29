@@ -231,45 +231,26 @@ public partial class Client : Node
 		wsPeer.SendText(JsonConvert.SerializeObject(packet));
 	}
 
-				EmitSignal(SignalName.RtcOfferReceived, type, sdp, packet.id);
-				break;
-			}
-			case MessageType.Answer:
-			{
-				var splitData = packet.data.Split("@@@", 2);
-				var type = splitData[0];
-				var sdp = splitData[1];
+	public void SendUserName(string username)
+	{
+		SendPacket(new UserInfoPacket
+		{
+			Id = 0,
+			Username = username
+		});
+	}
 
-				EmitSignal(SignalName.RtcAnswerReceived, type, sdp, packet.id);
-				break;
-			}
-			case MessageType.InteractiveConnectivityEstablishment:
-			{
-				var splitData = packet.data.Split("@@@", 3);
-				var media = splitData[0];
-				var index = splitData[1].ToInt();
-				var name = splitData[2];
+	public void RequestLobbyList()
+	{
+		SendPacket(new BasicPacket
+		{
+			Message = Message.LobbyList,
+			Id = Main.Globals.User.Id,
+		});
+	}
 
-				EmitSignal(SignalName.RtcIceReceived, media, index, name, packet.id);
-				break;
-			}
-			case MessageType.StartSession:
-				break;
-			case MessageType.Host:
-				// assign User to host if they are hosting the lobby, otherwise assign their HostName property to the current
-				// host of the lobby.
-				if (packet.id == Main.Globals.User.Id && packet.data == Main.Globals.User.UserName)
-				{
-					Main.Globals.User.IsHost = true;
-				}
-				else
-				{
-					Main.Globals.User.IsHost = false;
-					Main.Globals.User.HostUserName = packet.data;
-				}
-
-				EmitSignal(SignalName.ServerChangedHost);
-				break;
-		}
+	public void RequestJoinLobby(string lobbyCode)
+	{
+		GD.Print($"[Log] Requesting lobby {lobbyCode}");
 	}
 }
