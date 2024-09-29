@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6gnkm05wjru5"]
 
-[ext_resource type="PackedScene" uid="uid://bsiiqj4s4huj1" path="res://assets/models/trees/tree31.fbx" id="1_4cg5y"]
-[ext_resource type="Texture2D" uid="uid://pfvhtvlakko8" path="res://assets/textures/trees/tree31.png" id="2_qqbm7"]
+[ext_resource type="PackedScene" uid="uid://bsiiqj4s4huj1" path="res://Assets/models/trees/tree31.fbx" id="1_4cg5y"]
+[ext_resource type="Texture2D" uid="uid://pfvhtvlakko8" path="res://Assets/textures/trees/tree31.png" id="2_qqbm7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6b4ql"]
 transparency = 2
