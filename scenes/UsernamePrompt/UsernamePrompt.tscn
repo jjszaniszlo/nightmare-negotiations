@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvs54qfg57nt2"]
 
-[ext_resource type="Script" path="res://Scenes/UsernamePrompt/UsernamePrompt.cs" id="1_cy0iu"]
+[ext_resource type="Script" path="res://src/scenes/UsernamePrompt.cs" id="1_cy0iu"]
 
 [node name="UsernamePrompt" type="Control"]
 layout_mode = 3
