@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ptm3cq340h6i"
-path="res://.godot/imported/tree36.fbx-f2119538000c6aa5253c10f4b3c02488.scn"
+path="res://.godot/imported/tree36.fbx-42b5e0dc3d0efdc72806fba5208cc6c7.scn"
 
 [deps]
 
-source_file="res://assets/models/trees/tree36.fbx"
-dest_files=["res://.godot/imported/tree36.fbx-f2119538000c6aa5253c10f4b3c02488.scn"]
+source_file="res://Assets/models/trees/tree36.fbx"
+dest_files=["res://.godot/imported/tree36.fbx-42b5e0dc3d0efdc72806fba5208cc6c7.scn"]
 
 [params]
 

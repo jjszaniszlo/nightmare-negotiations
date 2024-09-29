@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bu85kbh7q540o"]
 
-[ext_resource type="PackedScene" uid="uid://bja0cjk5usuba" path="res://assets/models/trees/bush01.fbx" id="1_74v2a"]
-[ext_resource type="Texture2D" uid="uid://dwxjw80sm53l8" path="res://assets/textures/bushes/bush01.png" id="2_d4kkg"]
+[ext_resource type="PackedScene" uid="uid://bja0cjk5usuba" path="res://Assets/models/trees/bush01.fbx" id="1_74v2a"]
+[ext_resource type="Texture2D" uid="uid://dwxjw80sm53l8" path="res://Assets/textures/bushes/bush01.png" id="2_d4kkg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmqkg"]
 transparency = 2
