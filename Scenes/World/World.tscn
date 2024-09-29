@@ -167,3 +167,6 @@ directional_shadow_fade_start = 0.1
 
 [node name="tree31" parent="." instance=ExtResource("8_rcaue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9481, -0.00121021, 11.6736)
+
+[node name="tree32" parent="." instance=ExtResource("8_rcaue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9279, -0.00121021, -26.529)
