@@ -166,14 +166,23 @@ offset_right = 0.224976
 text = "Lobby Description"
 vertical_alignment = 1
 
+[node name="Label2" type="Label" parent="AvailableLobbyTemplate"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="Button" type="Button" parent="AvailableLobbyTemplate"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.825
+anchor_top = 0.057
 anchor_right = 0.999
-anchor_bottom = 1.0
+anchor_bottom = 0.943
 offset_left = 0.324951
-offset_right = -0.333008
+offset_top = 0.00499988
+offset_right = -0.333252
+offset_bottom = -0.00500107
 text = "Join"
 
 [connection signal="pressed" from="Join" to="." method="OnJoinButtonPressed"]
