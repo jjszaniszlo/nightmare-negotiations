@@ -1,6 +1,6 @@
 ﻿namespace NightmareNegotiations.net;
 
-public enum MessageType
+public enum Message
 {
     UserInfo,
     LobbyList,
@@ -8,6 +8,7 @@ public enum MessageType
     JoinLobby,
     LeaveLobby,
     LobbyMessage,
+    LobbyDescription,
     Offer,
     Answer,
     InteractiveConnectivityEstablishment,
