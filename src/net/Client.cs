@@ -27,7 +27,7 @@ public partial class Client : Node
 	public delegate void JoinLobbyEventHandler(string lobbyCode);
 	
 	[Signal]
-	public delegate void LobbyListReceivedEventHandler(string[] lobbyList);
+	public delegate void LobbyListReceivedEventHandler(string[] lobbyCodes, string[] lobbyDescriptions);
 	
 	[Signal]
 	public delegate void LobbyMessageReceivedEventHandler(string userName, string message);
