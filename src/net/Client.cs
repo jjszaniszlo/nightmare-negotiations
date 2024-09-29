@@ -62,10 +62,13 @@ public partial class Client : Node
 	[Signal]
 	public delegate void ResetConnectionEventHandler();
 	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public Client()
 	{
-		if (wsPeer.ConnectToUrl(url) != Error.Ok)
+		if (wsPeer.ConnectToUrl(url) == Error.Ok)
+		{
+			GD.Print("[Log] Connected to server!");
+		}
+		else
 		{
 			GD.Print("[Error] Could not connect to server!");
 		}
