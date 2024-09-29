@@ -45,5 +45,20 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 text = "Quit"
 
+[node name="Connection Status" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Online_Offline" type="Label" parent="Connection Status"]
+layout_mode = 0
+offset_left = 1074.0
+offset_top = 620.0
+offset_right = 1147.0
+offset_bottom = 643.0
+text = "Online
+"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="Main Buttons/Single Player" to="." method="OnSinglePlayerButtonPressed"]
 [connection signal="pressed" from="Main Buttons/Multiplayer" to="." method="OnMultiPlayerButtonPressed"]
