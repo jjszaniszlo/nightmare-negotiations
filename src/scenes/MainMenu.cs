@@ -1,6 +1,6 @@
 using Godot;
 
-namespace NightmareNegotiations.scenes.MainMenu;
+namespace NightmareNegotiations.scenes;
 
 public partial class MainMenu : Node
 {
