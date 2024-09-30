@@ -1,15 +1,13 @@
-using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Godot;
 
-namespace NightmareNegotiations.net;
+namespace NightmareNegotiations.net.webrtc;
 
 public partial class WebRtcClient : Node
 {
 	[Export]
 	public bool ShouldMesh { get; set; }
-	
 	private WebSocketPeer ws;
 
 	public override void _Ready()
@@ -17,10 +15,10 @@ public partial class WebRtcClient : Node
 		ws = new WebSocketPeer();
 	}
 
-	public void Connect(string url)
+	public Error Connect(string url)
 	{
 		Close();
-		ws.ConnectToUrl(url);
+		return ws.ConnectToUrl(url);
 	}
 
 	public void Close()
@@ -43,7 +41,7 @@ public partial class WebRtcClient : Node
 
 	private bool ParseMessage()
 	{
-		var packet = JsonSerializer.Deserialize<Packet>(ws.GetPacket().GetStringFromUtf8());
+		var packet = JsonSerializer.Deserialize<Message>(ws.GetPacket().GetStringFromUtf8());
 		if (packet == null) return false;
 
 		var type = packet.Type;
@@ -52,25 +50,25 @@ public partial class WebRtcClient : Node
 
 		switch (type)
 		{
-			case Message.Id:
+			case MessageType.Id:
 				EmitSignal(SignalName.Connected, srcPeerId, data == "true");
 				break;
-			case Message.JoinLobby:
+			case MessageType.JoinLobby:
 				EmitSignal(SignalName.LobbyJoined, data);
 				break;
-			case Message.PeerConnect:
+			case MessageType.PeerConnect:
 				EmitSignal(SignalName.PeerConnected, srcPeerId);
 				break;
-			case Message.PeerDisconnect:
+			case MessageType.PeerDisconnect:
 				EmitSignal(SignalName.PeerDisconnected, srcPeerId);
 				break;
-			case Message.Offer:
+			case MessageType.Offer:
 				EmitSignal(SignalName.OfferReceived, data);
 				break;
-			case Message.Answer:
+			case MessageType.Answer:
 				EmitSignal(SignalName.AnswerReceived, data);
 				break;
-			case Message.Candidate:
+			case MessageType.Candidate:
 				var candidate = data.Split('\n');
 				
 				if (candidate.Length != 3) return false;
@@ -78,7 +76,7 @@ public partial class WebRtcClient : Node
 				
 				EmitSignal(SignalName.CandidateReceived, candidate[0], candidate[1].ToInt(), candidate[2]);
 				break;
-			case Message.Seal:
+			case MessageType.Seal:
 				EmitSignal(SignalName.LobbySealed);
 				break;
 			default:
@@ -90,56 +88,37 @@ public partial class WebRtcClient : Node
 
 	public Error JoinLobby(string lobbyCode)
 	{
-		return SendMessage(Message.JoinLobby, ShouldMesh ? 0 : 1, lobbyCode);
+		return SendMessage(MessageType.JoinLobby, ShouldMesh ? 0 : 1, lobbyCode);
 	}
 
 	public Error SealLobby()
 	{
-		return SendMessage(Message.Seal, 0);
+		return SendMessage(MessageType.Seal, 0);
 	}
 
 	public Error SendCandidate(int id, string media, int index, string sdp)
 	{
-		return SendMessage(Message.Candidate, id, $"{media}\n{index}\n{sdp}");
+		return SendMessage(MessageType.Candidate, id, $"{media}\n{index}\n{sdp}");
 	}
 
 	public Error SendOffer(int id, string offer)
 	{
-		return SendMessage(Message.Offer, id, offer);
+		return SendMessage(MessageType.Offer, id, offer);
 	}
 	
 	public Error SendAnswer(int id, string answer)
 	{
-		return SendMessage(Message.Answer, id, answer);
+		return SendMessage(MessageType.Answer, id, answer);
 	}
 	
-	private Error SendMessage(Message type, int id, string data = "")
+	private Error SendMessage(MessageType type, int id, string data = "")
 	{
-		return ws.SendText(JsonSerializer.Serialize(new Packet
+		return ws.SendText(JsonSerializer.Serialize(new Message
 		{
 			Type = type,
 			Id = id,
 			Data = data,
 		}));
-	}
-
-	private class Packet
-	{
-		[JsonPropertyName("type")] public Message Type { get; set; }
-		[JsonPropertyName("id")] public long Id { get; set; }
-		[JsonPropertyName("data")] public string Data { get; set; }
-	}
-
-	public enum Message
-	{
-		Id,
-		JoinLobby,
-		PeerConnect,
-		PeerDisconnect,
-		Offer,
-		Answer,
-		Candidate,
-		Seal
 	}
 	
 	[Signal]
