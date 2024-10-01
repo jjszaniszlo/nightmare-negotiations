@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://jvnvtpn4rirw"]
+[gd_scene load_steps=3 format=3 uid="uid://jvnvtpn4rirw"]
 
 [ext_resource type="PackedScene" uid="uid://t7rci5gtfubd" path="res://Assets/models/Playermodels/Characters/gltf/Rogue.glb" id="1_6okso"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rydaw"]
+height = 2.46454
 
 [node name="Rogue" instance=ExtResource("1_6okso")]
 
@@ -27,3 +30,7 @@ visible = false
 [node name="Rogue_Cape" parent="Rig/Skeleton3D" index="5"]
 transform = Transform3D(1, 1.25214e-21, 0, -1.25214e-21, 1, 0, 0, 0, 1, 0, 1.21587, 0)
 visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96126, 0)
+shape = SubResource("CapsuleShape3D_rydaw")
