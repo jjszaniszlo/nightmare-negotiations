@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace NightmareNegotiations.terrain;
 
 public partial class TerrainGeneration : Node3D
 {
