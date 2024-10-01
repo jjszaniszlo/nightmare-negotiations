@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmjpk65o4kfuf"]
+
+[ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://GameObjects/player.tscn" id="1_u3beu"]
+[ext_resource type="PackedScene" uid="uid://b6mlaef4yaoyn" path="res://WorldObjects/terrain.tscn" id="2_jwm6o"]
+[ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="3_jeq5p"]
+[ext_resource type="PackedScene" uid="uid://cijp110blgbkj" path="res://CemetaryMapAssets/gltf/arch.gltf" id="4_vxuj7"]
+[ext_resource type="PackedScene" uid="uid://davgyvtmpcrgq" path="res://CemetaryMapAssets/gltf/fence_broken.gltf" id="5_4vatr"]
+[ext_resource type="PackedScene" uid="uid://cencws786y2hg" path="res://CemetaryMapAssets/gltf/fence.gltf" id="6_ktley"]
+
+[sub_resource type="Environment" id="Environment_tcegc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1n3uu"]
+shader = ExtResource("3_jeq5p")
+shader_parameter/shake = 0.0
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0001
+shader_parameter/colorOffsetIntensity = 0.1
+shader_parameter/pixelSize = 200.0
+shader_parameter/grainIntensity = 0.006
+shader_parameter/use_overlay = false
+shader_parameter/use_lens_distortion = false
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.05
+
+[node name="CemetaryMap" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tcegc")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_u3beu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48815, 0)
+
+[node name="Terrain" parent="." instance=ExtResource("2_jwm6o")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -4, 0, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_1n3uu")
+offset_right = 2560.0
+offset_bottom = 1440.0
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.92083, 0, -0.389965, 0.268019, 0.726383, 0.632877, 0.283264, -0.68729, 0.668875, 0, 0, 0)
+rotation_order = 4
+shadow_enabled = true
+shadow_opacity = 0.75
+shadow_blur = 5.0
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.978558, 0, -0.205972, 0.184026, 0.449163, 0.874292, 0.0925152, -0.893449, 0.439533, 0, 0, 0)
+rotation_order = 4
+light_color = Color(1, 1, 0.6, 1)
+light_energy = 0.1
+shadow_enabled = true
+shadow_opacity = 0.25
+shadow_blur = 5.0
+directional_shadow_fade_start = 0.1
+
+[node name="arch2" parent="." instance=ExtResource("4_vxuj7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0, 9.502)
+
+[node name="fence_broken2" parent="." instance=ExtResource("5_4vatr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.006, 0, 9.49)
+
+[node name="fence2" parent="." instance=ExtResource("6_ktley")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00346, -0.00121093, 9.45971)
+
+[node name="fence3" parent="." instance=ExtResource("6_ktley")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.98895, -0.00121045, 9.46169)
+
+[node name="fence4" parent="." instance=ExtResource("6_ktley")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.49223, -0.0171827, 9.40678)
+
+[node name="fence5" parent="." instance=ExtResource("6_ktley")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48479, -0.0095489, 9.4744)
+
+[node name="fence_broken3" parent="." instance=ExtResource("5_4vatr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0262, -0.00121033, 9.27449)
+
+[node name="fence_broken4" parent="." instance=ExtResource("5_4vatr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9907, -0.0364612, 9.46428)
+
+[node name="fence6" parent="." instance=ExtResource("6_ktley")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.753, 0, 11.047)
+
+[node name="fence7" parent="." instance=ExtResource("6_ktley")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.7534, 0, 11.218)
+
+[node name="fence8" parent="." instance=ExtResource("6_ktley")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.755, 0, 14.542)
+
+[node name="fence9" parent="." instance=ExtResource("6_ktley")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.75, 0, 14.724)
+
+[node name="fence10" parent="." instance=ExtResource("6_ktley")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.794, 0, 18.226)
+
+[node name="fence11" parent="." instance=ExtResource("6_ktley")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.843, 0, 18.064)
+
+[node name="fence12" parent="." instance=ExtResource("6_ktley")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.7954, 0, 21.7614)
+
+[node name="fence13" parent="." instance=ExtResource("6_ktley")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.849, 0, 21.568)
+
+[node name="fence_broken5" parent="." instance=ExtResource("5_4vatr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.849, 0, 25.2)
