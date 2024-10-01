@@ -1,8 +1,13 @@
-﻿using NightmareNegotiations.net;
+﻿using Godot;
 
 namespace NightmareNegotiations;
 
-public class Globals
+public partial class Globals : Node
 {
-    public User User { get; set; } = new();
+    public static Globals Instance { get; private set; }
+
+    public override void _Ready()
+    {
+        Instance = this;
+    }
 }

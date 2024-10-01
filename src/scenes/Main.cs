@@ -1,14 +1,23 @@
 using Godot;
+using NightmareNegotiations.net;
 
-namespace NightmareNegotiations.scenes.Main;
+namespace NightmareNegotiations.scenes;
 
 public partial class Main : Node3D
 {
-	public static Globals Globals { get; private set; } = new();
-	private PackedScene usernamePromptTemplate = GD.Load<PackedScene>("res://scenes/UsernamePrompt/UsernamePrompt.tscn");
+	private PackedScene usernamePromptTemplate;
 	
 	public override void _Ready()
 	{
-		AddChild(usernamePromptTemplate.Instantiate());
+		if (OS.HasFeature("dedicated_server"))
+		{
+			NetworkManager.Instance.InitDedicatedServer();
+		}
+		else
+		{
+			NetworkManager.Instance.InitClient();
+		}
+		
+		usernamePromptTemplate = GD.Load<PackedScene>("res://Scenes/UsernamePrompt/UsernamePrompt.tscn");
 	}
 }
