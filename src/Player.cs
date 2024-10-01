@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace NightmareNegotiations;
 
 public partial class Player : CharacterBody3D
 {

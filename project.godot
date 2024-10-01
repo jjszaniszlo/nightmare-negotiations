@@ -10,24 +10,25 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
-run/main_scene="res://scenes/world.tscn"
+config/name="NightmareNegotiations"
+run/main_scene="res://Scenes/Main/Main.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Scenes/Global.tscn"
+MultiplayerState="*res://Scenes/Net/MultiplayerState.tscn"
+NetworkManager="*res://Scenes/Net/NetworkManager.tscn"
+
 [display]
 
-window/size/viewport_width=2560
-window/size/viewport_height=1440
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [dotnet]
 
-project/assembly_name="New Game Project"
-
-[editor]
-
-version_control/plugin_name="GitPlugin"
-version_control/autoload_on_startup=true
+project/assembly_name="NightmareNegotiations"
 
 [input]
 
