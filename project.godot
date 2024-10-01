@@ -18,9 +18,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Scenes/Global.tscn"
-MultiplayerState="*res://Scenes/Net/MultiplayerState.tscn"
+<<<<<<<HEADMultiplayerState="*res://Scenes/Net/MultiplayerState.tscn"
 NetworkManager="*res://Scenes/Net/NetworkManager.tscn"
-
+MultiplayerState="*res://Scenes/Net/MultiplayerState.tscn"
 
 [display]
 
@@ -30,6 +30,11 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="NightmareNegotiations"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [input]
 
