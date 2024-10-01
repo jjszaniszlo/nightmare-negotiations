@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://1sybv11povpy"]
+[gd_scene load_steps=3 format=3 uid="uid://1sybv11povpy"]
 
 [ext_resource type="PackedScene" uid="uid://bni2rl4xislmd" path="res://Assets/models/Playermodels/Characters/gltf/Rogue_Hooded.glb" id="1_m2626"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_klq1d"]
+height = 2.59265
 
 [node name="Rogue_Hooded" instance=ExtResource("1_m2626")]
 
@@ -27,3 +30,7 @@ visible = false
 [node name="Rogue_Cape" parent="Rig/Skeleton3D" index="5"]
 transform = Transform3D(1, 1.25214e-21, 0, -1.25214e-21, 1, 0, 0, 0, 1, 0, 1.21587, 0)
 visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.934168, 0)
+shape = SubResource("CapsuleShape3D_klq1d")
