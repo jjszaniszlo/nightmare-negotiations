@@ -4,7 +4,6 @@ namespace NightmareNegotiations.scenes;
 
 public partial class LobbySelectionMenu : Control
 {
-    private PackedScene mainMenuTemplate = GD.Load<PackedScene>("res://Scenes/MainMenu/MainMenu.tscn");
     private void OnJoinButtonPressed()
     {
         
@@ -21,7 +20,7 @@ public partial class LobbySelectionMenu : Control
     
     private void OnBackButtonPressed()
     {
-        GetParent().AddChild(mainMenuTemplate.Instantiate());
+        GetParent().AddChild(GD.Load<PackedScene>("res://Scenes/MainMenu/MainMenu.tscn").Instantiate());
         QueueFree();
     }
     

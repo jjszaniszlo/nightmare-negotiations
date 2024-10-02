@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyp4vgib4bucc"]
-
-[ext_resource type="Script" path="res://src/net/MultiplayerState.cs" id="1_0342d"]
-
-[node name="MultiplayerState" type="Node"]
-script = ExtResource("1_0342d")
