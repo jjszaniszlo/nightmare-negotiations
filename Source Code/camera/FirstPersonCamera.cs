@@ -1,6 +1,6 @@
 using Godot;
 
-namespace NightmareNegotiations.camera;
+namespace NightmareNegotiations.Camera;
 
 public partial class FirstPersonCamera : Node3D
 {

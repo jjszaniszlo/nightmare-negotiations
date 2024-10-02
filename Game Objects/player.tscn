@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwgw60ei0hixm"]
 
-[ext_resource type="Script" path="res://src/Player.cs" id="1_tox3x"]
-[ext_resource type="Script" path="res://src/camera/FirstPersonCamera.cs" id="2_lcprj"]
+[ext_resource type="Script" path="res://Source Code/Player.cs" id="1_tox3x"]
+[ext_resource type="Script" path="res://Source Code/Camera/FirstPersonCamera.cs" id="2_lcprj"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jgv2r"]
 
