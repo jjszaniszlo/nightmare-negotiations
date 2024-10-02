@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace NightmareNegotiations.Scenes.PauseMenu;
 
 public partial class PauseMenu : Node
 {

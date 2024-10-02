@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bl2sywl73lxij"]
 
-[ext_resource type="Script" path="res://src/scenes/LobbySelectionMenu.cs" id="1_4prji"]
+[ext_resource type="Script" path="res://Scenes/LobbySelectionMenu/LobbySelectionMenu.cs" id="1_4prji"]
 [ext_resource type="Texture2D" uid="uid://cgnklo05rbjgw" path="res://Assets/icons/refresh.png" id="1_lptqx"]
 
 [node name="LobbySelectionMenu" type="Control"]

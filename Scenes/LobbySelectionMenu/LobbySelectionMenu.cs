@@ -1,6 +1,6 @@
 using Godot;
 
-namespace NightmareNegotiations.scenes;
+namespace NightmareNegotiations.Scenes.LobbySelectionMenu;
 
 public partial class LobbySelectionMenu : Control
 {

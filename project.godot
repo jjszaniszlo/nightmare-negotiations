@@ -18,8 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Scenes/Global.tscn"
-MultiplayerState="*res://Scenes/Net/MultiplayerState.tscn"
-NetworkManager="*res://Scenes/Net/NetworkManager.tscn"
 
 [display]
 

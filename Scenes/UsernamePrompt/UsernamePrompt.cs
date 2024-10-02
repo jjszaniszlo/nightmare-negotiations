@@ -1,6 +1,6 @@
 using Godot;
 
-namespace NightmareNegotiations.scenes;
+namespace NightmareNegotiations.Scenes.UsernamePrompt;
 
 public partial class UsernamePrompt : Control
 {
@@ -15,7 +15,7 @@ public partial class UsernamePrompt : Control
 
         if (usernameText.Length == 0 || usernameText.Contains(' '))
         {
-            var popUp = popUpTemplate.Instantiate<PopUp>();
+            var popUp = popUpTemplate.Instantiate<Scenes.PopUp.PopUp>();
             popUp.SetMessage("You need to enter a valid username!");
             AddChild(popUp);
         }

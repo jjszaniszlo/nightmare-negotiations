@@ -1,6 +1,6 @@
 using Godot;
 
-namespace NightmareNegotiations.scenes;
+namespace NightmareNegotiations.Scenes.Main;
 
 public partial class Main : Node3D
 {

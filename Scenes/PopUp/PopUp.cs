@@ -1,6 +1,6 @@
 using Godot;
 
-namespace NightmareNegotiations.scenes;
+namespace NightmareNegotiations.Scenes.PopUp;
 
 public partial class PopUp : Control
 {

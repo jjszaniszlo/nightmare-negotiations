@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbh2gh1fkh0fh"]
 
 [ext_resource type="Shader" path="res://Scenes/PauseMenu/BackgroundBlur.gdshader" id="1_aygdi"]
-[ext_resource type="Script" path="res://src/scenes/PauseMenu.cs" id="1_xhbv7"]
+[ext_resource type="Script" path="res://Scenes/PauseMenu/PauseMenu.cs" id="1_xhbv7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3faw"]
 shader = ExtResource("1_aygdi")
