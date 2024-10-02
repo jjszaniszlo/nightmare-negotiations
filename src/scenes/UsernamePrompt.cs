@@ -1,11 +1,11 @@
 using Godot;
 
-namespace NightmareNegotiations.scenes.UsernamePrompt;
+namespace NightmareNegotiations.scenes;
 
 public partial class UsernamePrompt : Control
 {
-    private PackedScene popUpTemplate = GD.Load<PackedScene>("res://scenes/PopUp/PopUp.tscn");
-    private PackedScene mainMenuTemplate = GD.Load<PackedScene>("res://scenes/MainMenu/MainMenu.tscn");
+    private PackedScene popUpTemplate = GD.Load<PackedScene>("res://Scenes/PopUp/PopUp.tscn");
+    private PackedScene mainMenuTemplate = GD.Load<PackedScene>("res://Scenes/MainMenu/MainMenu.tscn");
     
     private void OnUserNameEntryProceedPressed()
     {
@@ -15,7 +15,7 @@ public partial class UsernamePrompt : Control
 
         if (usernameText.Length == 0 || usernameText.Contains(' '))
         {
-            var popUp = popUpTemplate.Instantiate<PopUp.PopUp>();
+            var popUp = popUpTemplate.Instantiate<PopUp>();
             popUp.SetMessage("You need to enter a valid username!");
             AddChild(popUp);
         }

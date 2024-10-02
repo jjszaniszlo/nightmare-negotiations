@@ -1,10 +1,10 @@
 using Godot;
 
-namespace NightmareNegotiations.scenes.LobbySelectionMenu;
+namespace NightmareNegotiations.scenes;
 
 public partial class LobbySelectionMenu : Control
 {
-    private PackedScene mainMenuTemplate = GD.Load<PackedScene>("res://scenes/MainMenu/MainMenu.tscn");
+    private PackedScene mainMenuTemplate = GD.Load<PackedScene>("res://Scenes/MainMenu/MainMenu.tscn");
     private void OnJoinButtonPressed()
     {
         
