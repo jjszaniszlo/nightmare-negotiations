@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://v0wqg34hked7"]
 
-[ext_resource type="PackedScene" uid="uid://qvw1y2xa3b6d" path="res://Assets/models/trees/bush02.fbx" id="1_auj56"]
+[ext_resource type="PackedScene" uid="uid://qvw1y2xa3b6d" path="res://Assets/models/bushes/bush02.fbx" id="1_auj56"]
 [ext_resource type="Texture2D" uid="uid://duy1rco3xmwyo" path="res://Assets/textures/bushes/bush02.png" id="2_3ucbf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7l4tm"]

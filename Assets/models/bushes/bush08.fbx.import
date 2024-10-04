@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d1tyiqakxd68t"
-path="res://.godot/imported/bush06.fbx-b2648fb40b8ac17f8c378bf78dccc6a3.scn"
+uid="uid://ca2auhahm7apk"
+path="res://.godot/imported/bush08.fbx-ba839712b46cf91338806e8ba19f532a.scn"
 
 [deps]
 
-source_file="res://Assets/models/trees/bush06.fbx"
-dest_files=["res://.godot/imported/bush06.fbx-b2648fb40b8ac17f8c378bf78dccc6a3.scn"]
+source_file="res://Assets/models/bushes/bush08.fbx"
+dest_files=["res://.godot/imported/bush08.fbx-ba839712b46cf91338806e8ba19f532a.scn"]
 
 [params]
 
