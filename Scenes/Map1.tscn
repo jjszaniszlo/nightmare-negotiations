@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dmjpk65o4kfuf"]
 
-[ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://GameObjects/player.tscn" id="1_u3beu"]
-[ext_resource type="PackedScene" uid="uid://b6mlaef4yaoyn" path="res://WorldObjects/terrain.tscn" id="2_jwm6o"]
+[ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://Game Objects/player.tscn" id="1_u3beu"]
+[ext_resource type="PackedScene" uid="uid://b6mlaef4yaoyn" path="res://World Objects/terrain.tscn" id="2_jwm6o"]
 [ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="3_jeq5p"]
 [ext_resource type="PackedScene" uid="uid://cijp110blgbkj" path="res://CemetaryMapAssets/gltf/arch.gltf" id="4_vxuj7"]
 [ext_resource type="PackedScene" uid="uid://davgyvtmpcrgq" path="res://CemetaryMapAssets/gltf/fence_broken.gltf" id="5_4vatr"]
