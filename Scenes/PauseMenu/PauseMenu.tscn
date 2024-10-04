@@ -1,0 +1,154 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbh2gh1fkh0fh"]
+
+[ext_resource type="Shader" path="res://Scenes/PauseMenu/BackgroundBlur.gdshader" id="1_aygdi"]
+[ext_resource type="Script" path="res://Scenes/PauseMenu/PauseMenu.cs" id="1_xhbv7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3faw"]
+shader = ExtResource("1_aygdi")
+shader_parameter/amount = 0.606
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhbv7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_u3faw")
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0353462, 0.0353462, 0.0353462, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.391
+anchor_top = 0.422
+anchor_right = 0.609
+anchor_bottom = 0.578
+offset_left = -0.432037
+offset_top = 0.0439758
+offset_right = 0.431946
+offset_bottom = -0.0440063
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Resume
+"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings
+"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[node name="PlayerList" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchor_left = 0.038
+anchor_top = 0.225
+anchor_right = 0.319
+anchor_bottom = 0.775
+offset_left = 0.223999
+offset_top = -0.300003
+offset_right = 0.511993
+offset_bottom = 0.299988
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PlayerList"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15967, 0.15967, 0.15967, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerList"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="PlayerList/VBoxContainer"]
+layout_mode = 2
+text = "Players"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PlayerList/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerList/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerTemplate" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+anchors_preset = 0
+offset_left = 44.0
+offset_top = 173.0
+offset_right = 357.0
+offset_bottom = 211.0
+
+[node name="ColorRect" type="ColorRect" parent="PlayerTemplate"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.472937, 0.830182, 1)
+
+[node name="PlayerName" type="Label" parent="PlayerTemplate"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.018
+anchor_top = 0.141
+anchor_right = 0.452
+anchor_bottom = 0.859
+offset_left = -0.104
+offset_top = -0.0120001
+offset_right = -0.0560074
+offset_bottom = 0.0119991
+grow_vertical = 2
+text = "Player Name"
+vertical_alignment = 1
+
+[node name="Kick" type="Button" parent="PlayerTemplate"]
+layout_mode = 0
+offset_left = 209.0
+offset_top = 4.0
+offset_right = 258.0
+offset_bottom = 35.0
+text = "Kick
+"
+
+[node name="Mute" type="Button" parent="PlayerTemplate"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.834
+anchor_top = 0.105
+anchor_right = 0.99
+anchor_bottom = 0.921
+offset_left = -0.0420227
+offset_top = 0.00999975
+offset_right = 0.129974
+offset_bottom = 0.0019989
+text = "Mute
+"
