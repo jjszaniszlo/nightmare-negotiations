@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmjpk65o4kfuf"]
+[gd_scene load_steps=55 format=3 uid="uid://dmjpk65o4kfuf"]
 
 [ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://Game Objects/player.tscn" id="1_u3beu"]
 [ext_resource type="PackedScene" uid="uid://b6mlaef4yaoyn" path="res://World Objects/terrain.tscn" id="2_jwm6o"]
@@ -11,6 +11,47 @@
 [ext_resource type="PackedScene" uid="uid://cydbmvw8bao22" path="res://Assets/models/cemetary/gltf/path_B.gltf" id="9_b3n8o"]
 [ext_resource type="PackedScene" uid="uid://b2g6darktgfcc" path="res://Assets/models/cemetary/gltf/path_C.gltf" id="10_5grk7"]
 [ext_resource type="PackedScene" uid="uid://baf7mjcp0doik" path="res://Assets/models/cemetary/gltf/path_D.gltf" id="11_u4gt5"]
+[ext_resource type="PackedScene" uid="uid://dqe3dxdf5dich" path="res://Assets/models/cemetary/gltf/tree_pine_yellow_large.gltf" id="12_kjetp"]
+[ext_resource type="PackedScene" uid="uid://xe5a12inme3x" path="res://Assets/models/cemetary/gltf/tree_pine_orange_small.gltf" id="13_gbjfj"]
+[ext_resource type="PackedScene" uid="uid://cmhhah2s6a4ug" path="res://Assets/models/cemetary/gltf/tree_pine_yellow_small.gltf" id="14_0g6v7"]
+[ext_resource type="PackedScene" uid="uid://c4ar1f8k64448" path="res://Assets/models/cemetary/gltf/tree_dead_large_decorated.gltf" id="15_7wk2p"]
+[ext_resource type="PackedScene" uid="uid://b425dic187eng" path="res://Assets/models/cemetary/gltf/tree_dead_small.gltf" id="16_vuamu"]
+[ext_resource type="PackedScene" uid="uid://dvtp2gycp1gpb" path="res://Assets/models/cemetary/gltf/tree_pine_orange_large.gltf" id="17_1ukv2"]
+[ext_resource type="PackedScene" uid="uid://cv0gxlekvhmpk" path="res://Assets/models/cemetary/gltf/tree_pine_yellow_medium.gltf" id="18_sq267"]
+[ext_resource type="PackedScene" uid="uid://dw1chulrddv1m" path="res://Assets/models/cemetary/gltf/tree_pine_orange_medium.gltf" id="19_s7g8y"]
+[ext_resource type="PackedScene" uid="uid://biatn41ak4ehx" path="res://Assets/models/cemetary/gltf/tree_dead_medium.gltf" id="20_3vdes"]
+[ext_resource type="PackedScene" uid="uid://bohcga6ogeeau" path="res://Assets/models/cemetary/gltf/fence_pillar.gltf" id="21_m1o4k"]
+[ext_resource type="PackedScene" uid="uid://c12sdcupbscxa" path="res://Assets/models/cemetary/gltf/fence_pillar_broken.gltf" id="22_7met3"]
+[ext_resource type="PackedScene" uid="uid://c6rnpx855f3ag" path="res://Assets/models/cemetary/gltf/gravemarker_A.gltf" id="23_d7rcl"]
+[ext_resource type="PackedScene" uid="uid://j6w78l6grc7v" path="res://Assets/models/cemetary/gltf/floor_dirt_grave.gltf" id="24_gcrsj"]
+[ext_resource type="PackedScene" uid="uid://csoytjyq32qe4" path="res://Assets/models/cemetary/gltf/gravemarker_B.gltf" id="25_tx7gn"]
+[ext_resource type="PackedScene" uid="uid://dnjkxmox78msc" path="res://Assets/models/cemetary/gltf/gravestone.gltf" id="26_xlt1i"]
+[ext_resource type="PackedScene" uid="uid://bmwcdrdmem2gr" path="res://Assets/models/cemetary/gltf/grave_A.gltf" id="27_2ca30"]
+[ext_resource type="PackedScene" uid="uid://cd0jfv5ahprh3" path="res://Assets/models/cemetary/gltf/grave_A_destroyed.gltf" id="28_jiwlp"]
+[ext_resource type="PackedScene" uid="uid://goakwuu01xuf" path="res://Assets/models/cemetary/gltf/plaque_candles.gltf" id="29_7088p"]
+[ext_resource type="PackedScene" uid="uid://dvigfil5hd2ig" path="res://Assets/models/cemetary/gltf/plaque.gltf" id="30_qni1y"]
+[ext_resource type="PackedScene" uid="uid://1pm6yh8nve6w" path="res://Assets/models/cemetary/gltf/post_skull.gltf" id="31_5k2g4"]
+[ext_resource type="PackedScene" uid="uid://cavb45b5fq0kq" path="res://Assets/models/cemetary/gltf/ribcage.gltf" id="32_dkbkq"]
+[ext_resource type="PackedScene" uid="uid://dvgxcu68bacol" path="res://Assets/models/cemetary/gltf/shrine.gltf" id="33_r2i18"]
+[ext_resource type="PackedScene" uid="uid://btlg5q0ulaihb" path="res://Assets/models/cemetary/gltf/skull.gltf" id="34_vt6di"]
+[ext_resource type="PackedScene" uid="uid://dcek8tkqvwvxg" path="res://Assets/models/cemetary/gltf/skull_candle.gltf" id="35_sx3ky"]
+[ext_resource type="PackedScene" uid="uid://dcxmbuwky0pic" path="res://Assets/models/cemetary/gltf/floor_dirt_small.gltf" id="36_2hkex"]
+[ext_resource type="PackedScene" uid="uid://vfwlg6lx5prl" path="res://Assets/models/cemetary/gltf/pumpkin_orange.gltf" id="37_n4onc"]
+[ext_resource type="PackedScene" uid="uid://damikbabu3dh5" path="res://Assets/models/cemetary/gltf/pumpkin_yellow_small.gltf" id="38_yfhw4"]
+[ext_resource type="PackedScene" uid="uid://oo2ybn0vbq3d" path="res://Assets/models/cemetary/gltf/pumpkin_yellow_jackolantern.gltf" id="39_p4p3j"]
+[ext_resource type="PackedScene" uid="uid://eoeoycwhuk8k" path="res://Assets/models/cemetary/gltf/pumpkin_yellow.gltf" id="40_a7die"]
+[ext_resource type="PackedScene" uid="uid://chsrx7p1kh1xq" path="res://Assets/models/cemetary/gltf/candle.gltf" id="41_dy5k2"]
+[ext_resource type="PackedScene" uid="uid://dyy4ypgss0x8w" path="res://Assets/models/cemetary/gltf/candle_melted.gltf" id="42_lj5vy"]
+[ext_resource type="PackedScene" uid="uid://djj2k3e5hcsxi" path="res://Assets/models/cemetary/gltf/bone_C.gltf" id="43_cknjm"]
+[ext_resource type="PackedScene" uid="uid://d2tq2tms33w4d" path="res://Assets/models/cemetary/gltf/bone_B.gltf" id="44_6pnvu"]
+[ext_resource type="PackedScene" uid="uid://0ctii47hwsdp" path="res://Assets/models/cemetary/gltf/bench_decorated.gltf" id="45_exaik"]
+[ext_resource type="PackedScene" uid="uid://bp3d4caxas8vf" path="res://Assets/models/cemetary/gltf/coffin.gltf" id="46_wwrqi"]
+[ext_resource type="PackedScene" uid="uid://bdqrvv17ixjyn" path="res://Assets/models/cemetary/gltf/coffin_decorated.gltf" id="47_l5unl"]
+[ext_resource type="PackedScene" uid="uid://nxsjprjnujab" path="res://Assets/models/cemetary/gltf/post_lantern.gltf" id="47_v8nlw"]
+[ext_resource type="PackedScene" uid="uid://c6rdfhjco141m" path="res://Assets/models/cemetary/gltf/bench.gltf" id="48_rwxbo"]
+[ext_resource type="PackedScene" uid="uid://dqrqdbcmoqb2w" path="res://Assets/models/cemetary/gltf/candle_triple.gltf" id="49_08ksw"]
+[ext_resource type="PackedScene" uid="uid://wub7m16rc4cd" path="res://Assets/models/cemetary/gltf/pumpkin_orange_small.gltf" id="50_ri8rr"]
+[ext_resource type="PackedScene" uid="uid://b4hljqxnhy7ag" path="res://Assets/models/cemetary/gltf/pumpkin_orange_jackolantern.gltf" id="51_xc7x3"]
 
 [sub_resource type="Environment" id="Environment_tcegc"]
 
@@ -156,7 +197,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.043, -0.00120831, 18.2156)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.784517, -0.00120926, 18.2002)
 
 [node name="path_C4" parent="Floors" instance=ExtResource("10_5grk7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.888671, -0.00120926, 20.1248)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.849, 0, 20.323)
 
 [node name="path_B4" parent="Floors" instance=ExtResource("9_b3n8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.874215, -0.00120926, 20.1782)
@@ -250,3 +291,334 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5808, -0.00121069, 22.0334
 
 [node name="path_A14" parent="Floors" instance=ExtResource("8_sn7rn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.61738, -0.00121021, 20.1678)
+
+[node name="path_A15" parent="Floors" instance=ExtResource("8_sn7rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.934, 0, 8.209)
+
+[node name="path_A16" parent="Floors" instance=ExtResource("8_sn7rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.872, 0, 8.274)
+
+[node name="path_B11" parent="Floors" instance=ExtResource("9_b3n8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.901, 0, 6.355)
+
+[node name="path_B12" parent="Floors" instance=ExtResource("9_b3n8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.923, 0, 6.429)
+
+[node name="path_C11" parent="Floors" instance=ExtResource("10_5grk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809, 0, 4.531)
+
+[node name="path_B13" parent="Floors" instance=ExtResource("9_b3n8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.901, 0, 4.529)
+
+[node name="path_D13" parent="Floors" instance=ExtResource("11_u4gt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.943, 0, 2.724)
+
+[node name="path_C12" parent="Floors" instance=ExtResource("10_5grk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.675, 0, 2.777)
+
+[node name="path_D14" parent="Floors" instance=ExtResource("11_u4gt5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.818, 0, 1.002)
+
+[node name="path_B14" parent="Floors" instance=ExtResource("9_b3n8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.871, 0, 0.958)
+
+[node name="Trees" type="Node" parent="."]
+
+[node name="tree_pine_orange_large4" parent="Trees" instance=ExtResource("17_1ukv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.027, 0, 30.305)
+
+[node name="tree_pine_yellow_small3" parent="Trees" instance=ExtResource("14_0g6v7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.472, 0, 32.785)
+
+[node name="tree_pine_yellow_large4" parent="Trees" instance=ExtResource("12_kjetp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.877, 0, 35.349)
+
+[node name="tree_pine_yellow_medium2" parent="Trees" instance=ExtResource("18_sq267")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.566, 0, 30.955)
+
+[node name="tree_pine_yellow_large3" parent="Trees" instance=ExtResource("12_kjetp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.121, 0, 38.444)
+
+[node name="tree_pine_orange_small3" parent="Trees" instance=ExtResource("13_gbjfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.521, 0, 35.946)
+
+[node name="tree_pine_orange_large3" parent="Trees" instance=ExtResource("17_1ukv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.726, 0, 37.371)
+
+[node name="tree_pine_orange_large2" parent="Trees" instance=ExtResource("17_1ukv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.512, 0, 29.768)
+
+[node name="tree_dead_large_decorated2" parent="Trees" instance=ExtResource("15_7wk2p")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.468, 0, 23.997)
+
+[node name="tree_dead_small2" parent="Trees" instance=ExtResource("16_vuamu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.041, 0, 28.798)
+
+[node name="tree_pine_orange_small2" parent="Trees" instance=ExtResource("13_gbjfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.954, 0, 28.399)
+
+[node name="tree_pine_yellow_small2" parent="Trees" instance=ExtResource("14_0g6v7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.27, 0, 32.817)
+
+[node name="tree_pine_orange_large5" parent="Trees" instance=ExtResource("17_1ukv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.757, 0, 36.045)
+
+[node name="tree_pine_orange_medium2" parent="Trees" instance=ExtResource("19_s7g8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.917, 0, 33.53)
+
+[node name="tree_dead_medium2" parent="Trees" instance=ExtResource("20_3vdes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.342, 0, 34.688)
+
+[node name="tree_pine_orange_large6" parent="Trees" instance=ExtResource("17_1ukv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.077, 0, 42.268)
+
+[node name="tree_pine_orange_small4" parent="Trees" instance=ExtResource("13_gbjfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.245, 0, 40.346)
+
+[node name="tree_dead_small3" parent="Trees" instance=ExtResource("16_vuamu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.844, 0, 28.062)
+
+[node name="tree_pine_yellow_large5" parent="Trees" instance=ExtResource("12_kjetp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.703, 0, 42.99)
+
+[node name="tree_pine_yellow_large6" parent="Trees" instance=ExtResource("12_kjetp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.825, 0, 38.682)
+
+[node name="tree_pine_orange_medium3" parent="Trees" instance=ExtResource("19_s7g8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.379, 0, 42.238)
+
+[node name="tree_pine_yellow_medium3" parent="Trees" instance=ExtResource("18_sq267")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.512, 0, 38.655)
+
+[node name="tree_pine_yellow_large8" parent="Trees" instance=ExtResource("12_kjetp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.155, 0, 41.647)
+
+[node name="tree_pine_orange_small5" parent="Trees" instance=ExtResource("13_gbjfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.444, 0, 34.955)
+
+[node name="tree_pine_yellow_small4" parent="Trees" instance=ExtResource("14_0g6v7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.479, 0, 45.526)
+
+[node name="tree_pine_yellow_medium4" parent="Trees" instance=ExtResource("18_sq267")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.647, 0, 44.078)
+
+[node name="tree_pine_yellow_large7" parent="Trees" instance=ExtResource("12_kjetp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.307, 0, 43.528)
+
+[node name="tree_dead_medium3" parent="Trees" instance=ExtResource("20_3vdes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.836, 0, 38.23)
+
+[node name="tree_dead_medium4" parent="Trees" instance=ExtResource("20_3vdes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.113, 0, 31.742)
+
+[node name="tree_pine_orange_small6" parent="Trees" instance=ExtResource("13_gbjfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.347, 0, 30.372)
+
+[node name="tree_pine_yellow_large9" parent="Trees" instance=ExtResource("12_kjetp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.614, 0, 34.929)
+
+[node name="tree_pine_yellow_large10" parent="Trees" instance=ExtResource("12_kjetp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.992, 0, 46.319)
+
+[node name="tree_pine_yellow_medium5" parent="Trees" instance=ExtResource("18_sq267")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.933, 0, 46.363)
+
+[node name="tree_pine_yellow_small5" parent="Trees" instance=ExtResource("14_0g6v7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.855, 0, 46.722)
+
+[node name="tree_pine_orange_large8" parent="Trees" instance=ExtResource("17_1ukv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.796, 0, 47.633)
+
+[node name="tree_pine_orange_large7" parent="Trees" instance=ExtResource("17_1ukv2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.269, 0, 47.277)
+
+[node name="tree_pine_yellow_large2" parent="Trees" instance=ExtResource("12_kjetp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.166, 0, 31.548)
+
+[node name="tree_pine_orange_small7" parent="Trees" instance=ExtResource("13_gbjfj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.16, 0, 13.659)
+
+[node name="tree_pine_yellow_small6" parent="Trees" instance=ExtResource("14_0g6v7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.806, 0, 24.05)
+
+[node name="tree_dead_medium5" parent="Trees" instance=ExtResource("20_3vdes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.623, 0, 19.751)
+
+[node name="tree_pine_yellow_small7" parent="Trees" instance=ExtResource("14_0g6v7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.166, 0, 14.25)
+
+[node name="tree_dead_small4" parent="Trees" instance=ExtResource("16_vuamu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.802, 0, 10.725)
+
+[node name="tree_pine_orange_medium4" parent="Trees" instance=ExtResource("19_s7g8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.724, 0, 20.51)
+
+[node name="Decor" type="Node" parent="."]
+
+[node name="pumpkin_yellow2" parent="Decor" instance=ExtResource("40_a7die")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.464, 0, 30.077)
+
+[node name="pumpkin_yellow_jackolantern2" parent="Decor" instance=ExtResource("39_p4p3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.095, 0, 16.114)
+
+[node name="pumpkin_yellow_small2" parent="Decor" instance=ExtResource("38_yfhw4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.276, 0, 14.971)
+
+[node name="shrine3" parent="Decor" instance=ExtResource("33_r2i18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.249, 0, 16.469)
+
+[node name="plaque3" parent="Decor" instance=ExtResource("30_qni1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25, 0, 16.514)
+
+[node name="pumpkin_orange2" parent="Decor" instance=ExtResource("37_n4onc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.298, 0, 17.289)
+
+[node name="grave_A_destroyed3" parent="Decor" instance=ExtResource("28_jiwlp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.483, 0, 17.232)
+
+[node name="skull_candle3" parent="Decor" instance=ExtResource("35_sx3ky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.503, 0, 10.532)
+
+[node name="coffin_decorated2" parent="Decor" instance=ExtResource("47_l5unl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.965, 0, 26.724)
+
+[node name="coffin_decorated3" parent="Decor" instance=ExtResource("47_l5unl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.381, 0, 12.652)
+
+[node name="coffin2" parent="Decor" instance=ExtResource("46_wwrqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.378, 0, 12.015)
+
+[node name="bench_decorated2" parent="Decor" instance=ExtResource("45_exaik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.658, 0, 13.305)
+
+[node name="bone_B2" parent="Decor" instance=ExtResource("44_6pnvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.559, 0, 15.872)
+
+[node name="bone_C2" parent="Decor" instance=ExtResource("43_cknjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.408, 0, 15.151)
+
+[node name="candle_melted2" parent="Decor" instance=ExtResource("42_lj5vy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.089, 0, 14.858)
+
+[node name="candle2" parent="Decor" instance=ExtResource("41_dy5k2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.503, 0, 17.833)
+
+[node name="skull_candle4" parent="Decor" instance=ExtResource("35_sx3ky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.784, 0, 10.62)
+
+[node name="fence_pillar2" parent="Decor" instance=ExtResource("21_m1o4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.28, 0, 28.218)
+
+[node name="gravemarker_A2" parent="Decor" instance=ExtResource("23_d7rcl")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.982, 0, 27.443)
+
+[node name="floor_dirt_grave2" parent="Decor" instance=ExtResource("24_gcrsj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.802, 0, 25.122)
+
+[node name="gravemarker_B2" parent="Decor" instance=ExtResource("25_tx7gn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.89, 0, 27.483)
+
+[node name="gravemarker_B3" parent="Decor" instance=ExtResource("25_tx7gn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.801, 0, 32.902)
+
+[node name="grave_A2" parent="Decor" instance=ExtResource("27_2ca30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.71, 0, 24.873)
+
+[node name="grave_A_destroyed2" parent="Decor" instance=ExtResource("28_jiwlp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.42, 0, 26.88)
+
+[node name="plaque_candles2" parent="Decor" instance=ExtResource("29_7088p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.506, 0, 16.701)
+
+[node name="post_skull2" parent="Decor" instance=ExtResource("31_5k2g4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.161, 0, 18.765)
+
+[node name="plaque2" parent="Decor" instance=ExtResource("30_qni1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.93, 0, 12.6)
+
+[node name="gravestone2" parent="Decor" instance=ExtResource("26_xlt1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.789, 0, 26.693)
+
+[node name="ribcage2" parent="Decor" instance=ExtResource("32_dkbkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.885, 0, 25.382)
+
+[node name="shrine2" parent="Decor" instance=ExtResource("33_r2i18")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.487, 0, 17.323)
+
+[node name="skull2" parent="Decor" instance=ExtResource("34_vt6di")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.949, 0, 12.181)
+
+[node name="skull_candle2" parent="Decor" instance=ExtResource("35_sx3ky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.424, 0, 23.429)
+
+[node name="floor_dirt_grave3" parent="Decor" instance=ExtResource("24_gcrsj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.46, 0, 16.129)
+
+[node name="fence_pillar_broken2" parent="Decor" instance=ExtResource("22_7met3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.568, 0, 26.75)
+
+[node name="post_lantern2" parent="Decor" instance=ExtResource("47_v8nlw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.063, 0, 8.646)
+
+[node name="post_lantern3" parent="Decor" instance=ExtResource("47_v8nlw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.747, 0, 8.147)
+
+[node name="pumpkin_yellow_jackolantern3" parent="Decor" instance=ExtResource("39_p4p3j")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.427, 0, 6.716)
+
+[node name="pumpkin_yellow3" parent="Decor" instance=ExtResource("40_a7die")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.041, 0, 5.967)
+
+[node name="pumpkin_orange3" parent="Decor" instance=ExtResource("37_n4onc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.24, 0, 5.619)
+
+[node name="bench2" parent="Decor" instance=ExtResource("48_rwxbo")]
+transform = Transform3D(0.224951, 0, 0.97437, 0, 1, 0, -0.97437, 0, 0.224951, 12.496, 0, 6.213)
+
+[node name="bone_C3" parent="Decor" instance=ExtResource("43_cknjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.721, 0.5, 6.00946)
+
+[node name="bone_B3" parent="Decor" instance=ExtResource("44_6pnvu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3722, 0.5, 6.7066)
+
+[node name="coffin3" parent="Decor" instance=ExtResource("46_wwrqi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.63049, 0, 4.17236)
+
+[node name="candle_triple2" parent="Decor" instance=ExtResource("49_08ksw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.49625, 0.972643, 4.01494)
+
+[node name="bench_decorated3" parent="Decor" instance=ExtResource("45_exaik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.61, 0, 8.34)
+
+[node name="pumpkin_orange_small2" parent="Decor" instance=ExtResource("50_ri8rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.532, 0, 8.703)
+
+[node name="pumpkin_yellow4" parent="Decor" instance=ExtResource("40_a7die")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.365, 0, 8.017)
+
+[node name="pumpkin_orange_jackolantern2" parent="Decor" instance=ExtResource("51_xc7x3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.718, 0, 8.008)
+
+[node name="floor_dirt_small2" parent="Decor" instance=ExtResource("36_2hkex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.492, 0, 15.437)
+
+[node name="gravemarker_B4" parent="Decor" instance=ExtResource("25_tx7gn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.929, 0, 8.465)
+
+[node name="gravemarker_B5" parent="Decor" instance=ExtResource("25_tx7gn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.202, 0, 8.41)
+
+[node name="gravemarker_A3" parent="Decor" instance=ExtResource("23_d7rcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.968, 0, 11.691)
+
+[node name="gravemarker_A4" parent="Decor" instance=ExtResource("23_d7rcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.118, 0, 24.412)
+
+[node name="gravemarker_B6" parent="Decor" instance=ExtResource("25_tx7gn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.064, 0, 17.391)
+
+[node name="gravemarker_B7" parent="Decor" instance=ExtResource("25_tx7gn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.151, 0, 15.947)
+
+[node name="gravemarker_A5" parent="Decor" instance=ExtResource("23_d7rcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.173, 0, 25.033)
