@@ -34,8 +34,7 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:tree_pine_orange_large": {
-"physics/body_type": 2,
-"physics/shape_type": 2
+"generate/physics": true
 }
 }
 }
