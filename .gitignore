@@ -1,0 +1,47 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+.import/
+export_presets.cfg
+*.translation
+.mono/
+data_*/
+mono_crash.*.json
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+/.idea/.idea.NightmareNegotiations/.idea/indexLayout.xml
+/.idea/.idea.NightmareNegotiations/.idea/projectSettingsUpdater.xml
+.idea/.idea.NightmareNegotiations/.idea
+Assets
+Game Objects
+Materials
+Scenes
+Shaders
+Source Code
+World Objects
+Addons
+.gitattributes
+LICENSE
+NightmareNegotiations.csproj
+NightmareNegotiations.csproj.DotSettings
+NightmareNegotiations.sln
+README.md
+game-design.norg
+icon.svg
+icon.svg.import
+project.godot
