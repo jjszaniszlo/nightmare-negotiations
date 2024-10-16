@@ -2,11 +2,12 @@ package main
 
 import "core:fmt"
 import "core:net"
-import "core:thread"
-import "core:mem/virtual"
-import "core:mem"
 import "core:math/rand"
+import "core:mem"
+import "core:mem/virtual"
+import "core:thread"
 import "core:time"
+import "core:sync"
 
 PORT :: 4556
 THREADS :: 30
@@ -43,62 +44,88 @@ server_destroy :: proc(server : ^Server) {
 }
 
 server_run :: proc(server: ^Server) {
-	thread.pool_start(&server.thread_pool)
 	for {
-		peer, peer_ok := _server_accept_connection(server)
-		if !peer_ok do continue
+		thread.pool_start(&server.thread_pool)
+		defer thread.pool_finish(&server.thread_pool)
+
+		_server_dispatch_disconnect_handlers(server)
+
+		accept_ok := _server_accept_connection(server)
+		if !accept_ok do continue
 	}
-	thread.pool_finish(&server.thread_pool)
+}
+
+@(private="file")
+_server_dispatch_disconnect_handlers :: proc(server: ^Server) {
+	for _, &peer in server.peers {	
+		thread.pool_add_task(
+			&server.thread_pool,
+			virtual.arena_allocator(&peer.arena),
+			_server_handle_peer_disconnect,
+			&peer)
+	}
 }
 
 @(private="file")
 _server_handle_message :: proc(t: thread.Task) {
 	peer := cast(^Peer)t.data
 
-	time.sleep(2e9)
+	sync.lock(&peer.mutex)
+	defer sync.unlock(&peer.mutex)
 
-	fmt.printfln("closing client socket: %v", peer.socket)
-	net.close(peer.socket)
+	alloc := virtual.arena_allocator(&peer.arena)
+
+	buf, alloc_err := make([]byte, 10, allocator = alloc)
+	if alloc_err != .None {	
+		fmt.printfln("failed to allocate buffer for %v", peer)
+		net.close(peer.socket)
+		return
+	}
+	defer delete(buf, allocator = alloc)
+
+	_, err := net.recv_tcp(peer.socket, buf[:5])
+	fmt.printfln("message: %v", buf)
 }
 
 @(private="file")
-_server_close_disconnected_sockets :: proc(server: ^Server) {
-	
+_server_handle_peer_disconnect :: proc(t: thread.Task) {
+	peer := cast(^Peer)t.data
+
+	sync.lock(&peer.mutex)
+	defer sync.unlock(&peer.mutex)
+
+	net.set_blocking(peer.socket, false)
+	defer net.set_blocking(peer.socket, true)
+
+	_, err := net.recv(peer.socket, nil)
+	fmt.printfln("%v", err)
 }
 
 @(private="file")
-_server_accept_connection :: proc(server: ^Server) -> (peer: Peer, ok:bool) {
-	accept_socket, accept_endpoint, accept_err := net.accept_tcp(server.socket)
-	if accept_err != nil {
-		fmt.printfln("failed to accept tcp client! %v", accept_err)
+_server_accept_connection :: proc(server: ^Server) -> (ok:bool) {
+	// accept incoming socket
+	peer_socket, peer_endpoint, peer_accept_err := net.accept_tcp(server.socket)
+	if peer_accept_err != nil {
+		fmt.printfln("failed to accept tcp client! %v", peer_accept_err)
 		return
 	}
-	fmt.printfln("accepted client %v, %v", accept_endpoint, accept_socket)
+	fmt.printfln("accepted client %v, %v", peer_endpoint, peer_socket)
 
-	peer_arena: virtual.Arena
-	arena_alloc_err := virtual.arena_init_growing(&peer_arena, 1 * mem.Kilobyte)
-	if arena_alloc_err != nil {
-		fmt.printfln("failed to create peer arena! %v", arena_alloc_err)
+	// create random unique peer id
+	peer_id := rand.int31()
+	for (peer_id in server.peers) do peer_id = rand.int31()
 
-		net.close(accept_socket)
-		return
-	}
-	client_alloc := virtual.arena_allocator(&peer_arena)
+	// add peer to peer map
+	server.peers[peer_id] = Peer{}
+	peer := &server.peers[peer_id]
+	peer_init(peer, peer_id, peer_socket)
 
-	// make sure that random id is unique (though chances are it is)
-	random_id := rand.int31()
-	for (random_id in server.peers) do random_id = rand.int31()
-
-	peer.id = random_id
-	peer.socket = accept_socket
-
-	server.peers[peer.id] = peer
-
+	// dispatch thread from thread pool
 	thread.pool_add_task(
 		&server.thread_pool,
-		client_alloc,
+		virtual.arena_allocator(&peer.arena),
 		_server_handle_message,
-		&server.peers[peer.id])
+		peer)
 
-	return peer, true
+	return true
 }
