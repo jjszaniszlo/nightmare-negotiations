@@ -20,7 +20,7 @@ Server :: struct {
 }
 
 server_init :: proc(server : ^Server) -> (ok: bool) {
-	socket_fd, err := linux.socket(.INET6, .STREAM, { .NONBLOCK }, .TCP)
+	socket_fd, err := linux.socket(.INET6, .STREAM, { .NONBLOCK, .CLOEXEC }, .TCP)
 	if err != .NONE {
 		fmt.printfln("create socket error %v", err)
 		return
