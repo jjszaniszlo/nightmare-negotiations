@@ -9,13 +9,17 @@ import "core:mem/virtual"
 import "core:thread"
 import "core:time"
 import "core:sync"
+import "core:encoding/json"
+import "core:container/queue"
 
 PORT :: 4556
 
 Server :: struct {
 	socket : net.TCP_Socket,
 	peers : map[net.TCP_Socket]Peer,
-	fds : [dynamic]linux.Poll_Fd
+	fds : [dynamic]linux.Poll_Fd,
+
+	message_queue : queue.Queue(Message),
 }
 
 server_init :: proc(server : ^Server) -> (ok: bool) {
@@ -56,6 +60,9 @@ server_init :: proc(server : ^Server) -> (ok: bool) {
 		fmt.printfln("error appending server fd %v", alloc_err)
 		return
 	}
+
+	queue.init(&server.message_queue)
+
 	return true
 }
 
@@ -63,23 +70,39 @@ server_destroy :: proc(server : ^Server) {
 	net.close(server.socket)
 	delete(server.fds)
 	delete(server.peers)
+	queue.destroy(&server.message_queue)
 }
 
 server_run :: proc(server: ^Server) {
 	for {
+		// poll fd list
 		_, err := linux.poll(server.fds[:], -1)
 		if err != .NONE {
 			fmt.printfln("polling failed: %v", err)
 			break
 		}
 
+		// handle incoming connections
 		_server_accept_incoming_connections(server)
+		_server_receive_incoming_messages(server)
+
 		_server_handle_messages(server)
 	}
 }
 
 @(private="file")
-_server_handle_messages :: proc(server : ^Server) -> (ok: bool) {	
+_server_handle_messages :: proc(server : ^Server) {
+	for queue.len(server.message_queue) > 0 {
+		message := queue.pop_front(&server.message_queue)
+		switch message.id {
+		case .UserAuthentication:
+			// do data base stuff
+		}
+	}
+}
+
+@(private="file")
+_server_receive_incoming_messages :: proc(server : ^Server) -> (ok: bool) {	
 	for &fd, i in server.fds[:] {
 		if fd.revents == {} do continue;
 		if fd.revents != { .IN } {
@@ -89,16 +112,23 @@ _server_handle_messages :: proc(server : ^Server) -> (ok: bool) {
 		peer, ok := &server.peers[net.TCP_Socket(fd.fd)]
 		if !ok do continue
 
-		buf : [10]byte
+		buf : [512]byte
 		bytes_read := 0
 
 		for {
 			n, err := net.recv_tcp(peer.socket, buf[bytes_read:])
 			if err != nil {
 				if err.(net.TCP_Recv_Error) == .Timeout {
-					fmt.printfln("message %v", buf)
+					message : Message
+					json_err := json.unmarshal(buf[:bytes_read], &message)
+					if json_err != nil {	
+						fmt.printfln("json error: ", json_err)
+						break
+					}
+					queue.push_back(&server.message_queue, message)
 					break
 				} else if err.(net.TCP_Recv_Error) == .Shutdown {
+					fmt.printfln("closing peer: %v", peer)
 					_server_cleanup_connection(server, peer, i)
 					break
 				} else {
