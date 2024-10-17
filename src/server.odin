@@ -112,7 +112,7 @@ _server_receive_incoming_messages :: proc(server : ^Server) -> (ok: bool) {
 		peer, ok := &server.peers[net.TCP_Socket(fd.fd)]
 		if !ok do continue
 
-		buf : [512]byte
+		buf : [2048]byte
 		bytes_read := 0
 
 		for {
@@ -120,6 +120,7 @@ _server_receive_incoming_messages :: proc(server : ^Server) -> (ok: bool) {
 			if err != nil {
 				if err.(net.TCP_Recv_Error) == .Timeout {
 					message : Message
+					fmt.printfln("%s", buf[:bytes_read])
 					json_err := json.unmarshal(buf[:bytes_read], &message)
 					if json_err != nil {	
 						fmt.printfln("json error: ", json_err)
