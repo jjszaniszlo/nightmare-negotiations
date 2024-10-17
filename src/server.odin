@@ -11,39 +11,32 @@ import "core:time"
 import "core:sync"
 
 PORT :: 4556
-THREADS :: 30
 
 Server :: struct {
 	socket : net.TCP_Socket,
-	peers : map[i32]Peer,
+	peers : map[net.TCP_Socket]Peer,
 	fds : [dynamic]linux.Poll_Fd
 }
 
 server_init :: proc(server : ^Server) -> (ok: bool) {
-	socket_fd, err := linux.socket(.INET6, .STREAM, { .NONBLOCK, .CLOEXEC }, .TCP)
-	if err != .NONE {
-		fmt.printfln("create socket error %v", err)
+	socket, err := net.listen_tcp(net.Endpoint{
+		address = net.IP4_Loopback,
+		port = PORT,
+	})
+	if err != nil {
+		fmt.printfln("error listiong on port %d: %v", PORT, err)
 		return
 	}
-	server.socket = cast(net.TCP_Socket)socket_fd
-	//socket, listen_error := net.listen_tcp(net.Endpoint{
-	//	address = net.IP4_Loopback,
-	//	port = PORT,
-	//})
-	//if listen_error != nil {
-	//	fmt.printfln("error listening on localhost:%d", PORT)
-	//	return
-	//}
-	//
-	//if err := net.set_blocking(socket, false); err != nil {
-	//	fmt.printfln("err setting the server socket to non blocking: %v", err)
-	//	return
-	//}
-	//server.socket = socket
-	//fmt.printfln("listening on localhost:%d", PORT)
+	server.socket = socket
+	fmt.printfln("listening on localhost:%d", PORT)
 
+	// set options
+	net.set_option(socket, .Reuse_Address, true)
+	net.set_blocking(socket, false)
+
+	// allocate memory for data structures
 	alloc_err : mem.Allocator_Error
-	server.peers, alloc_err = make(map[i32]Peer)
+	server.peers, alloc_err = make(map[net.TCP_Socket]Peer)
 	if alloc_err != .None {	
 		fmt.printfln("error allocating peers map %v", alloc_err)
 		return
@@ -54,8 +47,9 @@ server_init :: proc(server : ^Server) -> (ok: bool) {
 		return
 	}
 
+	// add socket file descriptor to fd list
 	_, alloc_err = append(&server.fds, linux.Poll_Fd{
-		fd = linux.Fd(server.socket),
+		fd = linux.Fd(socket),
 		events = { .IN },
 	})
 	if alloc_err != .None {	
@@ -66,6 +60,8 @@ server_init :: proc(server : ^Server) -> (ok: bool) {
 }
 
 server_destroy :: proc(server : ^Server) {
+	net.close(server.socket)
+	delete(server.fds)
 	delete(server.peers)
 }
 
@@ -78,11 +74,63 @@ server_run :: proc(server: ^Server) {
 		}
 
 		_server_accept_incoming_connections(server)
+		_server_handle_messages(server)
 	}
 }
 
 @(private="file")
+_server_handle_messages :: proc(server : ^Server) -> (ok: bool) {	
+	for &fd, i in server.fds[:] {
+		if fd.revents == {} do continue;
+		if fd.revents != { .IN } {
+			fmt.printfln("unsupported message: %v", fd.revents)
+			return
+		}
+		peer, ok := &server.peers[net.TCP_Socket(fd.fd)]
+		if !ok do continue
+
+		buf : [10]byte
+		bytes_read := 0
+
+		for {
+			n, err := net.recv_tcp(peer.socket, buf[bytes_read:])
+			if err != nil {
+				if err.(net.TCP_Recv_Error) == .Timeout {
+					fmt.printfln("message %v", buf)
+					break
+				} else if err.(net.TCP_Recv_Error) == .Shutdown {
+					_server_cleanup_connection(server, peer, i)
+					break
+				} else {
+					fmt.printfln("unexpected message error: %v", err.(net.TCP_Recv_Error))
+				}
+			} else {
+				if n == 0 {
+					fmt.printfln("closing peer: %v", peer)
+					_server_cleanup_connection(server, peer, i)
+					break
+				}
+			}
+			bytes_read += n
+		}
+	}
+	return true
+}
+
+@(private="file")
+_server_cleanup_connection :: proc(server : ^Server, peer : ^Peer, fd_index : int) {
+	net.close(peer.socket)
+	delete_key(&server.peers, peer.socket)
+	unordered_remove(&server.fds, fd_index)
+}
+
+@(private="file")
 _server_accept_incoming_connections :: proc(server: ^Server) -> (ok: bool) {
+	if server.fds[0].revents == {} do return;
+	if server.fds[0].revents != { .IN } {
+		fmt.printfln("unsupported event: %v", server.fds[0].revents)
+		return
+	}	
 	for {
 		peer_socket, peer_endpoint, peer_accept_err := net.accept_tcp(server.socket)
 		if peer_accept_err != nil {
@@ -94,13 +142,13 @@ _server_accept_incoming_connections :: proc(server: ^Server) -> (ok: bool) {
 			return true
 		}
 		fmt.printfln("accepted peer endpoint: %v, sock: %v", peer_endpoint, peer_socket)
+		net.set_blocking(peer_socket, false)
 
 		// create random unique peer id
 		peer_id := rand.int31()
-		for (peer_id in server.peers) do peer_id = rand.int31()
 
 		// add peer to peer map
-		server.peers[peer_id] = Peer{
+		server.peers[peer_socket] = Peer{
 			id = peer_id,
 			socket = peer_socket,
 		}
@@ -117,29 +165,27 @@ _server_accept_incoming_connections :: proc(server: ^Server) -> (ok: bool) {
 	return false
 }
 
-//@(private="file")
-//_server_accept_connection :: proc(server: ^Server) -> (ok:bool) {
-//	// accept incoming socket
-//	peer_socket, peer_endpoint, peer_accept_err := net.accept_tcp(server.socket)
-//	if peer_accept_err != nil && peer_accept_err.(net.Accept_Error) != .Would_Block {
-//		fmt.printfln("failed to accept tcp client! %v", peer_accept_err)
-//		return
-//	} else if peer_accept_err != nil && peer_accept_err.(net.Accept_Error) == .Would_Block {
-//		// ignore Would_Block error
-//		return
-//	}
-//
-//	fmt.printfln("accepted client %v, %v", peer_endpoint, peer_socket)
-//
-//	// create random unique peer id
-//	peer_id := rand.int31()
-//	for (peer_id in server.peers) do peer_id = rand.int31()
-//
-//	// add peer to peer map
-//	server.peers[peer_id] = Peer{
-//		id = peer_id,
-//		socket = peer_socket,
-//	}
-//
-//	return true
-//}
+
+@(private="file")
+_unwrap_os_addr :: proc "contextless" (endpoint: net.Endpoint)->(linux.Sock_Addr_Any) {
+	switch address in endpoint.address {
+	case net.IP4_Address:
+		return {
+			ipv4 = {
+				sin_family = .INET,
+				sin_port = u16be(endpoint.port),
+				sin_addr = ([4]u8)(endpoint.address.(net.IP4_Address)),
+			},
+		}
+	case net.IP6_Address:
+		return {
+			ipv6 = {
+				sin6_port = u16be(endpoint.port),
+				sin6_addr = transmute([16]u8)endpoint.address.(net.IP6_Address),
+				sin6_family = .INET6,
+			},
+		}
+	case:
+		unreachable()
+	}
+}
