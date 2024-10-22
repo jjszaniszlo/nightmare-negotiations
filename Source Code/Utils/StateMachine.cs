@@ -1,15 +1,44 @@
+﻿using System.Collections.Generic;
 using Godot;
-using System;
 
-public partial class StateMachine : Node
+namespace NightmareNegotiations.Utils;
+
+public partial class StateMachine : RefCounted
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
+    private readonly Dictionary<long, string> states = new();
+    
+    // backing field for property
+    private long currentState;
+    public long CurrentState
+    {
+        get => currentState;
+        private set
+        {
+            EmitSignal(SignalName.OnLeaveCurrentState, currentState);
+            currentState = value;
+            EmitSignal(SignalName.OnNewState, currentState);
+        }
+    }
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+    [Signal] public delegate void OnTransitionEventHandler();
+    [Signal] public delegate void OnNewStateEventHandler(long newState);
+    [Signal] public delegate void OnLeaveCurrentStateEventHandler(long leftState);
+
+    public void AddState(long stateId, string stateName)
+    {
+        states[stateId] = stateName;
+    }
+
+    public void Transition(long toStateId)
+    {
+        if (states.ContainsKey(toStateId))
+        {
+            EmitSignal(SignalName.OnTransition);
+            CurrentState = toStateId;
+        }
+        else
+        {
+            GD.Print($"[State Machine] No such state {toStateId}");
+        }
+    }
 }
