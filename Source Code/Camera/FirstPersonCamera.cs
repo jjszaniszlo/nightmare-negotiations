@@ -36,9 +36,6 @@ public partial class FirstPersonCamera : Node3D
 				Mathf.DegToRad(-minCameraElevation), 
 				Mathf.DegToRad(maxCameraElevation));
 			camera.Rotation = camRotation;
-		} else if (@event is InputEventKey k && k.Keycode == Key.Escape)
-		{
-			Input.MouseMode = Input.MouseModeEnum.Visible;
 		}
 	}
 	

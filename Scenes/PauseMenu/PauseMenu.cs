@@ -2,13 +2,21 @@ using Godot;
 
 namespace NightmareNegotiations.Scenes.PauseMenu;
 
-public partial class PauseMenu : Node
+public partial class PauseMenu : Control
 {
-	public override void _Ready()
-	{
-	}
-
-	public override void _Process(double delta)
-	{
-	}
+    [Signal]
+    public delegate void OnSelectResumeEventHandler();
+    
+    [Signal]
+    public delegate void OnSelectQuitEventHandler();
+    
+    public void OnResumeButtonPressed()
+    {
+        EmitSignal(SignalName.OnSelectResume);
+    }
+    
+    public void OnQuitButtonPressed()
+    {
+        EmitSignal(SignalName.OnSelectQuit);
+    }
 }
