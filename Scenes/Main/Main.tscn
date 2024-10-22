@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cv0rboqgisnke"]
+[gd_scene load_steps=3 format=3 uid="uid://cv0rboqgisnke"]
 
 [ext_resource type="Script" path="res://Scenes/Main/Main.cs" id="1_vs0hq"]
+[ext_resource type="Script" path="res://Source Code/GameManager.cs" id="2_uyrmj"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_vs0hq")
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("menusNode", "gameplayNode")]
+script = ExtResource("2_uyrmj")
+menusNode = NodePath("../Menus")
+gameplayNode = NodePath("../Gameplay")
+
+[node name="Gameplay" type="Node" parent="."]
+
+[node name="Menus" type="Node" parent="."]
