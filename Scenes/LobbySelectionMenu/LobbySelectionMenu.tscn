@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bl2sywl73lxij"]
+[gd_scene load_steps=4 format=3 uid="uid://bl2sywl73lxij"]
 
 [ext_resource type="Script" path="res://Scenes/LobbySelectionMenu/LobbySelectionMenu.cs" id="1_4prji"]
 [ext_resource type="Texture2D" uid="uid://cgnklo05rbjgw" path="res://Assets/icons/refresh.png" id="1_lptqx"]
+[ext_resource type="VideoStream" path="res://Scenes/LobbySelectionMenu/NNLobbySelection.ogv" id="2_sm2u4"]
 
 [node name="LobbySelectionMenu" type="Control"]
 layout_mode = 3
@@ -12,7 +13,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4prji")
 
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_sm2u4")
+autoplay = true
+expand = true
+loop = true
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
