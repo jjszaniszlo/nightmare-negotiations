@@ -61,7 +61,7 @@ public partial class GameManager : Node
 
 	private void OnGameEntered()
 	{
-		var game = GD.Load<PackedScene>("res://Scenes/World/World.tscn").Instantiate();
+		var game = GD.Load<PackedScene>("res://Scenes/Map1.tscn").Instantiate();
 		game.Name = "Game";
 
 		game.GetNode<PauseHandler>("PauseHandler").OnQuitGame += () => state.Transition(GameState.MainMenu);
