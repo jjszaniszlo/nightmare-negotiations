@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxp1rkolbqlvf"]
+[gd_scene load_steps=26 format=3 uid="uid://bxp1rkolbqlvf"]
 
 [ext_resource type="Script" path="res://Scenes/World/World.gd" id="1_ed708"]
 [ext_resource type="Shader" path="res://Shaders/sky.gdshader" id="2_liqes"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://v0wqg34hked7" path="res://World Objects/bushes/bush_02.tscn" id="15_gbydm"]
 [ext_resource type="PackedScene" uid="uid://biu7foqcuchwj" path="res://World Objects/trees/tree_29.tscn" id="16_d35ql"]
 [ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="17_8ucb7"]
+[ext_resource type="Script" path="res://Scenes/World/EnemyAI.gd" id="18_t6luf"]
+[ext_resource type="Script" path="res://Scenes/World/EnemyRaycast.gd" id="19_pbwg7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vscm0"]
 shader = ExtResource("2_liqes")
@@ -75,6 +77,10 @@ shader_parameter/use_overlay = false
 shader_parameter/use_lens_distortion = false
 shader_parameter/overlay_color = Color(1, 1, 1, 10)
 shader_parameter/lens_distortion_strength = 0.05
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3i6jp"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kowpk"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_ed708")
@@ -170,3 +176,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9481, -0.00121021, 11.6736
 
 [node name="tree32" parent="." instance=ExtResource("8_rcaue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9279, -0.00121021, -26.529)
+
+[node name="Enemy" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.24334, 3.08977, 8.67038)
+script = ExtResource("18_t6luf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy"]
+shape = SubResource("CapsuleShape3D_3i6jp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
+mesh = SubResource("CylinderMesh_kowpk")
+
+[node name="RayCast3D" type="RayCast3D" parent="Enemy"]
+script = ExtResource("19_pbwg7")
+
+[node name="Position3D" type="Node3D" parent="."]
