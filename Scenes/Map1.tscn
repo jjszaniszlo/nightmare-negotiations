@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dmjpk65o4kfuf"]
+[gd_scene load_steps=59 format=3 uid="uid://kh67p4oogjv8"]
 
 [ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://Game Objects/player.tscn" id="1_u3beu"]
 [ext_resource type="PackedScene" uid="uid://b6mlaef4yaoyn" path="res://World Objects/terrain.tscn" id="2_jwm6o"]
@@ -53,6 +53,8 @@
 [ext_resource type="PackedScene" uid="uid://wub7m16rc4cd" path="res://Assets/models/cemetary/gltf/pumpkin_orange_small.gltf" id="50_ri8rr"]
 [ext_resource type="PackedScene" uid="uid://b4hljqxnhy7ag" path="res://Assets/models/cemetary/gltf/pumpkin_orange_jackolantern.gltf" id="51_xc7x3"]
 [ext_resource type="PackedScene" uid="uid://brs18gslpomj4" path="res://Game Objects/characters/zombie.tscn" id="53_4xfts"]
+[ext_resource type="Script" path="res://Source Code/PauseHandler.cs" id="54_a8tps"]
+[ext_resource type="PackedScene" uid="uid://bbh2gh1fkh0fh" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="55_grnad"]
 
 [sub_resource type="Environment" id="Environment_tcegc"]
 
@@ -82,10 +84,10 @@ environment = SubResource("Environment_tcegc")
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_u3beu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48815, 0)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PostProcessing" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="PostProcessing"]
 material = SubResource("ShaderMaterial_1n3uu")
 offset_right = 2560.0
 offset_bottom = 1440.0
@@ -802,3 +804,12 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.501
 
 [node name="Zombie" parent="." instance=ExtResource("53_4xfts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57405, -0.00121045, -1.80921)
+
+[node name="PauseHandler" type="Node" parent="." node_paths=PackedStringArray("postProcessing", "pauseMenu", "player")]
+script = ExtResource("54_a8tps")
+postProcessing = NodePath("../PostProcessing")
+pauseMenu = NodePath("PauseMenu")
+player = NodePath("../CharacterBody3D")
+
+[node name="PauseMenu" parent="PauseHandler" instance=ExtResource("55_grnad")]
+visible = false
