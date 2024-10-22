@@ -4,6 +4,10 @@ namespace NightmareNegotiations.Scenes.LobbySelectionMenu;
 
 public partial class LobbySelectionMenu : Control
 {
+    
+    [Signal]
+    public delegate void OnSelectBackEventHandler();
+    
     private void OnJoinButtonPressed()
     {
         
@@ -20,8 +24,7 @@ public partial class LobbySelectionMenu : Control
     
     private void OnBackButtonPressed()
     {
-        GetParent().AddChild(GD.Load<PackedScene>("res://Scenes/MainMenu/MainMenu.tscn").Instantiate());
-        QueueFree();
+        EmitSignal(SignalName.OnSelectBack);
     }
     
     private void OnRefreshLobbyListButtonPressed()

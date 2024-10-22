@@ -4,20 +4,18 @@ namespace NightmareNegotiations.Scenes.MainMenu;
 
 public partial class MainMenu : Node
 {
-    private PackedScene worldTemplate = GD.Load<PackedScene>("res://Scenes/World/World.tscn");
-
-    private PackedScene lobbyMenuTemplate =
-        GD.Load<PackedScene>("res://Scenes/LobbySelectionMenu/LobbySelectionMenu.tscn");
+    [Signal]
+    public delegate void OnSelectSinglePlayerEventHandler();
+    [Signal]
+    public delegate void OnSelectMultiPlayerEventHandler();
     
     private void OnSinglePlayerButtonPressed()
     {
-        GetParent().AddChild(worldTemplate.Instantiate());
-        QueueFree();
+        EmitSignal(SignalName.OnSelectSinglePlayer);
     }
     
     private void OnMultiPlayerButtonPressed()
     {
-        GetParent().AddChild(lobbyMenuTemplate.Instantiate());
-        QueueFree();
+        EmitSignal(SignalName.OnSelectMultiPlayer);
     }
 }
