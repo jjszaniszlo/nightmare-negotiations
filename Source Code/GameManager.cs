@@ -2,7 +2,6 @@ using System;
 using Godot;
 using NightmareNegotiations.Scenes.LobbySelectionMenu;
 using NightmareNegotiations.Scenes.MainMenu;
-using NightmareNegotiations.Scenes.PauseMenu;
 using NightmareNegotiations.Utils;
 
 namespace NightmareNegotiations;
