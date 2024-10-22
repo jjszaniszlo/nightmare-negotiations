@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bmy2v3h3m43ma"]
+
+[node name="TerrainGenerationTest" type="Node3D"]
