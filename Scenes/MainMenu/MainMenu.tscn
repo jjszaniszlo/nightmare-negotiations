@@ -1,9 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://dr5hjxyu1v27u"]
+[gd_scene load_steps=36 format=3 uid="uid://dr5hjxyu1v27u"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.cs" id="1_fg4fg"]
 [ext_resource type="Texture2D" uid="uid://cbre2fubo02ha" path="res://Scenes/MainMenu/NNMainMenu.png" id="2_054wh"]
 [ext_resource type="VideoStream" path="res://Scenes/MainMenu/NNMainMenu.ogv" id="2_lsuk7"]
 [ext_resource type="Texture2D" uid="uid://bfg6xw2h8deld" path="res://Scenes/MainMenu/settingsIcon.png" id="3_4i2sb"]
+[ext_resource type="VideoStream" path="res://Scenes/MainMenu/NNMainMenu-_1_.ogv" id="4_n55uh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_438lx"]
 
@@ -83,6 +84,17 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_054wh")
 
+[node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("4_n55uh")
+expand = true
+loop = true
+
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -124,6 +136,7 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cvf6j")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_bgjvw")
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 525.0
 offset_top = 569.0
 offset_right = 622.0
@@ -147,6 +160,7 @@ text = "
 "
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 1087.0
 offset_top = 7.0
 offset_right = 2095.0
@@ -162,6 +176,7 @@ icon = ExtResource("3_4i2sb")
 icon_alignment = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="."]
+layout_mode = 0
 offset_left = 919.0
 offset_top = 587.0
 offset_right = 961.0
