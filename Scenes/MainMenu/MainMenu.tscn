@@ -1,6 +1,69 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr5hjxyu1v27u"]
+[gd_scene load_steps=35 format=3 uid="uid://dr5hjxyu1v27u"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.cs" id="1_fg4fg"]
+[ext_resource type="Texture2D" uid="uid://cbre2fubo02ha" path="res://Scenes/MainMenu/NNMainMenu.png" id="2_054wh"]
+[ext_resource type="VideoStream" path="res://Scenes/MainMenu/NNMainMenu.ogv" id="2_lsuk7"]
+[ext_resource type="Texture2D" uid="uid://bfg6xw2h8deld" path="res://Scenes/MainMenu/settingsIcon.png" id="3_4i2sb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_438lx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7n4mo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cj1de"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_obmwm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kdmq8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4x2qg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_npkhw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hg3q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cvf6j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bgjvw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sbqln"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c36kp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e563m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f2arp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y6t1b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vq6lo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n0ehf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_flxw8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fk3hy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hdjwc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gh04e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k4wfq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kbqnu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5h0ad"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_viulj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_80ps5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7v256"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y8w3j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ugh4m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r2mn7"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -11,39 +74,114 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fg4fg")
 
-[node name="Main Buttons" type="VBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_054wh")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_lsuk7")
+autoplay = true
+expand = true
+loop = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.043
-anchor_top = 0.309
-anchor_right = 0.413
-anchor_bottom = 0.691
-offset_left = 0.463997
-offset_top = -0.23201
-offset_right = 0.223969
-offset_bottom = 0.231964
-grow_vertical = 2
+anchor_left = 1.08681
+anchor_top = -0.203704
+anchor_right = 1.08681
+anchor_bottom = -0.203704
+offset_left = -1099.0
+offset_top = 698.0
+offset_right = -980.0
+offset_bottom = 778.0
+scale = Vector2(1, 0.997)
 
-[node name="Single Player" type="Button" parent="Main Buttons"]
+[node name="Single Player" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-text = "Singleplayer"
+theme_override_font_sizes/font_size = 19
+theme_override_styles/focus = SubResource("StyleBoxEmpty_438lx")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7n4mo")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cj1de")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_obmwm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_kdmq8")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_4x2qg")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_npkhw")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_8hg3q")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_cvf6j")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bgjvw")
 
-[node name="Multiplayer" type="Button" parent="Main Buttons"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="."]
+offset_left = 525.0
+offset_top = 569.0
+offset_right = 622.0
+offset_bottom = 649.0
+
+[node name="Multiplayer" type="Button" parent="VBoxContainer4"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-text = "Multiplayer
+theme_override_font_sizes/font_size = 19
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sbqln")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_c36kp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_e563m")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_f2arp")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_y6t1b")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_vq6lo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_n0ehf")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_flxw8")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_fk3hy")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hdjwc")
+text = "
 "
 
-[node name="Settings" type="Button" parent="Main Buttons"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+offset_left = 1087.0
+offset_top = 7.0
+offset_right = 2095.0
+offset_bottom = 1095.0
+rotation = 0.00186379
+scale = Vector2(0.05, 0.05)
+
+[node name="Settings" type="Button" parent="VBoxContainer2"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Settings"
+theme_override_font_sizes/font_size = 5
+icon = ExtResource("3_4i2sb")
+icon_alignment = 1
 
-[node name="Quit" type="Button" parent="Main Buttons"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+offset_left = 919.0
+offset_top = 587.0
+offset_right = 961.0
+offset_bottom = 627.0
+scale = Vector2(1.2, 1.2)
+
+[node name="Quit" type="Button" parent="VBoxContainer3"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-text = "Quit"
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gh04e")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_k4wfq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kbqnu")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5h0ad")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_viulj")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_80ps5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7v256")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_y8w3j")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ugh4m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_r2mn7")
 
-[connection signal="pressed" from="Main Buttons/Single Player" to="." method="OnSinglePlayerButtonPressed"]
-[connection signal="pressed" from="Main Buttons/Multiplayer" to="." method="OnMultiPlayerButtonPressed"]
+[connection signal="pressed" from="VBoxContainer/Single Player" to="." method="OnSinglePlayerButtonPressed"]
+[connection signal="pressed" from="VBoxContainer4/Multiplayer" to="." method="OnMultiPlayerButtonPressed"]
