@@ -1,9 +1,10 @@
+using System;
 using Godot;
 
 namespace NightmareNegotiations.Terrain;
 
 // [Tool]
-public partial class TerrainGeneration : StaticBody3D
+public partial class TerrainGenerator : StaticBody3D
 {
     // [Export]
     // public bool DoGenerate
@@ -11,12 +12,7 @@ public partial class TerrainGeneration : StaticBody3D
     //     get => true;
     //     set => GenerateTerrain();
     // }
-
-    public override void _Ready()
-    {
-        GenerateTerrain();
-    }
-
+    
     private int seed = 2;
     public int Seed
     {
@@ -25,12 +21,14 @@ public partial class TerrainGeneration : StaticBody3D
         {
             seed = value;
             baseNoise.Seed = seed;
+            hillNoise.Seed = seed;
+            mountainNoise.Seed = seed;
         }
     }
 
-    public float RadialDropOff { get; set; } = 0.2f;
+    public float RadialDropOff { get; set; } = 0.05f;
     
-    public float BaseAmplitude { get; set; } = 5.0f;
+    public float BaseAmplitude { get; set; } = 2.0f;
     
     private float baseFrequency = 0.01f;
     public float BaseFrequency
@@ -43,7 +41,7 @@ public partial class TerrainGeneration : StaticBody3D
         }
     }
     
-    public float HillAmplitude { get; set; } = 10.0f;
+    public float HillAmplitude { get; set; } = 5.0f;
     
     private float hillFrequency = 0.001f;
     public float HillFrequency
@@ -56,7 +54,7 @@ public partial class TerrainGeneration : StaticBody3D
         }
     }
     
-    public float MountainAmplitude { get; set; } = 300.0f;
+    public float MountainAmplitude { get; set; } = 150.0f;
     
     private float mountainFrequency = 0.001f;
     public float MountainFrequency
@@ -68,34 +66,54 @@ public partial class TerrainGeneration : StaticBody3D
             mountainNoise.Frequency = mountainFrequency;
         }
     }
+
+    private float treeFrequency = 0.001f;
+
+    public float TreeFrequency
+    {
+        get => treeFrequency;
+        set
+        {
+            treeFrequency = value;
+        }
+    }
     
     private FastNoiseLite baseNoise = new();
     private FastNoiseLite hillNoise = new();
     private FastNoiseLite mountainNoise = new();
+    private FastNoiseLite treeNoise = new();
+    
+    public override void _Ready()
+    {
+        GenerateTerrain();
+    }
 
-    public TerrainGeneration()
+    public TerrainGenerator()
     {
         baseNoise.Seed = Seed;
         baseNoise.NoiseType = FastNoiseLite.NoiseTypeEnum.SimplexSmooth;
+        baseNoise.Frequency = BaseFrequency;
         
         hillNoise.Seed = Seed;
         hillNoise.NoiseType = FastNoiseLite.NoiseTypeEnum.Perlin;
+        hillNoise.Frequency = HillFrequency;
         
         mountainNoise.Seed = Seed;
         mountainNoise.NoiseType = FastNoiseLite.NoiseTypeEnum.Perlin;
-        
-        baseNoise.Frequency = BaseFrequency;
-        hillNoise.Frequency = HillFrequency;
         mountainNoise.Frequency = MountainFrequency;
+
+        treeNoise.NoiseType = FastNoiseLite.NoiseTypeEnum.Simplex;
+        treeNoise.Seed = Seed;
+        treeNoise.Frequency = TreeFrequency;
     }
     
     public void GenerateTerrain()
     {
         GD.Print("generating terrain mesh...");
         var planeMesh = new PlaneMesh();
-        planeMesh.Size = new Vector2(1024, 1024);
-        planeMesh.SubdivideWidth = 1023;
-        planeMesh.SubdivideDepth = 1023;
+        planeMesh.Size = new Vector2(512, 512);
+        planeMesh.SubdivideWidth = 63;
+        planeMesh.SubdivideDepth = 63;
 
         var surfaceTool = new SurfaceTool();
         surfaceTool.CreateFrom(planeMesh, 0);
@@ -126,5 +144,48 @@ public partial class TerrainGeneration : StaticBody3D
         GetNode<MeshInstance3D>("TerrainMesh").Mesh = surfaceTool.Commit();
         GetNode<MeshInstance3D>("TerrainMesh").MaterialOverride = GD.Load<Material>("res://Materials/basic_terrain_material.tres");
         GetNode<CollisionShape3D>("TerrainShape").Shape = GetNode<MeshInstance3D>("TerrainMesh").Mesh.CreateTrimeshShape();
+        
+        GenerateTrees(data);
+    }
+
+    private readonly PackedScene[] treeScenes =
+    {
+        GD.Load<PackedScene>("res://World Objects/trees/tree_01.tscn"),
+        GD.Load<PackedScene>("res://World Objects/trees/tree_02.tscn"),
+        GD.Load<PackedScene>("res://World Objects/trees/tree_03.tscn")
+    };
+    public void GenerateTrees(MeshDataTool meshData)
+    {
+        GD.Print("Generate trees...");
+        var treesNode = GetParent().GetNode<Node3D>("Trees");
+        foreach(var child in treesNode.GetChildren())
+        {
+            child.QueueFree();
+        }
+
+        for (int i = 0; i < meshData.GetFaceCount(); i++)
+        {
+            var vertex = meshData.GetVertex(meshData.GetFaceVertex(i, Random.Shared.Next() % 3));
+            var noiseValue = treeNoise.GetNoise2D(vertex.X * 0.8f, vertex.Z * 0.8f);
+            if (noiseValue >= 0.01f)
+            {
+                var tree = treeScenes[Random.Shared.Next() % treeScenes.Length].Instantiate<Node3D>();
+                tree.SetProcess(false);
+                tree.SetPhysicsProcess(false);
+                tree.Position = FindRandomVectorWithin3Vectors(
+                    meshData.GetVertex(meshData.GetFaceVertex(i, 0)),
+                    meshData.GetVertex(meshData.GetFaceVertex(i, 1)),
+                    meshData.GetVertex(meshData.GetFaceVertex(i, 2)));
+                
+                tree.RotateY((float)Random.Shared.NextDouble() * Mathf.Pi * 2.0f);
+                treesNode.AddChild(tree);
+            }
+        }
+    }
+
+    private Vector3 FindRandomVectorWithin3Vectors(Vector3 v1, Vector3 v2, Vector3 v3)
+    {
+        var randA = v1.Lerp(v2, (float)Random.Shared.NextDouble()); 
+        return randA.Lerp(v3, (float)Random.Shared.NextDouble());
     }
 }

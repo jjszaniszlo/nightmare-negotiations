@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmy2v3h3m43ma"]
+[gd_scene load_steps=12 format=3 uid="uid://bmy2v3h3m43ma"]
 
 [ext_resource type="Script" path="res://Scenes/World/World.gd" id="1_ngxlb"]
-[ext_resource type="Script" path="res://Source Code/Terrain/TerrainGeneration.cs" id="1_tuxfk"]
 [ext_resource type="Shader" path="res://Shaders/sky.gdshader" id="2_pu4b5"]
 [ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://Game Objects/player.tscn" id="2_ue4d7"]
 [ext_resource type="Texture2D" uid="uid://kqwn4l6ayr2u" path="res://Assets/textures/stars.png" id="3_fckuk"]
+[ext_resource type="Script" path="res://Source Code/Terrain/TerrainGenerator.cs" id="4_4vb3f"]
+[ext_resource type="Material" uid="uid://r2ypvtjotc7n" path="res://Materials/basic_terrain_material.tres" id="5_ubo1n"]
+[ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="7_7y4wm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5c5ch"]
 shader = ExtResource("2_pu4b5")
@@ -48,19 +50,36 @@ background_mode = 2
 sky = SubResource("Sky_y0jol")
 ambient_light_source = 3
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0225
+volumetric_fog_density = 0.242
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ni6n1"]
+shader = ExtResource("7_7y4wm")
+shader_parameter/shake = 0.0
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0004
+shader_parameter/colorOffsetIntensity = 0.797
+shader_parameter/pixelSize = 200.0
+shader_parameter/grainIntensity = 0.015
+shader_parameter/use_overlay = false
+shader_parameter/use_lens_distortion = false
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.05
 
 [node name="TerrainGenerationTest" type="Node3D"]
 script = ExtResource("1_ngxlb")
-day_time = 15.3841
+day_time = 17.4634
+sun_base_enegry = 1.0
+moon_base_enegry = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kyyj4")
 
 [node name="Terrain" type="StaticBody3D" parent="."]
-script = ExtResource("1_tuxfk")
+script = ExtResource("4_4vb3f")
 
 [node name="TerrainMesh" type="MeshInstance3D" parent="Terrain"]
+material_override = ExtResource("5_ubo1n")
 
 [node name="TerrainShape" type="CollisionShape3D" parent="Terrain"]
 
@@ -68,18 +87,31 @@ script = ExtResource("1_tuxfk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62042, 0)
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.92083, 0, -0.389965, 0.268019, 0.726383, 0.632877, 0.283264, -0.68729, 0.668875, 0, 0, 0)
+transform = Transform3D(0.921031, 0, -0.389488, 0.0545361, -0.990148, 0.128963, -0.385651, -0.14002, -0.911958, 0, 0, 0)
 rotation_order = 4
 shadow_enabled = true
 shadow_opacity = 0.75
 shadow_blur = 5.0
 
 [node name="Moon" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.978558, 0, -0.205972, 0.184026, 0.449163, 0.874292, 0.0925152, -0.893449, 0.439533, 0, 0, 0)
+transform = Transform3D(0.880071, 0, 0.474842, 0.414775, 0.486824, -0.768742, -0.231165, 0.873498, 0.42844, 0, 0, 0)
 rotation_order = 4
 light_color = Color(1, 1, 0.6, 1)
-light_energy = 0.1
+light_energy = 0.0
 shadow_enabled = true
 shadow_opacity = 0.25
 shadow_blur = 5.0
 directional_shadow_fade_start = 0.1
+
+[node name="PostProcessing" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Pixelify" type="ColorRect" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_ni6n1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trees" type="Node3D" parent="."]
