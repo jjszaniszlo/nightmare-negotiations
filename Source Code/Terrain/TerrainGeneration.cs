@@ -2,16 +2,21 @@ using Godot;
 
 namespace NightmareNegotiations.Terrain;
 
-[Tool]
+// [Tool]
 public partial class TerrainGeneration : StaticBody3D
 {
-    [Export]
-    public bool DoGenerate
+    // [Export]
+    // public bool DoGenerate
+    // {
+    //     get => true;
+    //     set => GenerateTerrain();
+    // }
+
+    public override void _Ready()
     {
-        get => true;
-        set => GenerateTerrain();
+        GenerateTerrain();
     }
-    
+
     private int seed = 2;
     public int Seed
     {
@@ -117,7 +122,9 @@ public partial class TerrainGeneration : StaticBody3D
         surfaceTool.CreateFrom(arrayPlane, 0);
         surfaceTool.GenerateNormals();
 
+
         GetNode<MeshInstance3D>("TerrainMesh").Mesh = surfaceTool.Commit();
+        GetNode<MeshInstance3D>("TerrainMesh").MaterialOverride = GD.Load<Material>("res://Materials/basic_terrain_material.tres");
         GetNode<CollisionShape3D>("TerrainShape").Shape = GetNode<MeshInstance3D>("TerrainMesh").Mesh.CreateTrimeshShape();
     }
 }

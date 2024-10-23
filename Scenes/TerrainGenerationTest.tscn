@@ -52,14 +52,13 @@ volumetric_fog_density = 0.0225
 
 [node name="TerrainGenerationTest" type="Node3D"]
 script = ExtResource("1_ngxlb")
-day_time = 11.0244
+day_time = 15.3841
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kyyj4")
 
 [node name="Terrain" type="StaticBody3D" parent="."]
 script = ExtResource("1_tuxfk")
-DoGenerate = true
 
 [node name="TerrainMesh" type="MeshInstance3D" parent="Terrain"]
 
@@ -69,18 +68,17 @@ DoGenerate = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62042, 0)
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.920879, 0, -0.389848, 0.377201, 0.252643, 0.891005, 0.0984925, -0.967559, 0.232654, 0, 0, 0)
+transform = Transform3D(0.92083, 0, -0.389965, 0.268019, 0.726383, 0.632877, 0.283264, -0.68729, 0.668875, 0, 0, 0)
 rotation_order = 4
-light_energy = 0.0
 shadow_enabled = true
 shadow_opacity = 0.75
 shadow_blur = 5.0
 
 [node name="Moon" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.999907, 0, -0.0136474, 0.00732131, 0.843925, 0.536411, 0.0115174, -0.53646, 0.843847, 0, 0, 0)
+transform = Transform3D(0.978558, 0, -0.205972, 0.184026, 0.449163, 0.874292, 0.0925152, -0.893449, 0.439533, 0, 0, 0)
 rotation_order = 4
 light_color = Color(1, 1, 0.6, 1)
-light_energy = 0.0
+light_energy = 0.1
 shadow_enabled = true
 shadow_opacity = 0.25
 shadow_blur = 5.0
