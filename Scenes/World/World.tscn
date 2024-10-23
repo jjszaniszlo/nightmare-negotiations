@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxp1rkolbqlvf"]
+[gd_scene load_steps=24 format=3 uid="uid://bxp1rkolbqlvf"]
 
 [ext_resource type="Script" path="res://Scenes/World/World.gd" id="1_ed708"]
 [ext_resource type="Shader" path="res://Shaders/sky.gdshader" id="2_liqes"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://v0wqg34hked7" path="res://World Objects/bushes/bush_02.tscn" id="15_gbydm"]
 [ext_resource type="PackedScene" uid="uid://biu7foqcuchwj" path="res://World Objects/trees/tree_29.tscn" id="16_d35ql"]
 [ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="17_8ucb7"]
+[ext_resource type="Script" path="res://Source Code/PauseHandler.cs" id="18_a3snt"]
+[ext_resource type="PackedScene" uid="uid://bbh2gh1fkh0fh" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="19_chh0t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vscm0"]
 shader = ExtResource("2_liqes")
@@ -52,12 +54,12 @@ shader_parameter/stars_opacity = 1.0
 shader_parameter/stars_texture = ExtResource("3_xvosu")
 shader_parameter/overwritten_time = 3289.44
 
-[sub_resource type="Sky" id="Sky_y0jol"]
+[sub_resource type="Sky" id="Sky_uttl2"]
 sky_material = SubResource("ShaderMaterial_vscm0")
 
 [sub_resource type="Environment" id="Environment_1rxqi"]
 background_mode = 2
-sky = SubResource("Sky_y0jol")
+sky = SubResource("Sky_uttl2")
 ambient_light_source = 3
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0225
@@ -140,10 +142,10 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6.53573, 0, -1.427)
 [node name="tree29" parent="Natura" instance=ExtResource("16_d35ql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4, 0, 4.309)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PostProcessing" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="Pixelify" type="ColorRect" parent="PostProcessing"]
 material = SubResource("ShaderMaterial_u6fx8")
 offset_right = 2560.0
 offset_bottom = 1440.0
@@ -170,3 +172,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9481, -0.00121021, 11.6736
 
 [node name="tree32" parent="." instance=ExtResource("8_rcaue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9279, -0.00121021, -26.529)
+
+[node name="PauseHandler" type="Node" parent="." node_paths=PackedStringArray("postProcessing", "pauseMenu", "player")]
+script = ExtResource("18_a3snt")
+postProcessing = NodePath("../PostProcessing")
+pauseMenu = NodePath("PauseMenu")
+player = NodePath("../CharacterBody3D")
+
+[node name="PauseMenu" parent="PauseHandler" instance=ExtResource("19_chh0t")]
+visible = false
