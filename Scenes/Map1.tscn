@@ -91,14 +91,14 @@ shader_parameter/stars_speed = 1.0
 shader_parameter/stars_scale = 1.0
 shader_parameter/stars_opacity = 1.0
 shader_parameter/stars_texture = ExtResource("3_s2lsc")
-shader_parameter/overwritten_time = 3289.44
+shader_parameter/overwritten_time = 0.0
 
-[sub_resource type="Sky" id="Sky_y0jol"]
+[sub_resource type="Sky" id="Sky_xamg5"]
 sky_material = SubResource("ShaderMaterial_ltj2h")
 
 [sub_resource type="Environment" id="Environment_7g3af"]
 background_mode = 2
-sky = SubResource("Sky_y0jol")
+sky = SubResource("Sky_xamg5")
 ambient_light_source = 3
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0225

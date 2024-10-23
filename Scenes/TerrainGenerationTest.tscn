@@ -1,3 +1,87 @@
-[gd_scene format=3 uid="uid://bmy2v3h3m43ma"]
+[gd_scene load_steps=9 format=3 uid="uid://bmy2v3h3m43ma"]
+
+[ext_resource type="Script" path="res://Scenes/World/World.gd" id="1_ngxlb"]
+[ext_resource type="Script" path="res://Source Code/Terrain/TerrainGeneration.cs" id="1_tuxfk"]
+[ext_resource type="Shader" path="res://Shaders/sky.gdshader" id="2_pu4b5"]
+[ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://Game Objects/player.tscn" id="2_ue4d7"]
+[ext_resource type="Texture2D" uid="uid://kqwn4l6ayr2u" path="res://Assets/textures/stars.png" id="3_fckuk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5c5ch"]
+shader = ExtResource("2_pu4b5")
+shader_parameter/day_top_color = Color(0.1, 0.6, 1, 1)
+shader_parameter/day_bottom_color = Color(0.4, 0.8, 1, 1)
+shader_parameter/sunset_top_color = Color(0.7, 0.75, 1, 1)
+shader_parameter/sunset_bottom_color = Color(1, 0.5, 0.7, 1)
+shader_parameter/night_top_color = Color(0.02, 0, 0.04, 1)
+shader_parameter/night_bottom_color = Color(0.1, 0, 0.2, 1)
+shader_parameter/horizon_color = Color(0, 0.7, 0.8, 1)
+shader_parameter/horizon_blur = 0.05
+shader_parameter/sun_color = Color(10, 8, 1, 1)
+shader_parameter/sun_sunset_color = Color(10, 0, 0, 1)
+shader_parameter/sun_size = 0.2
+shader_parameter/sun_blur = 10.0
+shader_parameter/moon_color = Color(1, 0.95, 0.7, 1)
+shader_parameter/moon_size = 0.06
+shader_parameter/moon_blur = 0.1
+shader_parameter/clouds_edge_color = Color(0.8, 0.8, 0.98, 1)
+shader_parameter/clouds_top_color = Color(1, 1, 1, 1)
+shader_parameter/clouds_middle_color = Color(0.92, 0.92, 0.98, 1)
+shader_parameter/clouds_bottom_color = Color(0.83, 0.83, 0.94, 1)
+shader_parameter/clouds_speed = 2.0
+shader_parameter/clouds_direction = 0.2
+shader_parameter/clouds_scale = 1.0
+shader_parameter/clouds_cutoff = 0.3
+shader_parameter/clouds_fuzziness = 0.5
+shader_parameter/clouds_weight = 0.0
+shader_parameter/clouds_blur = 0.25
+shader_parameter/stars_speed = 1.0
+shader_parameter/stars_scale = 1.0
+shader_parameter/stars_opacity = 1.0
+shader_parameter/stars_texture = ExtResource("3_fckuk")
+shader_parameter/overwritten_time = 0.0
+
+[sub_resource type="Sky" id="Sky_y0jol"]
+sky_material = SubResource("ShaderMaterial_5c5ch")
+
+[sub_resource type="Environment" id="Environment_kyyj4"]
+background_mode = 2
+sky = SubResource("Sky_y0jol")
+ambient_light_source = 3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0225
 
 [node name="TerrainGenerationTest" type="Node3D"]
+script = ExtResource("1_ngxlb")
+day_time = 11.0244
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kyyj4")
+
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("1_tuxfk")
+DoGenerate = true
+
+[node name="TerrainMesh" type="MeshInstance3D" parent="Terrain"]
+
+[node name="TerrainShape" type="CollisionShape3D" parent="Terrain"]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_ue4d7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62042, 0)
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.920879, 0, -0.389848, 0.377201, 0.252643, 0.891005, 0.0984925, -0.967559, 0.232654, 0, 0, 0)
+rotation_order = 4
+light_energy = 0.0
+shadow_enabled = true
+shadow_opacity = 0.75
+shadow_blur = 5.0
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999907, 0, -0.0136474, 0.00732131, 0.843925, 0.536411, 0.0115174, -0.53646, 0.843847, 0, 0, 0)
+rotation_order = 4
+light_color = Color(1, 1, 0.6, 1)
+light_energy = 0.0
+shadow_enabled = true
+shadow_opacity = 0.25
+shadow_blur = 5.0
+directional_shadow_fade_start = 0.1
