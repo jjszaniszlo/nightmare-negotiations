@@ -5,7 +5,7 @@ extends Node2D
 @onready var username = $Username
 @onready var send = $Send
 @onready var message = $Message
-@onready var messages = $Message
+@onready var messages = $Messages
 
 var usernm : String #Username
 var msg : String #Msg 
@@ -31,11 +31,11 @@ func _on_send_pressed() -> void:
 	rpc("msg_rpc", usernm, message.text)
 	message.text = "" #Clear text after every message, reset to blank string
 
-@rpc ("any_peer", "call_local")
-
-func msg_rpc(usernm, data):
-	messages.text += str(usernm, ": ", data, "\n")
-	#messages.scroll_vertical = INF
+@rpc ("any_peer","call_local")
+@warning_ignore("shadowed_variable")
+func msg_rpc(senders_usernm, data):
+	messages.text += str(senders_usernm, ": ", data, "\n")
+	messages.scroll_vertical = INF
 
 func joined():
 	host.hide()
