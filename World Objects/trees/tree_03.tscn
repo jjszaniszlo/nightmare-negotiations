@@ -10,17 +10,17 @@ alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_681t8")
 texture_filter = 0
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_v1iev"]
-height = 11.783
-radius = 0.388593
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ajsfi"]
+height = 9.55977
+radius = 0.348635
 
 [node name="tree03" instance=ExtResource("1_kvl5i")]
 
 [node name="tree03" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_2f3y7")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." index="1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.90184, 0)
-shape = SubResource("CylinderShape3D_v1iev")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.83555, 0)
+shape = SubResource("CylinderShape3D_ajsfi")

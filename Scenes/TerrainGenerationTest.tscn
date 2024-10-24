@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmy2v3h3m43ma"]
+[gd_scene load_steps=13 format=3 uid="uid://bmy2v3h3m43ma"]
 
 [ext_resource type="Script" path="res://Scenes/World/World.gd" id="1_ngxlb"]
 [ext_resource type="Shader" path="res://Shaders/sky.gdshader" id="2_pu4b5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://kqwn4l6ayr2u" path="res://Assets/textures/stars.png" id="3_fckuk"]
 [ext_resource type="Script" path="res://Source Code/Terrain/TerrainGenerator.cs" id="4_4vb3f"]
 [ext_resource type="Material" uid="uid://r2ypvtjotc7n" path="res://Materials/basic_terrain_material.tres" id="5_ubo1n"]
+[ext_resource type="ArrayMesh" uid="uid://duj6747nq4qsk" path="res://Assets/models/foliage/grass/grass.res" id="6_w0vkt"]
 [ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="7_7y4wm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5c5ch"]
@@ -49,7 +50,6 @@ sky_material = SubResource("ShaderMaterial_5c5ch")
 background_mode = 2
 sky = SubResource("Sky_y0jol")
 ambient_light_source = 3
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.242
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ni6n1"]
@@ -77,11 +77,14 @@ environment = SubResource("Environment_kyyj4")
 
 [node name="Terrain" type="StaticBody3D" parent="."]
 script = ExtResource("4_4vb3f")
+GrassInstance = ExtResource("6_w0vkt")
 
 [node name="TerrainMesh" type="MeshInstance3D" parent="Terrain"]
 material_override = ExtResource("5_ubo1n")
 
 [node name="TerrainShape" type="CollisionShape3D" parent="Terrain"]
+
+[node name="Grass" type="MultiMeshInstance3D" parent="Terrain"]
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_ue4d7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62042, 0)
@@ -104,6 +107,7 @@ shadow_blur = 5.0
 directional_shadow_fade_start = 0.1
 
 [node name="PostProcessing" type="CanvasLayer" parent="."]
+visible = false
 follow_viewport_enabled = true
 
 [node name="Pixelify" type="ColorRect" parent="PostProcessing"]
