@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="TerrainNoise" load_steps=6 format=3 uid="uid://0d8r05fbconq"]
+
+[ext_resource type="Script" path="res://Source Code/CustomResources/AmplifiedNoise.cs" id="1_84qkx"]
+[ext_resource type="Script" path="res://Source Code/CustomResources/TerrainNoise.cs" id="1_yyfte"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_84kn7"]
+seed = 20
+frequency = 0.0032
+script = ExtResource("1_84qkx")
+Amplitude = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_424cp"]
+seed = 20
+frequency = 0.0003
+script = ExtResource("1_84qkx")
+Amplitude = 20.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t6yy1"]
+noise_type = 0
+seed = 20
+frequency = 0.0003
+script = ExtResource("1_84qkx")
+Amplitude = 200.0
+
+[resource]
+script = ExtResource("1_yyfte")
+Seed = 20
+RadialDropOff = 0.01
+MinHeight = -150.0
+MaxHeight = 200.0
+TerrainNoises = [SubResource("FastNoiseLite_84kn7"), SubResource("FastNoiseLite_424cp"), SubResource("FastNoiseLite_t6yy1")]

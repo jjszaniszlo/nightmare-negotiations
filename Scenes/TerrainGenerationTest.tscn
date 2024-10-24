@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmy2v3h3m43ma"]
+[gd_scene load_steps=15 format=3 uid="uid://bmy2v3h3m43ma"]
 
 [ext_resource type="Script" path="res://Scenes/World/World.gd" id="1_ngxlb"]
 [ext_resource type="Shader" path="res://Shaders/sky.gdshader" id="2_pu4b5"]
 [ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://Game Objects/player.tscn" id="2_ue4d7"]
 [ext_resource type="Texture2D" uid="uid://kqwn4l6ayr2u" path="res://Assets/textures/stars.png" id="3_fckuk"]
 [ext_resource type="Script" path="res://Source Code/Terrain/TerrainGenerator.cs" id="4_4vb3f"]
+[ext_resource type="Resource" uid="uid://0d8r05fbconq" path="res://Resources/Flatish.tres" id="5_c16b8"]
 [ext_resource type="Material" uid="uid://r2ypvtjotc7n" path="res://Materials/basic_terrain_material.tres" id="5_ubo1n"]
-[ext_resource type="ArrayMesh" uid="uid://duj6747nq4qsk" path="res://Assets/models/foliage/grass/grass.res" id="6_w0vkt"]
 [ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="7_7y4wm"]
+[ext_resource type="Script" path="res://Source Code/Terrain/TreeInstancer.cs" id="9_f1ijo"]
+[ext_resource type="ArrayMesh" uid="uid://yu4su1voybvi" path="res://Resources/meshes/tree_01.tres" id="9_ppvrb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5c5ch"]
 shader = ExtResource("2_pu4b5")
@@ -68,36 +70,26 @@ shader_parameter/lens_distortion_strength = 0.05
 
 [node name="TerrainGenerationTest" type="Node3D"]
 script = ExtResource("1_ngxlb")
-day_time = 17.4634
+day_time = 15.1219
+time_scale = 0.0
 sun_base_enegry = 1.0
 moon_base_enegry = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kyyj4")
 
-[node name="Terrain" type="StaticBody3D" parent="."]
-script = ExtResource("4_4vb3f")
-GrassInstance = ExtResource("6_w0vkt")
-
-[node name="TerrainMesh" type="MeshInstance3D" parent="Terrain"]
-material_override = ExtResource("5_ubo1n")
-
-[node name="TerrainShape" type="CollisionShape3D" parent="Terrain"]
-
-[node name="Grass" type="MultiMeshInstance3D" parent="Terrain"]
-
-[node name="CharacterBody3D" parent="." instance=ExtResource("2_ue4d7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62042, 0)
+[node name="Player" parent="." instance=ExtResource("2_ue4d7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.386, 0)
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.921031, 0, -0.389488, 0.0545361, -0.990148, 0.128963, -0.385651, -0.14002, -0.911958, 0, 0, 0)
+transform = Transform3D(0.920975, 0, -0.38962, 0.266572, -0.729308, 0.630117, -0.284153, -0.684184, -0.671676, 0, 0, 0)
 rotation_order = 4
 shadow_enabled = true
 shadow_opacity = 0.75
 shadow_blur = 5.0
 
 [node name="Moon" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.880071, 0, 0.474842, 0.414775, 0.486824, -0.768742, -0.231165, 0.873498, 0.42844, 0, 0, 0)
+transform = Transform3D(0.92564, 0, 0.378406, 0.171416, 0.891511, -0.41931, -0.337354, 0.452994, 0.82522, 0, 0, 0)
 rotation_order = 4
 light_color = Color(1, 1, 0.6, 1)
 light_energy = 0.0
@@ -118,4 +110,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Trees" type="Node3D" parent="."]
+[node name="Terrain" type="StaticBody3D" parent="."]
+script = ExtResource("4_4vb3f")
+TerrainNoise = ExtResource("5_c16b8")
+
+[node name="TerrainMesh" type="MeshInstance3D" parent="Terrain"]
+material_override = ExtResource("5_ubo1n")
+
+[node name="TerrainShape" type="CollisionShape3D" parent="Terrain"]
+
+[node name="GrassInstancer" type="Node3D" parent="."]
+
+[node name="TreeInstancer" type="Node3D" parent="." node_paths=PackedStringArray("FollowTarget")]
+script = ExtResource("9_f1ijo")
+FollowTarget = NodePath("../Player")
+TerrainNoise = ExtResource("5_c16b8")
+InstanceCount = 2
+InstanceSpacing = 2
+InstancePositionRandomize = 0.3
+InstanceMesh = ExtResource("9_ppvrb")
+UpdateFrequency = 10.0
