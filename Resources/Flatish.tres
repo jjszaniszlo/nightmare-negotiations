@@ -4,27 +4,27 @@
 [ext_resource type="Script" path="res://Source Code/CustomResources/TerrainNoise.cs" id="1_yyfte"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_84kn7"]
-seed = 20
+seed = 35
 frequency = 0.0032
 script = ExtResource("1_84qkx")
 Amplitude = 1.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_424cp"]
-seed = 20
+seed = 35
 frequency = 0.0003
 script = ExtResource("1_84qkx")
 Amplitude = 20.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_t6yy1"]
 noise_type = 0
-seed = 20
+seed = 35
 frequency = 0.0003
 script = ExtResource("1_84qkx")
-Amplitude = 200.0
+Amplitude = 150.0
 
 [resource]
 script = ExtResource("1_yyfte")
-Seed = 20
+Seed = 35
 RadialDropOff = 0.01
 MinHeight = -150.0
 MaxHeight = 200.0

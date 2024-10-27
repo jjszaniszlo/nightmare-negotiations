@@ -4,8 +4,15 @@ using NightmareNegotiations.CustomResources;
 
 namespace NightmareNegotiations.Terrain;
 
+// [Tool]
 public partial class TerrainGenerator : StaticBody3D
 {
+    // [Export]
+    // public bool Create
+    // {
+    //     get => true;
+    //     set => GenerateTerrain();
+    // }
     [Export] public TerrainNoise TerrainNoise { get; private set; }
     [Export] public int Size { get; set; } = 512;
     [Export] public float DivisionRatio { get; set; } = 0.125f;
@@ -48,7 +55,5 @@ public partial class TerrainGenerator : StaticBody3D
         GetNode<MeshInstance3D>("TerrainMesh").Mesh = surfaceTool.Commit();
         GetNode<MeshInstance3D>("TerrainMesh").MaterialOverride = GD.Load<Material>("res://Materials/basic_terrain_material.tres");
         GetNode<CollisionShape3D>("TerrainShape").Shape = GetNode<MeshInstance3D>("TerrainMesh").Mesh.CreateTrimeshShape();
-
-        GetViewport().DebugDraw = Viewport.DebugDrawEnum.Wireframe;
     }
 }

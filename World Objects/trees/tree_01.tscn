@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnyly6ilup7dh"]
 
 [ext_resource type="PackedScene" uid="uid://d0mni72m1d7ut" path="res://Assets/models/trees/tree01.fbx" id="1_ro8g7"]
-[ext_resource type="ArrayMesh" uid="uid://yu4su1voybvi" path="res://Resources/meshes/tree_01.tres" id="2_p5ogf"]
+[ext_resource type="ArrayMesh" uid="uid://yu4su1voybvi" path="res://Resources/meshes/trees/tree_01.tres" id="2_p5ogf"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0rxot"]
 height = 10.8194
