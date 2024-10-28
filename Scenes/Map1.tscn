@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://kh67p4oogjv8"]
+[gd_scene load_steps=65 format=3 uid="uid://cdv6cqrgb8vg4"]
 
 [ext_resource type="Script" path="res://Scenes/World/World.gd" id="1_5u8uy"]
 [ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://Game Objects/player.tscn" id="1_u3beu"]
@@ -58,6 +58,7 @@
 [ext_resource type="PackedScene" uid="uid://brs18gslpomj4" path="res://Game Objects/characters/zombie.tscn" id="53_4xfts"]
 [ext_resource type="Script" path="res://Source Code/PauseHandler.cs" id="54_a8tps"]
 [ext_resource type="PackedScene" uid="uid://bbh2gh1fkh0fh" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="55_grnad"]
+[ext_resource type="PackedScene" uid="uid://chsujoh15ewbs" path="res://Scenes/MultiplayerChat/MultiplayerChat.tscn" id="59_kfdbp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ltj2h"]
 shader = ExtResource("2_gf2xc")
@@ -91,7 +92,7 @@ shader_parameter/stars_speed = 1.0
 shader_parameter/stars_scale = 1.0
 shader_parameter/stars_opacity = 1.0
 shader_parameter/stars_texture = ExtResource("3_s2lsc")
-shader_parameter/overwritten_time = 3289.44
+shader_parameter/overwritten_time = 0.0
 
 [sub_resource type="Sky" id="Sky_y0jol"]
 sky_material = SubResource("ShaderMaterial_ltj2h")
@@ -131,7 +132,7 @@ moon_base_enegry = 0.1
 environment = SubResource("Environment_7g3af")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.920779, 0, -0.390085, 0.0704044, 0.983578, 0.166187, 0.383679, -0.180485, 0.905657, 0, 0, 0)
+transform = Transform3D(0.920779, 0, -0.390085, 0.0704045, 0.983578, 0.166187, 0.383679, -0.180485, 0.905657, 0, 0, 0)
 rotation_order = 4
 shadow_enabled = true
 shadow_opacity = 0.75
@@ -155,8 +156,10 @@ follow_viewport_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="PostProcessing"]
 material = SubResource("ShaderMaterial_1n3uu")
-offset_right = 2560.0
-offset_bottom = 1440.0
+offset_left = 2.0
+offset_top = 75.0
+offset_right = 2562.0
+offset_bottom = 1515.0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_ok7kr")
@@ -861,3 +864,5 @@ player = NodePath("../CharacterBody3D")
 
 [node name="PauseMenu" parent="PauseHandler" instance=ExtResource("55_grnad")]
 visible = false
+
+[node name="MultiplayerChat" parent="." instance=ExtResource("59_kfdbp")]
