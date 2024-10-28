@@ -4,13 +4,13 @@ using NightmareNegotiations.Scenes.LobbySelectionMenu;
 using NightmareNegotiations.Scenes.MainMenu;
 using NightmareNegotiations.Utils;
 
-namespace NightmareNegotiations;
+namespace NightmareNegotiations.Managers;
 
 public partial class GameManager : Node
 {
-	[Export] public Node menusNode;
-	[Export] public Node gameplayNode;
-	
+	[Export] public Node MenusNode { get; private set; }
+	[Export] public Node GameplayNode { get; private set; }
+
 	private StateMachine state = new();
 
 	public override void _Ready()
@@ -41,7 +41,7 @@ public partial class GameManager : Node
 		mainMenu.OnSelectMultiPlayer += () => state.Transition(GameState.LobbyMenu);
 		mainMenu.OnSelectSinglePlayer += () => state.Transition(GameState.Game);
 		
-		menusNode.AddChild(mainMenu);
+		MenusNode.AddChild(mainMenu);
 	}
 	
 	private void OnLobbyMenuEntered()
@@ -51,7 +51,7 @@ public partial class GameManager : Node
 
 		lobbyMenu.OnSelectBack += () => state.Transition(GameState.MainMenu);
 		
-		menusNode.AddChild(lobbyMenu);
+		MenusNode.AddChild(lobbyMenu);
 	}
 	
 	private void OnLobbyEntered()
@@ -64,19 +64,19 @@ public partial class GameManager : Node
 		var game = GD.Load<PackedScene>("res://Scenes/Map1.tscn").Instantiate();
 		game.Name = "Game";
 
-		game.GetNode<PauseHandler>("PauseHandler").OnQuitGame += () => state.Transition(GameState.MainMenu);
+		game.GetNode<InGameUI.PauseManager>("PauseHandler").OnQuitGame += () => state.Transition(GameState.MainMenu);
 		
-		gameplayNode.AddChild(game);
+		GameplayNode.AddChild(game);
 	}
 	
 	private void OnMainMenuLeft()
 	{
-		menusNode.GetNode("MainMenu").QueueFree();
+		MenusNode.GetNode("MainMenu").QueueFree();
 	}
 	
 	private void OnLobbyMenuLeft()
 	{
-		menusNode.GetNode("LobbyMenu").QueueFree();
+		MenusNode.GetNode("LobbyMenu").QueueFree();
 	}
 	
 	private void OnLobbyLeft()
@@ -86,7 +86,7 @@ public partial class GameManager : Node
 
 	private void OnGameLeft()
 	{
-		gameplayNode.GetNode("Game").QueueFree();
+		GameplayNode.GetNode("Game").QueueFree();
 	}
 	
 	private enum GameState : uint {
