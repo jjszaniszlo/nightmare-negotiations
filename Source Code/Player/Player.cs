@@ -1,6 +1,6 @@
 using Godot;
 
-namespace NightmareNegotiations;
+namespace NightmareNegotiations.Player;
 
 public partial class Player : CharacterBody3D
 {

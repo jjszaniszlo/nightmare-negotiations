@@ -1,8 +1,6 @@
 using Godot;
-using Godot.Collections;
-using NightmareNegotiations.Items;
 
-namespace NightmareNegotiations;
+namespace NightmareNegotiations.Managers;
 
 public partial class ItemManager : Node3D
 {

@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace NightmareNegotiations.CustomResources;
 
 public partial class Item : Resource
 {

@@ -4,7 +4,7 @@ namespace NightmareNegotiations.Items;
 
 public interface IItem
 {
-    public void Enable(ItemManager itemManager);
-    public void Disable(ItemManager itemManager);
+    public void Enable(Managers.ItemManager itemManager);
+    public void Disable(Managers.ItemManager itemManager);
     public void OnUse();
 }
