@@ -5,14 +5,14 @@ namespace NightmareNegotiations.Camera;
 public partial class FirstPersonCamera : Node3D
 {
 	[Export]
-	public Camera3D camera;
+	public Camera3D Camera { get; private set; }
 
 	[Export]
-	public float cameraSensitivity;
+	public float CameraSensitivity { get; private set; }
 	[Export]
-	public float minCameraElevation;
+	public float MinCameraElevation { get; private set; }
 	[Export]
-	public float maxCameraElevation;
+	public float MaxCameraElevation { get; private set; }
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -25,17 +25,17 @@ public partial class FirstPersonCamera : Node3D
 		if (@event is InputEventMouseMotion m)
 		{
 			// rotate the head itself, left and right
-			RotateY(-m.Relative.X * cameraSensitivity * 0.01f);
+			RotateY(-m.Relative.X * CameraSensitivity * 0.01f);
 			// rotate the camera, up and down
-			camera.RotateX(-m.Relative.Y * cameraSensitivity * 0.01f);
+			Camera.RotateX(-m.Relative.Y * CameraSensitivity * 0.01f);
 
 			// clamp the amount in which you can look up and down.
-			Vector3 camRotation = camera.Rotation;
+			Vector3 camRotation = Camera.Rotation;
 			camRotation.X = Mathf.Clamp(
 				camRotation.X,
-				Mathf.DegToRad(-minCameraElevation), 
-				Mathf.DegToRad(maxCameraElevation));
-			camera.Rotation = camRotation;
+				Mathf.DegToRad(MinCameraElevation), 
+				Mathf.DegToRad(MaxCameraElevation));
+			Camera.Rotation = camRotation;
 		}
 	}
 	
