@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/MultiplayerChat/multiplayer_chat.gd" id="1_b0630"]
 
-[node name="MultiplayerChat" type="Node2D"]
+[node name="MultiplayerChat" type="Node3D"]
 script = ExtResource("1_b0630")
 
 [node name="Host" type="Button" parent="."]
