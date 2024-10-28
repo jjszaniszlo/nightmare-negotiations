@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/Main/Main.cs" id="1_vs0hq"]
 [ext_resource type="Script" path="res://Source Code/Managers/GameManager.cs" id="2_5dex2"]
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("gameManager")]
+[node name="Main" type="Node3D"]
 script = ExtResource("1_vs0hq")
-gameManager = NodePath("GameManager")
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("MenusNode", "GameplayNode")]
 script = ExtResource("2_5dex2")
