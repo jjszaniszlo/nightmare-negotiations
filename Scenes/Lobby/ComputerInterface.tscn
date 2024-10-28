@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://87at3ii1tc2j"]
+[gd_scene load_steps=4 format=3 uid="uid://87at3ii1tc2j"]
 
+[ext_resource type="Script" path="res://Scenes/Lobby/ComputerInterface.cs" id="1_ubvyu"]
 [ext_resource type="Texture2D" uid="uid://bd04eoc2u3j5w" path="res://Assets/textures/prototype/Green/texture_10.png" id="1_vy6qr"]
 [ext_resource type="Texture2D" uid="uid://cti8cngogrxdu" path="res://Assets/textures/Red_star.png" id="2_tn34m"]
 
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ubvyu")
 
 [node name="Main Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -40,7 +42,6 @@ size_flags_vertical = 3
 columns = 5
 
 [node name="LevelSelectionTemplate" type="Button" parent="Main Panel/ScrollContainer/GridContainer"]
-visible = false
 clip_contents = true
 custom_minimum_size = Vector2(200, 350)
 layout_mode = 2
@@ -110,6 +111,985 @@ texture = ExtResource("2_tn34m")
 expand_mode = 2
 
 [node name="Reward" type="RichTextLabel" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.766
+anchor_right = 0.877
+anchor_bottom = 0.88
+offset_left = 0.116999
+offset_top = -0.100006
+offset_right = -0.0730133
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font=res://Assets/fonts/space/SpaceCrusaders-x3DP0.ttf][font_size=30][center]$99[/center][/font_size][/font]
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LevelSelectionTemplate2" type="Button" parent="Main Panel/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+text = "
+
+"
+
+[node name="Image" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.1
+anchor_right = 0.875
+anchor_bottom = 0.5
+offset_left = -0.125
+offset_right = 0.124985
+offset_bottom = -0.100006
+grow_horizontal = 2
+texture = ExtResource("1_vy6qr")
+expand_mode = 2
+
+[node name="Difficulty Level" type="HBoxContainer" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate2"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.553
+anchor_right = 0.877
+anchor_bottom = 0.707
+offset_left = 0.0970001
+offset_top = -0.0500183
+offset_right = -0.0970001
+offset_bottom = 0.0499725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Star1" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate2/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star2" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate2/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star3" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate2/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star4" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate2/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Reward" type="RichTextLabel" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.766
+anchor_right = 0.877
+anchor_bottom = 0.88
+offset_left = 0.116999
+offset_top = -0.100006
+offset_right = -0.0730133
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font=res://Assets/fonts/space/SpaceCrusaders-x3DP0.ttf][font_size=30][center]$99[/center][/font_size][/font]
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LevelSelectionTemplate3" type="Button" parent="Main Panel/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+text = "
+
+"
+
+[node name="Image" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.1
+anchor_right = 0.875
+anchor_bottom = 0.5
+offset_left = -0.125
+offset_right = 0.124985
+offset_bottom = -0.100006
+grow_horizontal = 2
+texture = ExtResource("1_vy6qr")
+expand_mode = 2
+
+[node name="Difficulty Level" type="HBoxContainer" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate3"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.553
+anchor_right = 0.877
+anchor_bottom = 0.707
+offset_left = 0.0970001
+offset_top = -0.0500183
+offset_right = -0.0970001
+offset_bottom = 0.0499725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Star1" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate3/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star2" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate3/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star3" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate3/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star4" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate3/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Reward" type="RichTextLabel" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.766
+anchor_right = 0.877
+anchor_bottom = 0.88
+offset_left = 0.116999
+offset_top = -0.100006
+offset_right = -0.0730133
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font=res://Assets/fonts/space/SpaceCrusaders-x3DP0.ttf][font_size=30][center]$99[/center][/font_size][/font]
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LevelSelectionTemplate4" type="Button" parent="Main Panel/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+text = "
+
+"
+
+[node name="Image" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.1
+anchor_right = 0.875
+anchor_bottom = 0.5
+offset_left = -0.125
+offset_right = 0.124985
+offset_bottom = -0.100006
+grow_horizontal = 2
+texture = ExtResource("1_vy6qr")
+expand_mode = 2
+
+[node name="Difficulty Level" type="HBoxContainer" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate4"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.553
+anchor_right = 0.877
+anchor_bottom = 0.707
+offset_left = 0.0970001
+offset_top = -0.0500183
+offset_right = -0.0970001
+offset_bottom = 0.0499725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Star1" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate4/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star2" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate4/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star3" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate4/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star4" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate4/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Reward" type="RichTextLabel" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.766
+anchor_right = 0.877
+anchor_bottom = 0.88
+offset_left = 0.116999
+offset_top = -0.100006
+offset_right = -0.0730133
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font=res://Assets/fonts/space/SpaceCrusaders-x3DP0.ttf][font_size=30][center]$99[/center][/font_size][/font]
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LevelSelectionTemplate5" type="Button" parent="Main Panel/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+text = "
+
+"
+
+[node name="Image" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.1
+anchor_right = 0.875
+anchor_bottom = 0.5
+offset_left = -0.125
+offset_right = 0.124985
+offset_bottom = -0.100006
+grow_horizontal = 2
+texture = ExtResource("1_vy6qr")
+expand_mode = 2
+
+[node name="Difficulty Level" type="HBoxContainer" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate5"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.553
+anchor_right = 0.877
+anchor_bottom = 0.707
+offset_left = 0.0970001
+offset_top = -0.0500183
+offset_right = -0.0970001
+offset_bottom = 0.0499725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Star1" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate5/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star2" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate5/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star3" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate5/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star4" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate5/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Reward" type="RichTextLabel" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.766
+anchor_right = 0.877
+anchor_bottom = 0.88
+offset_left = 0.116999
+offset_top = -0.100006
+offset_right = -0.0730133
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font=res://Assets/fonts/space/SpaceCrusaders-x3DP0.ttf][font_size=30][center]$99[/center][/font_size][/font]
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LevelSelectionTemplate6" type="Button" parent="Main Panel/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+text = "
+
+"
+
+[node name="Image" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.1
+anchor_right = 0.875
+anchor_bottom = 0.5
+offset_left = -0.125
+offset_right = 0.124985
+offset_bottom = -0.100006
+grow_horizontal = 2
+texture = ExtResource("1_vy6qr")
+expand_mode = 2
+
+[node name="Difficulty Level" type="HBoxContainer" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate6"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.553
+anchor_right = 0.877
+anchor_bottom = 0.707
+offset_left = 0.0970001
+offset_top = -0.0500183
+offset_right = -0.0970001
+offset_bottom = 0.0499725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Star1" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate6/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star2" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate6/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star3" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate6/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star4" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate6/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Reward" type="RichTextLabel" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate6"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.766
+anchor_right = 0.877
+anchor_bottom = 0.88
+offset_left = 0.116999
+offset_top = -0.100006
+offset_right = -0.0730133
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font=res://Assets/fonts/space/SpaceCrusaders-x3DP0.ttf][font_size=30][center]$99[/center][/font_size][/font]
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LevelSelectionTemplate7" type="Button" parent="Main Panel/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+text = "
+
+"
+
+[node name="Image" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate7"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.1
+anchor_right = 0.875
+anchor_bottom = 0.5
+offset_left = -0.125
+offset_right = 0.124985
+offset_bottom = -0.100006
+grow_horizontal = 2
+texture = ExtResource("1_vy6qr")
+expand_mode = 2
+
+[node name="Difficulty Level" type="HBoxContainer" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate7"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.553
+anchor_right = 0.877
+anchor_bottom = 0.707
+offset_left = 0.0970001
+offset_top = -0.0500183
+offset_right = -0.0970001
+offset_bottom = 0.0499725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Star1" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate7/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star2" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate7/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star3" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate7/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star4" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate7/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Reward" type="RichTextLabel" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate7"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.766
+anchor_right = 0.877
+anchor_bottom = 0.88
+offset_left = 0.116999
+offset_top = -0.100006
+offset_right = -0.0730133
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font=res://Assets/fonts/space/SpaceCrusaders-x3DP0.ttf][font_size=30][center]$99[/center][/font_size][/font]
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LevelSelectionTemplate8" type="Button" parent="Main Panel/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+text = "
+
+"
+
+[node name="Image" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate8"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.1
+anchor_right = 0.875
+anchor_bottom = 0.5
+offset_left = -0.125
+offset_right = 0.124985
+offset_bottom = -0.100006
+grow_horizontal = 2
+texture = ExtResource("1_vy6qr")
+expand_mode = 2
+
+[node name="Difficulty Level" type="HBoxContainer" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate8"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.553
+anchor_right = 0.877
+anchor_bottom = 0.707
+offset_left = 0.0970001
+offset_top = -0.0500183
+offset_right = -0.0970001
+offset_bottom = 0.0499725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Star1" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate8/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star2" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate8/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star3" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate8/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star4" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate8/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Reward" type="RichTextLabel" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate8"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.766
+anchor_right = 0.877
+anchor_bottom = 0.88
+offset_left = 0.116999
+offset_top = -0.100006
+offset_right = -0.0730133
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font=res://Assets/fonts/space/SpaceCrusaders-x3DP0.ttf][font_size=30][center]$99[/center][/font_size][/font]
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LevelSelectionTemplate9" type="Button" parent="Main Panel/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+text = "
+
+"
+
+[node name="Image" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate9"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.1
+anchor_right = 0.875
+anchor_bottom = 0.5
+offset_left = -0.125
+offset_right = 0.124985
+offset_bottom = -0.100006
+grow_horizontal = 2
+texture = ExtResource("1_vy6qr")
+expand_mode = 2
+
+[node name="Difficulty Level" type="HBoxContainer" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate9"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.553
+anchor_right = 0.877
+anchor_bottom = 0.707
+offset_left = 0.0970001
+offset_top = -0.0500183
+offset_right = -0.0970001
+offset_bottom = 0.0499725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Star1" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate9/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star2" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate9/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star3" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate9/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star4" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate9/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Reward" type="RichTextLabel" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate9"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.766
+anchor_right = 0.877
+anchor_bottom = 0.88
+offset_left = 0.116999
+offset_top = -0.100006
+offset_right = -0.0730133
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font=res://Assets/fonts/space/SpaceCrusaders-x3DP0.ttf][font_size=30][center]$99[/center][/font_size][/font]
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LevelSelectionTemplate10" type="Button" parent="Main Panel/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+text = "
+
+"
+
+[node name="Image" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate10"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.1
+anchor_right = 0.875
+anchor_bottom = 0.5
+offset_left = -0.125
+offset_right = 0.124985
+offset_bottom = -0.100006
+grow_horizontal = 2
+texture = ExtResource("1_vy6qr")
+expand_mode = 2
+
+[node name="Difficulty Level" type="HBoxContainer" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate10"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.553
+anchor_right = 0.877
+anchor_bottom = 0.707
+offset_left = 0.0970001
+offset_top = -0.0500183
+offset_right = -0.0970001
+offset_bottom = 0.0499725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Star1" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate10/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star2" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate10/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star3" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate10/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star4" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate10/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Reward" type="RichTextLabel" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate10"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.766
+anchor_right = 0.877
+anchor_bottom = 0.88
+offset_left = 0.116999
+offset_top = -0.100006
+offset_right = -0.0730133
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font=res://Assets/fonts/space/SpaceCrusaders-x3DP0.ttf][font_size=30][center]$99[/center][/font_size][/font]
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LevelSelectionTemplate11" type="Button" parent="Main Panel/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+text = "
+
+"
+
+[node name="Image" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate11"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.1
+anchor_right = 0.875
+anchor_bottom = 0.5
+offset_left = -0.125
+offset_right = 0.124985
+offset_bottom = -0.100006
+grow_horizontal = 2
+texture = ExtResource("1_vy6qr")
+expand_mode = 2
+
+[node name="Difficulty Level" type="HBoxContainer" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate11"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.553
+anchor_right = 0.877
+anchor_bottom = 0.707
+offset_left = 0.0970001
+offset_top = -0.0500183
+offset_right = -0.0970001
+offset_bottom = 0.0499725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Star1" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate11/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star2" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate11/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star3" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate11/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star4" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate11/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Reward" type="RichTextLabel" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate11"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.766
+anchor_right = 0.877
+anchor_bottom = 0.88
+offset_left = 0.116999
+offset_top = -0.100006
+offset_right = -0.0730133
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[font=res://Assets/fonts/space/SpaceCrusaders-x3DP0.ttf][font_size=30][center]$99[/center][/font_size][/font]
+
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="LevelSelectionTemplate12" type="Button" parent="Main Panel/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 350)
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+text = "
+
+"
+
+[node name="Image" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate12"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.1
+anchor_right = 0.875
+anchor_bottom = 0.5
+offset_left = -0.125
+offset_right = 0.124985
+offset_bottom = -0.100006
+grow_horizontal = 2
+texture = ExtResource("1_vy6qr")
+expand_mode = 2
+
+[node name="Difficulty Level" type="HBoxContainer" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate12"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123
+anchor_top = 0.553
+anchor_right = 0.877
+anchor_bottom = 0.707
+offset_left = 0.0970001
+offset_top = -0.0500183
+offset_right = -0.0970001
+offset_bottom = 0.0499725
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Star1" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate12/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star2" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate12/Difficulty Level"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star3" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate12/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Star4" type="TextureRect" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate12/Difficulty Level"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 5
+texture = ExtResource("2_tn34m")
+expand_mode = 2
+
+[node name="Reward" type="RichTextLabel" parent="Main Panel/ScrollContainer/GridContainer/LevelSelectionTemplate12"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.123
