@@ -1,6 +1,6 @@
 using Godot;
 
-namespace NightmareNegotiations.Items;
+namespace NightmareNegotiations;
 
 public partial class Flashlight : Node3D, IItem
 {
@@ -14,13 +14,13 @@ public partial class Flashlight : Node3D, IItem
 		Light.LightEnergy = 0.0f;
 	}
 	
-	public void Enable(Managers.ItemManager itemManager)
+	public void Enable(ItemManager itemManager)
 	{
 		SetProcess(true);
 		itemManager.ItemUsed += OnUse;
 	}
 
-	public void Disable(Managers.ItemManager itemManager)
+	public void Disable(ItemManager itemManager)
 	{
 		SetProcess(false);
 		itemManager.ItemUsed -= OnUse;

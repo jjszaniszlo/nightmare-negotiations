@@ -1,14 +1,12 @@
 ﻿using Godot;
-using NightmareNegotiations.Interactable;
 using NightmareNegotiations.Scenes.Lobby;
-using NightmareNegotiations.Utils;
 
-namespace NightmareNegotiations.Managers.InGameUI;
+namespace NightmareNegotiations;
 
 public partial class LobbyComputerManager : Node, IGameInterfaceManager
 {
 	[Export] public CanvasLayer PostProcessing { get; private set; }
-	[Export] public Player.Player Player { get; private set; }
+	[Export] public Player Player { get; private set; }
 	[Export] public ComputerInteractable Computer { get; private set; }
 
 	private bool state;

@@ -3,7 +3,7 @@ using System.Linq;
 using Godot;
 using Godot.Collections;
 
-namespace NightmareNegotiations.CustomResources;
+namespace NightmareNegotiations;
 
 [GlobalClass, Tool]
 public partial class TerrainNoise : Resource

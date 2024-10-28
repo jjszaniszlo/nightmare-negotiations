@@ -1,10 +1,10 @@
 using System;
 using Godot;
+using NightmareNegotiations.Scenes.Lobby;
 using NightmareNegotiations.Scenes.LobbySelectionMenu;
 using NightmareNegotiations.Scenes.MainMenu;
-using NightmareNegotiations.Utils;
 
-namespace NightmareNegotiations.Managers;
+namespace NightmareNegotiations;
 
 public partial class GameManager : Node
 {
@@ -39,7 +39,7 @@ public partial class GameManager : Node
 		mainMenu.Name = "MainMenu";
 		
 		mainMenu.OnSelectMultiPlayer += () => state.Transition(GameState.LobbyMenu);
-		mainMenu.OnSelectSinglePlayer += () => state.Transition(GameState.Game);
+		mainMenu.OnSelectSinglePlayer += () => state.Transition(GameState.Lobby);
 		
 		MenusNode.AddChild(mainMenu);
 	}
@@ -56,15 +56,26 @@ public partial class GameManager : Node
 	
 	private void OnLobbyEntered()
 	{
-		throw new NotImplementedException();
+		var lobby = GD.Load<PackedScene>("res://Scenes/Lobby/Lobby.tscn").Instantiate();
+		lobby.Name = "Lobby";
+		
+		lobby.GetNode<PauseManager>("PauseManager").OnQuitGame += () => state.Transition(GameState.MainMenu);
+		lobby.GetNode("ComputerInterfaceManager")
+			.GetNode<ComputerInterface>("ComputerInterface").OnLevelSelected += () => 
+		{
+			GD.Print("Pressed!");
+			state.Transition(GameState.Game);
+		};
+		
+		GameplayNode.AddChild(lobby);
 	}
 
 	private void OnGameEntered()
 	{
-		var game = GD.Load<PackedScene>("res://Scenes/Map1.tscn").Instantiate();
+		var game = GD.Load<PackedScene>("res://Scenes/TerrainGenerationTest.tscn").Instantiate();
 		game.Name = "Game";
 
-		game.GetNode<InGameUI.PauseManager>("PauseHandler").OnQuitGame += () => state.Transition(GameState.MainMenu);
+		game.GetNode<PauseManager>("PauseManager").OnQuitGame += () => state.Transition(GameState.MainMenu);
 		
 		GameplayNode.AddChild(game);
 	}
@@ -81,7 +92,7 @@ public partial class GameManager : Node
 	
 	private void OnLobbyLeft()
 	{
-		throw new NotImplementedException();
+		GameplayNode.GetNode("Lobby").QueueFree();
 	}
 
 	private void OnGameLeft()

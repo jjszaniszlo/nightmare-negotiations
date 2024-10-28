@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace NightmareNegotiations.CustomResources;
+namespace NightmareNegotiations;
 
 public partial class Level : Resource
 {

@@ -19,9 +19,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_2mlbq")
 [node name="Light" type="SpotLight3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.74092)
 light_energy = 0.0
-light_volumetric_fog_energy = 1.5
+light_volumetric_fog_energy = 0.939
 shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 5.0
 distance_fade_length = 5.0
 spot_range = 11.9487
+spot_angle = 19.1876

@@ -1,15 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://cv0rboqgisnke"]
 
 [ext_resource type="Script" path="res://Scenes/Main/Main.cs" id="1_vs0hq"]
-[ext_resource type="Script" path="res://Source Code/GameManager.cs" id="2_uyrmj"]
+[ext_resource type="Script" path="res://Source Code/Managers/GameManager.cs" id="2_5dex2"]
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("gameManager")]
 script = ExtResource("1_vs0hq")
+gameManager = NodePath("GameManager")
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("menusNode", "gameplayNode")]
-script = ExtResource("2_uyrmj")
-menusNode = NodePath("../Menus")
-gameplayNode = NodePath("../Gameplay")
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("MenusNode", "GameplayNode")]
+script = ExtResource("2_5dex2")
+MenusNode = NodePath("../Menus")
+GameplayNode = NodePath("../Gameplay")
 
 [node name="Gameplay" type="Node" parent="."]
 

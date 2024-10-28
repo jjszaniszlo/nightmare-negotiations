@@ -1,8 +1,7 @@
 using System;
 using Godot;
-using NightmareNegotiations.CustomResources;
 
-namespace NightmareNegotiations.Terrain;
+namespace NightmareNegotiations;
 
 // [Tool]
 public partial class TerrainGenerator : StaticBody3D

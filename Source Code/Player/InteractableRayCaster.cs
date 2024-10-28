@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace NightmareNegotiations.Player;
+namespace NightmareNegotiations;
 
 [GlobalClass]
 public partial class InteractableRayCaster : RayCast3D
@@ -9,7 +9,7 @@ public partial class InteractableRayCaster : RayCast3D
     {
         var collider = GetCollider();
 
-        if (IsColliding() && collider is Interactable.Interactable interactable)
+        if (IsColliding() && collider is Interactable interactable)
         {
             if (Input.IsActionJustPressed("interact"))
             {

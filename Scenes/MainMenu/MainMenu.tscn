@@ -16,7 +16,6 @@ grow_vertical = 2
 script = ExtResource("1_fg4fg")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,7 +25,6 @@ grow_vertical = 2
 texture = ExtResource("2_054wh")
 
 [node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,7 +36,6 @@ expand = true
 loop = true
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,6 +57,7 @@ anchor_right = 0.895
 anchor_bottom = 0.967
 
 [node name="Single Player" type="Button" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -67,6 +65,7 @@ theme_override_font_sizes/font_size = 19
 text = "Singleplayer"
 
 [node name="Multiplayer" type="Button" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -74,6 +73,7 @@ theme_override_font_sizes/font_size = 19
 text = "Multiplayer"
 
 [node name="Quit" type="Button" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -98,3 +98,4 @@ icon_alignment = 1
 
 [connection signal="pressed" from="HBoxContainer/Single Player" to="." method="OnSinglePlayerButtonPressed"]
 [connection signal="pressed" from="HBoxContainer/Multiplayer" to="." method="OnMultiPlayerButtonPressed"]
+[connection signal="pressed" from="HBoxContainer/Quit" to="." method="OnQuitButtonPressed"]

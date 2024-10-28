@@ -1,10 +1,10 @@
 ﻿using Godot;
 
-namespace NightmareNegotiations.Items;
+namespace NightmareNegotiations;
 
 public interface IItem
 {
-    public void Enable(Managers.ItemManager itemManager);
-    public void Disable(Managers.ItemManager itemManager);
+    public void Enable(ItemManager itemManager);
+    public void Disable(ItemManager itemManager);
     public void OnUse();
 }

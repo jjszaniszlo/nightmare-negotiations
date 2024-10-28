@@ -1,14 +1,13 @@
 using Godot;
 using NightmareNegotiations.Scenes.PauseMenu;
-using NightmareNegotiations.Utils;
 
-namespace NightmareNegotiations.Managers.InGameUI;
+namespace NightmareNegotiations;
 
 public partial class PauseManager : Node, IGameInterfaceManager
 {
 	private bool pauseState;
 	[Export] public CanvasLayer PostProcessing { get; private set; }
-	[Export] public Player.Player Player { get; private set; }
+	[Export] public Player Player { get; private set; }
 	
 	[Signal]
 	public delegate void OnQuitGameEventHandler();

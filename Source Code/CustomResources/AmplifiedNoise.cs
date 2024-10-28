@@ -1,6 +1,6 @@
 using Godot;
 
-namespace NightmareNegotiations.CustomResources;
+namespace NightmareNegotiations;
 
 [GlobalClass, Tool]
 public partial class AmplifiedNoise : FastNoiseLite 

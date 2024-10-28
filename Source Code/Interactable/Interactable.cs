@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace NightmareNegotiations.Interactable;
+namespace NightmareNegotiations;
 
 public abstract partial class Interactable : Node
 {

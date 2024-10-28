@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace NightmareNegotiations.Utils;
+namespace NightmareNegotiations;
 
 public partial class DelegateOnZeroCounter : Node
 {

@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://jen0weqs7dy5"]
+[gd_scene load_steps=21 format=3 uid="uid://jen0weqs7dy5"]
 
 [ext_resource type="Texture2D" uid="uid://dtrv0y48jnool" path="res://Assets/textures/prototype/Light/texture_01.png" id="1_a4nk8"]
 [ext_resource type="Texture2D" uid="uid://d0soav6g5f2sn" path="res://Assets/textures/prototype/Dark/texture_01.png" id="1_jr4qy"]
 [ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://Game Objects/player.tscn" id="2_1nudo"]
 [ext_resource type="Texture2D" uid="uid://dif18xney7s0j" path="res://Assets/textures/prototype/Orange/texture_01.png" id="2_pwxfi"]
+[ext_resource type="Texture2D" uid="uid://c35wq32lrv8bh" path="res://Assets/textures/prototype/Dark/texture_08.png" id="2_xmbso"]
 [ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="3_rm85v"]
 [ext_resource type="Script" path="res://Source Code/Interactable/ComputerInteractable.cs" id="4_o808i"]
 [ext_resource type="PackedScene" uid="uid://bbh2gh1fkh0fh" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="5_c2gyt"]
@@ -28,6 +29,9 @@ glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nf4ev"]
 albedo_texture = ExtResource("1_jr4qy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njl5h"]
+albedo_texture = ExtResource("2_xmbso")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7b8nc"]
 albedo_texture = ExtResource("1_a4nk8")
@@ -68,7 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007, -0.25, -0.073)
 snap = 1.0
 use_collision = true
 size = Vector3(15, 0.5, 15)
-material = SubResource("StandardMaterial3D_7b8nc")
+material = SubResource("StandardMaterial3D_njl5h")
 
 [node name="Walls" type="Node3D" parent="Level"]
 

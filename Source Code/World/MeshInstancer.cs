@@ -1,8 +1,7 @@
 ﻿using System;
 using Godot;
-using NightmareNegotiations.CustomResources;
 
-namespace NightmareNegotiations.Terrain;
+namespace NightmareNegotiations;
 
 public partial class MeshInstancer : Node3D
 {

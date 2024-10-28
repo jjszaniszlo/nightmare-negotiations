@@ -1,6 +1,6 @@
 ﻿using Godot;
 
-namespace NightmareNegotiations.Managers.InGameUI;
+namespace NightmareNegotiations;
 
 public interface IGameInterfaceManager
 {

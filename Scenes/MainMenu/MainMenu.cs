@@ -18,4 +18,9 @@ public partial class MainMenu : Node
     {
         EmitSignal(SignalName.OnSelectMultiPlayer);
     }
+
+    private void OnQuitButtonPressed()
+    {
+        GetTree().Quit();
+    }
 }

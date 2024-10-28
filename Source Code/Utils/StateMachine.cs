@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Godot;
 
-namespace NightmareNegotiations.Utils;
+namespace NightmareNegotiations;
 
 public partial class StateMachine : Node 
 {
