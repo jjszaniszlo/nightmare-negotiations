@@ -1,3 +1,133 @@
-[gd_scene format=3 uid="uid://jen0weqs7dy5"]
+[gd_scene load_steps=15 format=3 uid="uid://jen0weqs7dy5"]
+
+[ext_resource type="Texture2D" uid="uid://dtrv0y48jnool" path="res://Assets/textures/prototype/Light/texture_01.png" id="1_a4nk8"]
+[ext_resource type="Texture2D" uid="uid://d0soav6g5f2sn" path="res://Assets/textures/prototype/Dark/texture_01.png" id="1_jr4qy"]
+[ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://Game Objects/player.tscn" id="2_1nudo"]
+[ext_resource type="Texture2D" uid="uid://dif18xney7s0j" path="res://Assets/textures/prototype/Orange/texture_01.png" id="2_pwxfi"]
+[ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="3_rm85v"]
+[ext_resource type="Script" path="res://Source Code/PauseHandler.cs" id="4_qsy72"]
+[ext_resource type="PackedScene" uid="uid://bbh2gh1fkh0fh" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="5_c2gyt"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i3wpa"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_energy_multiplier = 0.0
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_m4esx"]
+sky_material = SubResource("ProceduralSkyMaterial_i3wpa")
+
+[sub_resource type="Environment" id="Environment_qucxt"]
+background_mode = 2
+sky = SubResource("Sky_m4esx")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nf4ev"]
+albedo_texture = ExtResource("1_jr4qy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7b8nc"]
+albedo_texture = ExtResource("1_a4nk8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38ttg"]
+albedo_texture = ExtResource("2_pwxfi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dijq8"]
+shader = ExtResource("3_rm85v")
+shader_parameter/shake = 0.0
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0001
+shader_parameter/colorOffsetIntensity = 0.1
+shader_parameter/pixelSize = 400.0
+shader_parameter/grainIntensity = 0.006
+shader_parameter/use_overlay = false
+shader_parameter/use_lens_distortion = false
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.05
 
 [node name="Lobby" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qucxt")
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Ceiling" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007, 5, 0)
+snap = 1.0
+use_collision = true
+size = Vector3(15, 0.5, 15)
+material = SubResource("StandardMaterial3D_nf4ev")
+
+[node name="Floor" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007, -0.25, -0.073)
+snap = 1.0
+use_collision = true
+size = Vector3(15, 0.5, 15)
+material = SubResource("StandardMaterial3D_7b8nc")
+
+[node name="Walls" type="Node3D" parent="Level"]
+
+[node name="Wall1" type="CSGBox3D" parent="Level/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 7.5)
+snap = 1.0
+use_collision = true
+size = Vector3(15, 5, 0.5)
+material = SubResource("StandardMaterial3D_7b8nc")
+
+[node name="Wall2" type="CSGBox3D" parent="Level/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 2.5, 0)
+snap = 1.0
+use_collision = true
+size = Vector3(15, 5, 0.5)
+material = SubResource("StandardMaterial3D_7b8nc")
+
+[node name="Wall3" type="CSGBox3D" parent="Level/Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.5, 2.5, 0)
+snap = 1.0
+use_collision = true
+size = Vector3(15, 5, 0.5)
+material = SubResource("StandardMaterial3D_7b8nc")
+
+[node name="Wall4" type="CSGBox3D" parent="Level/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -7.5)
+snap = 1.0
+use_collision = true
+size = Vector3(15, 5, 0.5)
+material = SubResource("StandardMaterial3D_7b8nc")
+
+[node name="Computer" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.158132, 1.2275, -6.73905)
+size = Vector3(1, 2.4364, 1)
+material = SubResource("StandardMaterial3D_38ttg")
+
+[node name="Player" parent="." instance=ExtResource("2_1nudo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11119, 0)
+
+[node name="PostProcessing" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_dijq8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseHandler" type="Node" parent="." node_paths=PackedStringArray("postProcessing", "pauseMenu", "player")]
+script = ExtResource("4_qsy72")
+postProcessing = NodePath("../PostProcessing")
+pauseMenu = NodePath("PauseMenu")
+player = NodePath("../Player")
+
+[node name="PauseMenu" parent="PauseHandler" instance=ExtResource("5_c2gyt")]
+visible = false
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.5, 0)
+light_color = Color(0.882443, 0.881691, 0.800775, 1)
+light_energy = 10.333
+light_indirect_energy = 0.955
+spot_range = 12.5026
+spot_angle = 67.5
