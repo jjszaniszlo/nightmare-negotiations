@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using NightmareNegotiations.Scenes.Lobby;
 using NightmareNegotiations.Scenes.LobbySelectionMenu;
@@ -8,13 +7,15 @@ namespace NightmareNegotiations;
 
 public partial class GameManager : Node
 {
-	[Export] public Node MenusNode { get; private set; }
-	[Export] public Node GameplayNode { get; private set; }
-
+	private Node menusNode;
+	private Node gameplayNode;
 	private StateMachine state = new();
 
 	public override void _Ready()
 	{
+		menusNode = GetParent().GetNode<Node>("Menus");
+		gameplayNode = GetParent().GetNode<Node>("Gameplay");
+		
 		state.AddState(GameState.MainMenu, "MainMenu");
 		state.AddState(GameState.LobbyMenu, "LobbyMenu");
 		state.AddState(GameState.Lobby, "Lobby");
@@ -41,7 +42,7 @@ public partial class GameManager : Node
 		mainMenu.OnSelectMultiPlayer += () => state.Transition(GameState.LobbyMenu);
 		mainMenu.OnSelectSinglePlayer += () => state.Transition(GameState.Lobby);
 		
-		MenusNode.AddChild(mainMenu);
+		menusNode.AddChild(mainMenu);
 	}
 	
 	private void OnLobbyMenuEntered()
@@ -51,7 +52,7 @@ public partial class GameManager : Node
 
 		lobbyMenu.OnSelectBack += () => state.Transition(GameState.MainMenu);
 		
-		MenusNode.AddChild(lobbyMenu);
+		menusNode.AddChild(lobbyMenu);
 	}
 	
 	private void OnLobbyEntered()
@@ -67,7 +68,7 @@ public partial class GameManager : Node
 			state.Transition(GameState.Game);
 		};
 		
-		GameplayNode.AddChild(lobby);
+		gameplayNode.AddChild(lobby);
 	}
 
 	private void OnGameEntered()
@@ -77,27 +78,27 @@ public partial class GameManager : Node
 
 		game.GetNode<PauseManager>("PauseManager").OnQuitGame += () => state.Transition(GameState.MainMenu);
 		
-		GameplayNode.AddChild(game);
+		gameplayNode.AddChild(game);
 	}
 	
 	private void OnMainMenuLeft()
 	{
-		MenusNode.GetNode("MainMenu").QueueFree();
+		menusNode.GetNode("MainMenu").QueueFree();
 	}
 	
 	private void OnLobbyMenuLeft()
 	{
-		MenusNode.GetNode("LobbyMenu").QueueFree();
+		menusNode.GetNode("LobbyMenu").QueueFree();
 	}
 	
 	private void OnLobbyLeft()
 	{
-		GameplayNode.GetNode("Lobby").QueueFree();
+		gameplayNode.GetNode("Lobby").QueueFree();
 	}
 
 	private void OnGameLeft()
 	{
-		GameplayNode.GetNode("Game").QueueFree();
+		gameplayNode.GetNode("Game").QueueFree();
 	}
 	
 	private enum GameState : uint {
