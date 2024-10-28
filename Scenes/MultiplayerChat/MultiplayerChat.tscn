@@ -6,43 +6,51 @@
 script = ExtResource("1_b0630")
 
 [node name="Host" type="Button" parent="."]
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 50.0
-offset_bottom = 37.0
+offset_left = -267.0
+offset_top = 39.0
+offset_right = -241.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 8
 text = "Host"
 
 [node name="Join" type="Button" parent="."]
-offset_left = 56.0
-offset_top = 6.0
-offset_right = 94.0
-offset_bottom = 37.0
+offset_left = -236.0
+offset_top = 39.0
+offset_right = -213.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 8
 text = "Join"
 
 [node name="Username" type="LineEdit" parent="."]
-offset_left = 102.0
-offset_top = 6.0
-offset_right = 212.0
-offset_bottom = 37.0
+offset_left = -208.0
+offset_top = 39.0
+offset_right = -143.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 8
 placeholder_text = "Username"
 
 [node name="Send" type="Button" parent="."]
-offset_top = -54.0
-offset_right = 47.0
-offset_bottom = -23.0
+offset_left = -117.0
+offset_top = 15.0
+offset_right = -92.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 7
 text = "Send"
 
 [node name="Message" type="LineEdit" parent="."]
-offset_top = -86.0
-offset_right = 300.0
-offset_bottom = -55.0
+offset_left = -269.0
+offset_top = 15.0
+offset_right = -119.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 8
 placeholder_text = "Message"
 
 [node name="Messages" type="TextEdit" parent="."]
-offset_left = 1.0
-offset_top = -395.0
-offset_right = 301.0
-offset_bottom = -95.0
+offset_left = -269.0
+offset_top = -140.0
+offset_right = -119.0
+offset_bottom = 10.0
+theme_override_font_sizes/font_size = 8
 editable = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
