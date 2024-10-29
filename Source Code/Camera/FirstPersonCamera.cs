@@ -6,7 +6,6 @@ public partial class FirstPersonCamera : Node3D
 {
 	[Export]
 	public Camera3D Camera { get; private set; }
-
 	[Export]
 	public float CameraSensitivity { get; private set; }
 	[Export]
