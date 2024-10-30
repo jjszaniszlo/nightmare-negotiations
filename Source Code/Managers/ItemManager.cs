@@ -11,9 +11,9 @@ public partial class ItemManager : Node3D
 
 	public override void _Ready()
 	{
-		var flashlight = Globals.Instance.ItemManifest["flashlight"].Instantiate<Flashlight>();
-		flashlight.Enable(this);
-		ItemPivot.AddChild(flashlight);
+		// var flashlight = Globals.Instance.ItemManifest["flashlight"].Instantiate<Flashlight>();
+		// flashlight.Enable(this);
+		// ItemPivot.AddChild(flashlight);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

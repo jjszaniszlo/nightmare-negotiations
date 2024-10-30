@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NightmareNegotiations", "NightmareNegotiations.csproj", "{9C51DDA2-A28E-44C7-A08D-3EFEF43D84AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NightmareNegotiations", "NightmareNegotiations.csproj", "{D1CD7EB7-5FFB-46F8-92A0-FEC1BA5DE0E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9C51DDA2-A28E-44C7-A08D-3EFEF43D84AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C51DDA2-A28E-44C7-A08D-3EFEF43D84AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C51DDA2-A28E-44C7-A08D-3EFEF43D84AB}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{9C51DDA2-A28E-44C7-A08D-3EFEF43D84AB}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{9C51DDA2-A28E-44C7-A08D-3EFEF43D84AB}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{9C51DDA2-A28E-44C7-A08D-3EFEF43D84AB}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{D1CD7EB7-5FFB-46F8-92A0-FEC1BA5DE0E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1CD7EB7-5FFB-46F8-92A0-FEC1BA5DE0E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1CD7EB7-5FFB-46F8-92A0-FEC1BA5DE0E7}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{D1CD7EB7-5FFB-46F8-92A0-FEC1BA5DE0E7}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{D1CD7EB7-5FFB-46F8-92A0-FEC1BA5DE0E7}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{D1CD7EB7-5FFB-46F8-92A0-FEC1BA5DE0E7}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal
