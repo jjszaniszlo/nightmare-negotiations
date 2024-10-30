@@ -17,6 +17,7 @@ public partial class TerrainGeneration : Node3D
 	
 	public override void _Ready()
 	{
+		Engine.SetMaxFps(60);
 		GenerateTerrain();	
 	}
 
