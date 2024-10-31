@@ -4,5 +4,6 @@ namespace NightmareNegotiations;
 
 public partial class Item : Resource
 {
-    [Export] public PackedScene item;
+    [Export] public string Name { get; set; }
+    [Export] public Mesh Mesh { get; set; }
 }

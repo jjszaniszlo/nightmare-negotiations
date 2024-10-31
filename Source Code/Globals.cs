@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Godot;
-
-namespace NightmareNegotiations;
+﻿namespace NightmareNegotiations;
 
 internal static class Globals
 {

@@ -2,7 +2,7 @@ using Godot;
 
 namespace NightmareNegotiations;
 
-public partial class Player : CharacterBody3D
+public partial class PlayerMovement : CharacterBody3D
 {
 	[ExportCategory("Player Movement Options")]
 	

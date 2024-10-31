@@ -6,7 +6,7 @@ namespace NightmareNegotiations;
 public partial class LobbyComputerManager : Node, IGameInterfaceManager
 {
 	[Export] public CanvasLayer PostProcessing { get; private set; }
-	[Export] public Player Player { get; private set; }
+	[Export] public PlayerMovement PlayerMovement { get; private set; }
 	[Export] public ComputerInteractable Computer { get; private set; }
 
 	private bool state;
@@ -41,16 +41,16 @@ public partial class LobbyComputerManager : Node, IGameInterfaceManager
 
 	public void EnableRequired()
 	{
-		Player.SetPhysicsProcess(false);
-		Player.GetNode("Head").SetProcessInput(false);
+		PlayerMovement.SetPhysicsProcess(false);
+		PlayerMovement.GetNode("Head").SetProcessInput(false);
 		PostProcessing.Visible = false;
 		Input.SetMouseMode(Input.MouseModeEnum.Visible);
     }
 
     public void DisableRequired()
     {
-		Player.SetPhysicsProcess(true);
-		Player.GetNode("Head").SetProcessInput(true);
+		PlayerMovement.SetPhysicsProcess(true);
+		PlayerMovement.GetNode("Head").SetProcessInput(true);
 		PostProcessing.Visible = true;
 		Input.SetMouseMode(Input.MouseModeEnum.Captured);
     }
