@@ -1,16 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://jen0weqs7dy5"]
+[gd_scene load_steps=19 format=3 uid="uid://jen0weqs7dy5"]
 
-[ext_resource type="Texture2D" uid="uid://dtrv0y48jnool" path="res://Assets/textures/prototype/Light/texture_01.png" id="1_a4nk8"]
-[ext_resource type="Texture2D" uid="uid://d0soav6g5f2sn" path="res://Assets/textures/prototype/Dark/texture_01.png" id="1_jr4qy"]
-[ext_resource type="Texture2D" uid="uid://c35wq32lrv8bh" path="res://Assets/textures/prototype/Dark/texture_08.png" id="2_xmbso"]
-[ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="3_rm85v"]
-[ext_resource type="Script" path="res://Source Code/Interactable/ComputerInteractable.cs" id="4_o808i"]
-[ext_resource type="PackedScene" uid="uid://bbh2gh1fkh0fh" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="5_c2gyt"]
-[ext_resource type="Texture2D" uid="uid://dif18xney7s0j" path="res://Assets/textures/prototype/Orange/texture_01.png" id="5_g4mpd"]
-[ext_resource type="Script" path="res://Source Code/PauseManager.cs" id="6_ysu7i"]
-[ext_resource type="Script" path="res://Scenes/LobbyScene/LobbyComputerManager.cs" id="7_1e30b"]
-[ext_resource type="PackedScene" uid="uid://87at3ii1tc2j" path="res://Scenes/LobbyScene/ComputerInterface.tscn" id="8_65m7d"]
-[ext_resource type="Script" path="res://Source Code/Utilities/DelegateOnZeroCounter.cs" id="11_vnamm"]
+[ext_resource type="Script" path="res://Scenes/LobbyScene/LobbyScene.cs" id="1_3roir"]
+[ext_resource type="Texture2D" uid="uid://d0soav6g5f2sn" path="res://Assets/textures/prototype/Dark/texture_01.png" id="2_f585f"]
+[ext_resource type="Texture2D" uid="uid://c35wq32lrv8bh" path="res://Assets/textures/prototype/Dark/texture_08.png" id="3_ghlj6"]
+[ext_resource type="Texture2D" uid="uid://dtrv0y48jnool" path="res://Assets/textures/prototype/Light/texture_01.png" id="4_e1dhm"]
+[ext_resource type="Texture2D" uid="uid://dif18xney7s0j" path="res://Assets/textures/prototype/Orange/texture_01.png" id="5_tm0o4"]
+[ext_resource type="Script" path="res://Source Code/Interactable/ComputerInteractable.cs" id="6_h6x3w"]
+[ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="7_nmqv3"]
+[ext_resource type="Script" path="res://Source Code/GameUserInterfaceManager.cs" id="8_fe72b"]
+[ext_resource type="PackedScene" uid="uid://bbh2gh1fkh0fh" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="9_ndrq2"]
+[ext_resource type="PackedScene" uid="uid://87at3ii1tc2j" path="res://Scenes/LobbyScene/ComputerInterface/ComputerInterface.tscn" id="10_bgmlx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i3wpa"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -27,19 +26,19 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nf4ev"]
-albedo_texture = ExtResource("1_jr4qy")
+albedo_texture = ExtResource("2_f585f")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njl5h"]
-albedo_texture = ExtResource("2_xmbso")
+albedo_texture = ExtResource("3_ghlj6")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7b8nc"]
-albedo_texture = ExtResource("1_a4nk8")
+albedo_texture = ExtResource("4_e1dhm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38ttg"]
-albedo_texture = ExtResource("5_g4mpd")
+albedo_texture = ExtResource("5_tm0o4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dijq8"]
-shader = ExtResource("3_rm85v")
+shader = ExtResource("7_nmqv3")
 shader_parameter/shake = 0.0
 shader_parameter/noiseQuality = 250.0
 shader_parameter/noiseIntensity = 0.001
@@ -52,9 +51,12 @@ shader_parameter/use_lens_distortion = false
 shader_parameter/overlay_color = Color(1, 1, 1, 10)
 shader_parameter/lens_distortion_strength = 0.05
 
-[node name="Lobby" type="Node3D"]
+[node name="Lobby" type="Node3D" node_paths=PackedStringArray("PlayerInstances", "PauseMenu")]
+script = ExtResource("1_3roir")
+PlayerInstances = NodePath("PlayerInstances")
+PauseMenu = NodePath("GameUserInterfaceManager/PauseMenu")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Environment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qucxt")
 
 [node name="Level" type="Node3D" parent="."]
@@ -103,13 +105,14 @@ use_collision = true
 size = Vector3(15, 5, 0.5)
 material = SubResource("StandardMaterial3D_7b8nc")
 
-[node name="Computer" type="CSGBox3D" parent="Level"]
+[node name="Computer" type="CSGBox3D" parent="Level" node_paths=PackedStringArray("ComputerInterface")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.158132, 1.2275, -6.73905)
 use_collision = true
 collision_layer = 3
 size = Vector3(1, 2.4364, 1)
 material = SubResource("StandardMaterial3D_38ttg")
-script = ExtResource("4_o808i")
+script = ExtResource("6_h6x3w")
+ComputerInterface = NodePath("../../GameUserInterfaceManager/ComputerInterface")
 
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -122,28 +125,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ComputerInterfaceManager" type="Node" parent="." node_paths=PackedStringArray("PostProcessing", "Computer")]
-script = ExtResource("7_1e30b")
+[node name="GameUserInterfaceManager" type="Node" parent="." node_paths=PackedStringArray("PostProcessing", "PlayerInstances")]
+script = ExtResource("8_fe72b")
 PostProcessing = NodePath("../PostProcessing")
-Computer = NodePath("../Level/Computer")
+PlayerInstances = NodePath("../PlayerInstances")
 
-[node name="ComputerInterface" parent="ComputerInterfaceManager" instance=ExtResource("8_65m7d")]
+[node name="ComputerInterface" parent="GameUserInterfaceManager" instance=ExtResource("10_bgmlx")]
 visible = false
 
-[node name="PauseManager" type="Node" parent="." node_paths=PackedStringArray("PostProcessing")]
-script = ExtResource("6_ysu7i")
-PostProcessing = NodePath("../PostProcessing")
-
-[node name="PauseMenu" parent="PauseManager" instance=ExtResource("5_c2gyt")]
+[node name="PauseMenu" parent="GameUserInterfaceManager" instance=ExtResource("9_ndrq2")]
 visible = false
 
-[node name="InterfaceOnZeroCounter" type="Node" parent="."]
-script = ExtResource("11_vnamm")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="RoomLight" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.5, 0)
 light_color = Color(0.882443, 0.881691, 0.800775, 1)
 light_energy = 10.333
 light_indirect_energy = 0.955
 spot_range = 12.5026
 spot_angle = 67.5
+
+[node name="PlayerInstances" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Game Objects/player.tscn")
+spawn_path = NodePath("../PlayerInstances")

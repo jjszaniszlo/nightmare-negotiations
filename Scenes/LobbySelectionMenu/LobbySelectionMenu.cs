@@ -7,17 +7,17 @@ public partial class LobbySelectionMenu : Control
     [Export] public VBoxContainer LobbyListVBoxContainer { get; private set; }
     [Export] public LineEdit LobbyCodeTextBox { get; private set; }
 
-    private LobbyManager lobbyManager;
+    private LobbySelectionManager lobbySelectionManager;
     
     [Signal]
     public delegate void OnSelectJoinLobbyEventHandler(ulong lobbyCode);
     
     public override void _Ready()
     {
-        lobbyManager = new();
-        AddChild(lobbyManager);
+        lobbySelectionManager = new();
+        AddChild(lobbySelectionManager);
 
-        lobbyManager.CreateLobbyScene += OnCreateLobbyScene;
+        lobbySelectionManager.CreateLobbyScene += OnCreateLobbySelectionScene;
         
         LobbyCodeTextBox = GetNode<LineEdit>("LobbyCodeTextBox");
     }
@@ -33,7 +33,7 @@ public partial class LobbySelectionMenu : Control
         if (ulong.TryParse(text, out var lobbyId))
         {
             GD.Print($"Joining lobby with code: {lobbyId}");
-            lobbyManager.JoinLobby(lobbyId);
+            lobbySelectionManager.JoinLobby(lobbyId);
         }
         else
         {
@@ -46,9 +46,9 @@ public partial class LobbySelectionMenu : Control
         await Globals.Instance.SteamManager.CreateLobby();
     }
 
-    private void OnCreateLobbyScene(long peerId)
+    private void OnCreateLobbySelectionScene(long peerId)
     {
-        var lobby = GD.Load<PackedScene>("res://Scenes/LobbyScene/MultiplayerLobby.tscn").Instantiate<LobbyScene>();
+        var lobby = GD.Load<PackedScene>("res://Scenes/LobbyScene/LobbyScene.tscn").Instantiate<LobbyScene>();
         lobby.AddPlayer(peerId);
         NetworkUser.Instance.AddChild(lobby);
         QueueFree();

@@ -4,8 +4,6 @@ namespace NightmareNegotiations;
 
 public partial class ComputerInteractable : Interactable
 {
-    public override void Interact()
-    {
-        EmitSignal(Interactable.SignalName.OnInteract);
-    }
+    [Export] public ComputerInterface ComputerInterface { get; private set; }
+    public override void Interact() => ComputerInterface.Visible = !ComputerInterface.Visible;
 }

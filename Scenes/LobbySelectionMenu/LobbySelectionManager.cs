@@ -6,7 +6,7 @@ using Steamworks.Data;
 
 namespace NightmareNegotiations.Scenes.LobbySelectionMenu;
 
-public partial class LobbyManager : Node
+public partial class LobbySelectionManager : Node
 {
     [Signal] public delegate void CreateLobbySceneEventHandler(long peerId);
     
@@ -33,9 +33,10 @@ public partial class LobbyManager : Node
         var steamMultiplayerPeer = new SteamMultiplayerPeer();
         steamMultiplayerPeer.CreateClient(Globals.Instance.SteamManager.PlayerSteamID, lobby.Owner.Id);
 
-        NetworkUser.Instance.InLobby = true;
-        NetworkUser.Instance.PeerId = steamMultiplayerPeer.GetUniqueId();
         NetworkUser.Instance.Multiplayer.MultiplayerPeer = steamMultiplayerPeer;
+        NetworkUser.Instance.PeerId = steamMultiplayerPeer.GetUniqueId();
+        NetworkUser.Instance.InLobby = true;
+        NetworkUser.Instance.LobbyId = lobby.Id.Value;
         
         EmitSignal(SignalName.CreateLobbyScene, steamMultiplayerPeer.GetUniqueId());
     }
@@ -45,10 +46,11 @@ public partial class LobbyManager : Node
         // create host multiplayer peer
         var steamMultiplayerPeer = new SteamMultiplayerPeer();
         steamMultiplayerPeer.CreateHost(25565);
-        NetworkUser.Instance.Multiplayer.MultiplayerPeer = steamMultiplayerPeer;
         
+        NetworkUser.Instance.Multiplayer.MultiplayerPeer = steamMultiplayerPeer;
         NetworkUser.Instance.PeerId = steamMultiplayerPeer.GetUniqueId();
         NetworkUser.Instance.InLobby = true;
+        NetworkUser.Instance.LobbyId = lobby.Id.Value;
         
         GD.Print($"Lobby created with code: {lobby.Id}");
 

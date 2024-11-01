@@ -7,6 +7,7 @@ public partial class NetworkUser : Node
     public static NetworkUser Instance { get; private set; }
     public int PeerId { get; set; }
     public bool InLobby { get; set; }
+    public ulong LobbyId { get; set; }
     
     public override void _Ready()
     {
