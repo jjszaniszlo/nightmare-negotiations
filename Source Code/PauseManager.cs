@@ -9,9 +9,6 @@ public partial class PauseManager : Node, IGameInterfaceManager
 	[Export] public CanvasLayer PostProcessing { get; private set; }
 	[Export] public PlayerMovement PlayerMovement { get; private set; }
 	
-	[Signal]
-	public delegate void OnQuitGameEventHandler();
-	
 	private PauseMenu pauseMenu;
 	private DelegateOnZeroCounter interfaceDelegateOnZeroCounter;
 
@@ -19,7 +16,7 @@ public partial class PauseManager : Node, IGameInterfaceManager
 	{
 		pauseMenu = GetNode<PauseMenu>("PauseMenu");
 		pauseMenu.OnSelectResume += HandlePause;
-		pauseMenu.OnSelectQuit += () => EmitSignal(SignalName.OnQuitGame);
+		pauseMenu.OnSelectQuit += () => GetTree().ChangeSceneToFile("res://Scenes/MainMenu/MainMenu.tscn");
 		
 		interfaceDelegateOnZeroCounter = GetParent()
 			.GetNode<DelegateOnZeroCounter>("InterfaceOnZeroCounter");

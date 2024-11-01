@@ -4,7 +4,3 @@
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_vs0hq")
-
-[node name="Gameplay" type="Node" parent="."]
-
-[node name="Menus" type="Node" parent="."]

@@ -15,12 +15,7 @@ public partial class PlayerMovement : CharacterBody3D
 	private bool shouldFollowDirection;
 	[Export]
 	private Node3D followDirectionParent;
-
-	public override void _EnterTree()
-	{
-        SetMultiplayerAuthority((int)long.Parse(Name));
-	}
-
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector3 velocity = Velocity;

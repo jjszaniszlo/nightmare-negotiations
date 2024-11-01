@@ -9,17 +9,8 @@ public partial class LobbySelectionMenu : Control
     private LineEdit lobbyCodeTextBox;
     
     [Signal]
-    public delegate void OnSelectBackEventHandler();
-
-    [Signal]
     public delegate void OnSelectJoinLobbyEventHandler(ulong lobbyCode);
     
-    [Signal]
-    public delegate void OnSelectHostLobbyEventHandler();
-    
-    [Signal]
-    public delegate void OnSelectRefreshLobbyListEventHandler();
-
     public override void _Ready()
     {
         lobbyCodeTextBox = GetNode<LineEdit>("LobbyCodeTextBox");
@@ -33,28 +24,19 @@ public partial class LobbySelectionMenu : Control
 
     private void OnLobbyCodeTextSubmitted(string text)
     {
-        if (ulong.TryParse(text, out var lobbySteamId))
-        {
-            EmitSignal(SignalName.OnSelectJoinLobby, lobbySteamId);
-        }
-        else
-        {
-            GD.PrintErr("Invalid lobby code format!");
-        }
+        GD.Print($"Joining lobby with code: {text}");
     }
     
     private void OnCreateLobbyButtonPressed()
     {
-        EmitSignal(SignalName.OnSelectHostLobby);
     }
     
     private void OnBackButtonPressed()
     {
-        EmitSignal(SignalName.OnSelectBack);
+        GetTree().ChangeSceneToFile("res://Scenes/MainMenu/MainMenu.tscn");
     }
     
     private void OnRefreshLobbyListButtonPressed()
     {
-        EmitSignal(SignalName.OnSelectRefreshLobbyList);
     }
 }

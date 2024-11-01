@@ -1,5 +1,24 @@
-﻿namespace NightmareNegotiations;
+﻿using Godot;
+using Steam;
 
-internal static class Globals
+namespace NightmareNegotiations;
+
+public partial class Globals : Node
 {
+	public static Globals Instance;
+	
+	public const uint APP_ID = 3328430;
+	
+	public SteamManager SteamManager { get; private set; } = new();
+
+	public Globals()
+	{
+		Instance = this;
+		
+		OS.SetEnvironment("SteamAppId", APP_ID.ToString());
+		OS.SetEnvironment("SteamGameId", APP_ID.ToString());
+		
+		SteamManager.SteamAppId = APP_ID;
+		SteamManager._Ready();
+	}
 }
