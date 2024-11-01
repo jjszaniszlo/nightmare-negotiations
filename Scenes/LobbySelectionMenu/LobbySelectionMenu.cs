@@ -5,30 +5,53 @@ namespace NightmareNegotiations.Scenes.LobbySelectionMenu;
 public partial class LobbySelectionMenu : Control
 {
     [Export] public VBoxContainer LobbyListVBoxContainer { get; private set; }
-    
-    private LineEdit lobbyCodeTextBox;
+    [Export] public LineEdit LobbyCodeTextBox { get; private set; }
+
+    private LobbyManager lobbyManager;
     
     [Signal]
     public delegate void OnSelectJoinLobbyEventHandler(ulong lobbyCode);
     
     public override void _Ready()
     {
-        lobbyCodeTextBox = GetNode<LineEdit>("LobbyCodeTextBox");
+        lobbyManager = new();
+        AddChild(lobbyManager);
+
+        lobbyManager.CreateLobbyScene += OnCreateLobbyScene;
+        
+        LobbyCodeTextBox = GetNode<LineEdit>("LobbyCodeTextBox");
     }
 
 	// button signal terminals
     private void OnJoinButtonPressed()
     {
-        OnLobbyCodeTextSubmitted(lobbyCodeTextBox.Text);
+        OnLobbyCodeTextSubmitted(LobbyCodeTextBox.Text);
     }
 
     private void OnLobbyCodeTextSubmitted(string text)
     {
-        GD.Print($"Joining lobby with code: {text}");
+        if (ulong.TryParse(text, out var lobbyId))
+        {
+            GD.Print($"Joining lobby with code: {lobbyId}");
+            lobbyManager.JoinLobby(lobbyId);
+        }
+        else
+        {
+            GD.Print("Could not join lobby! Invalid lobby code consisting of non integer characters!");
+        }
     }
     
-    private void OnCreateLobbyButtonPressed()
+    private async void OnCreateLobbyButtonPressed()
     {
+        await Globals.Instance.SteamManager.CreateLobby();
+    }
+
+    private void OnCreateLobbyScene(long peerId)
+    {
+        var lobby = GD.Load<PackedScene>("res://Scenes/LobbyScene/MultiplayerLobby.tscn").Instantiate<LobbyScene>();
+        lobby.AddPlayer(peerId);
+        NetworkUser.Instance.AddChild(lobby);
+        QueueFree();
     }
     
     private void OnBackButtonPressed()

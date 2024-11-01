@@ -56,7 +56,7 @@
 [ext_resource type="PackedScene" uid="uid://wub7m16rc4cd" path="res://Assets/models/cemetary/gltf/pumpkin_orange_small.gltf" id="50_ri8rr"]
 [ext_resource type="PackedScene" uid="uid://b4hljqxnhy7ag" path="res://Assets/models/cemetary/gltf/pumpkin_orange_jackolantern.gltf" id="51_xc7x3"]
 [ext_resource type="PackedScene" uid="uid://brs18gslpomj4" path="res://Game Objects/characters/zombie.tscn" id="53_4xfts"]
-[ext_resource type="Script" path="res://Source Code/PauseHandler.cs" id="54_a8tps"]
+[ext_resource type="Script" path="res://Source Code/PauseManager.cs" id="54_a8tps"]
 [ext_resource type="PackedScene" uid="uid://bbh2gh1fkh0fh" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="55_grnad"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ok7kr"]

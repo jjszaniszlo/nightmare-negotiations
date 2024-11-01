@@ -6,7 +6,9 @@ public partial class MainMenu : Node
 {
     private void OnSinglePlayerButtonPressed()
     {
-        GetTree().ChangeSceneToFile("res://Scenes/Lobby/SingleplayerLobby.tscn");
+        var loadingScene = GD.Load<PackedScene>("res://Scenes/LoadingScene/Loading.tscn").Instantiate<LoadingScreen>();
+        loadingScene.LoadScene = "res://Scenes/LobbyScene/SingleplayerLobby.tscn";
+        AddChild(loadingScene);
     }
     
     private void OnMultiPlayerButtonPressed()

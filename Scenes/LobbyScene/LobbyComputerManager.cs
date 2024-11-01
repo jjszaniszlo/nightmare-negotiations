@@ -1,5 +1,4 @@
 ﻿using Godot;
-using NightmareNegotiations.Scenes.Lobby;
 
 namespace NightmareNegotiations;
 

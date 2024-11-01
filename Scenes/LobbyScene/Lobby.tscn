@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bbh2gh1fkh0fh" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="5_c2gyt"]
 [ext_resource type="Texture2D" uid="uid://dif18xney7s0j" path="res://Assets/textures/prototype/Orange/texture_01.png" id="5_g4mpd"]
 [ext_resource type="Script" path="res://Source Code/PauseManager.cs" id="6_ysu7i"]
-[ext_resource type="PackedScene" uid="uid://87at3ii1tc2j" path="res://Scenes/Lobby/ComputerInterface.tscn" id="8_65m7d"]
-[ext_resource type="Script" path="res://Source Code/LobbyComputerManager.cs" id="9_0an0a"]
+[ext_resource type="Script" path="res://Scenes/LobbyScene/LobbyComputerManager.cs" id="7_1e30b"]
+[ext_resource type="PackedScene" uid="uid://87at3ii1tc2j" path="res://Scenes/LobbyScene/ComputerInterface.tscn" id="8_65m7d"]
 [ext_resource type="Script" path="res://Source Code/Utilities/DelegateOnZeroCounter.cs" id="11_vnamm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i3wpa"]
@@ -123,7 +123,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ComputerInterfaceManager" type="Node" parent="." node_paths=PackedStringArray("PostProcessing", "Computer")]
-script = ExtResource("9_0an0a")
+script = ExtResource("7_1e30b")
 PostProcessing = NodePath("../PostProcessing")
 Computer = NodePath("../Level/Computer")
 

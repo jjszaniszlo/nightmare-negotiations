@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://87at3ii1tc2j"]
 
-[ext_resource type="Script" path="res://Scenes/Lobby/ComputerInterface.cs" id="1_ubvyu"]
+[ext_resource type="Script" path="res://Scenes/LobbyScene/ComputerInterface.cs" id="1_mt1hg"]
 [ext_resource type="Texture2D" uid="uid://bd04eoc2u3j5w" path="res://Assets/textures/prototype/Green/texture_10.png" id="1_vy6qr"]
 [ext_resource type="Shader" path="res://Shaders/BackgroundBlur.gdshader" id="2_dg0iw"]
 [ext_resource type="Texture2D" uid="uid://cti8cngogrxdu" path="res://Assets/textures/Red_star.png" id="2_tn34m"]
@@ -16,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ubvyu")
+script = ExtResource("1_mt1hg")
 GridContainer = NodePath("Main/Scroll/Grid")
 
 [node name="ColorRect" type="ColorRect" parent="."]

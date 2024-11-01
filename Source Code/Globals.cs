@@ -7,7 +7,7 @@ public partial class Globals : Node
 {
 	public static Globals Instance;
 	
-	public const uint APP_ID = 3328430;
+	public const uint APP_ID = 480;
 	
 	public SteamManager SteamManager { get; private set; } = new();
 

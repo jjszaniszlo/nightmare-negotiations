@@ -199,10 +199,9 @@ mesh = SubResource("QuadMesh_pv066")
 [node name="InterfaceOnZeroCounter" type="Node" parent="."]
 script = ExtResource("15_v6wg7")
 
-[node name="PauseManager" type="Node" parent="." node_paths=PackedStringArray("PostProcessing", "Player")]
+[node name="PauseManager" type="Node" parent="." node_paths=PackedStringArray("PostProcessing")]
 script = ExtResource("13_y0oe4")
 PostProcessing = NodePath("../PostProcessing")
-Player = NodePath("../Player")
 
 [node name="PauseMenu" parent="PauseManager" instance=ExtResource("14_04n4q")]
 visible = false

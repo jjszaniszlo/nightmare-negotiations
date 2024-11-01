@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-namespace NightmareNegotiations.Scenes.Lobby;
+namespace NightmareNegotiations;
 
 public partial class ComputerInterface : Control
 {

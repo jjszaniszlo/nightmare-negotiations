@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcxg8g4lxiqqi"]
+
+[ext_resource type="PackedScene" uid="uid://jen0weqs7dy5" path="res://Scenes/LobbyScene/Lobby.tscn" id="1_nae4b"]
+[ext_resource type="Script" path="res://Scenes/LobbyScene/LobbyScene.cs" id="2_12cpj"]
+
+[node name="Lobby" node_paths=PackedStringArray("PlayerInstances") instance=ExtResource("1_nae4b")]
+script = ExtResource("2_12cpj")
+PlayerInstances = NodePath("PlayerInstances")
+
+[node name="PlayerInstances" type="Node3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." index="8"]
+_spawnable_scenes = PackedStringArray("res://Game Objects/player.tscn")
+spawn_path = NodePath("../PlayerInstances")
