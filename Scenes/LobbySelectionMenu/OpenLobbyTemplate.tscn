@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cstbflirlikoq"]
+
+[node name="AvailableLobbyTemplate" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+offset_right = 1920.0
+offset_bottom = 35.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="LobbyDescription" type="Label" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Lobby Description"
+vertical_alignment = 1
+
+[node name="JoinButton" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+text = "Join"
