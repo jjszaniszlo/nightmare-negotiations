@@ -36,4 +36,7 @@
       <PackagePath>lib/net8.0</PackagePath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Source Code\Utilities\" />
+  </ItemGroup>
 </Project>

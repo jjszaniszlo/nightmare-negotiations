@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dwgw60ei0hixm"]
 
-[ext_resource type="Script" path="res://Source Code/Player/PlayerMovement.cs" id="1_tox3x"]
-[ext_resource type="Script" path="res://Source Code/Camera/FirstPersonCamera.cs" id="2_lcprj"]
-[ext_resource type="Script" path="res://Source Code/Managers/ItemManager.cs" id="2_urdam"]
-[ext_resource type="Script" path="res://Source Code/Player/InteractableRayCaster.cs" id="4_prbe8"]
+[ext_resource type="Script" path="res://Source Code/PlayerMovement.cs" id="1_tox3x"]
+[ext_resource type="Script" path="res://Source Code/FirstPersonCamera.cs" id="2_lcprj"]
+[ext_resource type="Script" path="res://Source Code/ItemManager.cs" id="2_urdam"]
+[ext_resource type="Script" path="res://Source Code/Interactable/InteractableRayCaster.cs" id="4_prbe8"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jgv2r"]
 

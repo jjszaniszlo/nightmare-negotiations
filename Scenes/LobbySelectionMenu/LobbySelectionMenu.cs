@@ -7,7 +7,6 @@ public partial class LobbySelectionMenu : Control
     [Export] public VBoxContainer LobbyListVBoxContainer { get; private set; }
     
     private LineEdit lobbyCodeTextBox;
-    private LobbyManager lobbyManager = new();
     
     [Signal]
     public delegate void OnSelectBackEventHandler();
@@ -24,9 +23,9 @@ public partial class LobbySelectionMenu : Control
     public override void _Ready()
     {
         lobbyCodeTextBox = GetNode<LineEdit>("LobbyCodeTextBox");
-        AddChild(lobbyManager);
     }
 
+	// button signal terminals
     private void OnJoinButtonPressed()
     {
         OnLobbyCodeTextSubmitted(lobbyCodeTextBox.Text);

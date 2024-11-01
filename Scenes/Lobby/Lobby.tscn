@@ -2,16 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://dtrv0y48jnool" path="res://Assets/textures/prototype/Light/texture_01.png" id="1_a4nk8"]
 [ext_resource type="Texture2D" uid="uid://d0soav6g5f2sn" path="res://Assets/textures/prototype/Dark/texture_01.png" id="1_jr4qy"]
-[ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://Game Objects/player.tscn" id="2_1nudo"]
-[ext_resource type="Texture2D" uid="uid://dif18xney7s0j" path="res://Assets/textures/prototype/Orange/texture_01.png" id="2_pwxfi"]
+[ext_resource type="Script" path="res://Scenes/Lobby/LobbyScene.cs" id="1_w32bh"]
 [ext_resource type="Texture2D" uid="uid://c35wq32lrv8bh" path="res://Assets/textures/prototype/Dark/texture_08.png" id="2_xmbso"]
 [ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="3_rm85v"]
 [ext_resource type="Script" path="res://Source Code/Interactable/ComputerInteractable.cs" id="4_o808i"]
+[ext_resource type="Texture2D" uid="uid://sps61eqwtht7" path="res://Assets/textures/prototype/Green/texture_01.png" id="5_b6ski"]
 [ext_resource type="PackedScene" uid="uid://bbh2gh1fkh0fh" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="5_c2gyt"]
-[ext_resource type="Script" path="res://Source Code/Managers/InGameUI/PauseManager.cs" id="6_ysu7i"]
+[ext_resource type="Script" path="res://Source Code/PauseManager.cs" id="6_ysu7i"]
 [ext_resource type="PackedScene" uid="uid://87at3ii1tc2j" path="res://Scenes/Lobby/ComputerInterface.tscn" id="8_65m7d"]
-[ext_resource type="Script" path="res://Source Code/Managers/InGameUI/LobbyComputerManager.cs" id="9_0an0a"]
-[ext_resource type="Script" path="res://Source Code/Utils/DelegateOnZeroCounter.cs" id="11_vnamm"]
+[ext_resource type="Script" path="res://Source Code/LobbyComputerManager.cs" id="9_0an0a"]
+[ext_resource type="Script" path="res://Source Code/Utilities/DelegateOnZeroCounter.cs" id="11_vnamm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i3wpa"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -37,7 +37,7 @@ albedo_texture = ExtResource("2_xmbso")
 albedo_texture = ExtResource("1_a4nk8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38ttg"]
-albedo_texture = ExtResource("2_pwxfi")
+albedo_texture = ExtResource("5_b6ski")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dijq8"]
 shader = ExtResource("3_rm85v")
@@ -53,7 +53,9 @@ shader_parameter/use_lens_distortion = false
 shader_parameter/overlay_color = Color(1, 1, 1, 10)
 shader_parameter/lens_distortion_strength = 0.05
 
-[node name="Lobby" type="Node3D"]
+[node name="Lobby" type="Node3D" node_paths=PackedStringArray("PlayerSpawnNode")]
+script = ExtResource("1_w32bh")
+PlayerSpawnNode = NodePath("Players")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qucxt")
@@ -112,9 +114,6 @@ size = Vector3(1, 2.4364, 1)
 material = SubResource("StandardMaterial3D_38ttg")
 script = ExtResource("4_o808i")
 
-[node name="Player" parent="." instance=ExtResource("2_1nudo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11119, 0)
-
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
@@ -126,19 +125,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ComputerInterfaceManager" type="Node" parent="." node_paths=PackedStringArray("PostProcessing", "Player", "Computer")]
+[node name="ComputerInterfaceManager" type="Node" parent="." node_paths=PackedStringArray("PostProcessing", "Computer")]
 script = ExtResource("9_0an0a")
 PostProcessing = NodePath("../PostProcessing")
-Player = NodePath("../Player")
 Computer = NodePath("../Level/Computer")
 
 [node name="ComputerInterface" parent="ComputerInterfaceManager" instance=ExtResource("8_65m7d")]
 visible = false
 
-[node name="PauseManager" type="Node" parent="." node_paths=PackedStringArray("PostProcessing", "Player")]
+[node name="PauseManager" type="Node" parent="." node_paths=PackedStringArray("PostProcessing")]
 script = ExtResource("6_ysu7i")
 PostProcessing = NodePath("../PostProcessing")
-Player = NodePath("../Player")
 
 [node name="PauseMenu" parent="PauseManager" instance=ExtResource("5_c2gyt")]
 visible = false
@@ -153,3 +150,10 @@ light_energy = 10.333
 light_indirect_energy = 0.955
 spot_range = 12.5026
 spot_angle = 67.5
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Game Objects/player.tscn")
+spawn_path = NodePath("../Players")
+spawn_limit = 4

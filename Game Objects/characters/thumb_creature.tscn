@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=4 uid="uid://dfrffb25vqa1x"]
 
 [ext_resource type="Texture2D" uid="uid://cg2wjsr10cft2" path="res://Assets/models/characters/fbx/thumb_creature_texture.png" id="1_c8oyh"]
-[ext_resource type="Script" path="res://Source Code/Creature/CreatureMovement.cs" id="1_wv6sb"]
-[ext_resource type="Script" path="res://Source Code/Creature/BaseCreatureBehavior.cs" id="2_hpmw0"]
+[ext_resource type="Script" path="res://Source Code/CreatureMovement.cs" id="1_wv6sb"]
+[ext_resource type="Script" path="res://Source Code/BaseCreatureBehavior.cs" id="2_hpmw0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_biplg"]
 radius = 1.1575

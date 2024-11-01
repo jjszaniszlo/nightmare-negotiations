@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ur6l3kbi2ajm"]
 
 [ext_resource type="PackedScene" uid="uid://coe27v5n3b4nv" path="res://Assets/models/items/flashlight.fbx" id="1_vbj3m"]
-[ext_resource type="Script" path="res://Source Code/Items/Flashlight.cs" id="2_a5g6w"]
+[ext_resource type="Script" path="res://Source Code/Item/Flashlight.cs" id="2_a5g6w"]
 [ext_resource type="Texture2D" uid="uid://r5hxu7v6yxxt" path="res://Assets/textures/items/flashlight.png" id="2_sbryj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mlbq"]

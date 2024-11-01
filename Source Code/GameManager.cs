@@ -7,6 +7,7 @@ namespace NightmareNegotiations;
 
 public partial class GameManager : Node
 {
+	private LobbyManager lobbyManager = new();
 	private Node menusNode;
 	private Node gameplayNode;
 	private StateMachine state = new();
@@ -32,6 +33,8 @@ public partial class GameManager : Node
 		state.Connect("OnGameLeft", Callable.From(OnGameLeft));
 		
 		state.Transition(GameState.MainMenu);
+		
+		AddChild(lobbyManager);
 	}
 	
 	private void OnMainMenuEntered()
@@ -47,17 +50,24 @@ public partial class GameManager : Node
 	
 	private void OnLobbyMenuEntered()
 	{
-		var lobbyMenu = GD.Load<PackedScene>("res://Scenes/LobbySelectionMenu/LobbySelectionMenu.tscn").Instantiate<LobbySelectionMenu>();
+		var lobbyMenu = GD.Load<PackedScene>("res://Scenes/LobbySelectionMenu/LobbySelectionMenu.tscn")
+			.Instantiate<LobbySelectionMenu>();
 		lobbyMenu.Name = "LobbyMenu";
-
+		
 		lobbyMenu.OnSelectBack += () => state.Transition(GameState.MainMenu);
+
+		lobbyMenu.OnSelectHostLobby += lobbyManager.OnHostLobbyButtonSelected;
+		lobbyMenu.OnSelectRefreshLobbyList += lobbyManager.OnRefreshLobbyListButtonSelected;
+		lobbyMenu.OnSelectJoinLobby += lobbyManager.OnJoinLobbyButtonSelected;
+
+		lobbyManager.TransitionLobbyScene += () => state.Transition(GameState.Lobby);
 		
 		menusNode.AddChild(lobbyMenu);
 	}
-	
+
 	private void OnLobbyEntered()
 	{
-		var lobby = GD.Load<PackedScene>("res://Scenes/Lobby/Lobby.tscn").Instantiate();
+		var lobby = GD.Load<PackedScene>("res://Scenes/Lobby/Lobby.tscn").Instantiate<LobbyScene>();
 		lobby.Name = "Lobby";
 		
 		lobby.GetNode<PauseManager>("PauseManager").OnQuitGame += () => state.Transition(GameState.MainMenu);
@@ -67,6 +77,9 @@ public partial class GameManager : Node
 			GD.Print("Pressed!");
 			state.Transition(GameState.Game);
 		};
+
+		lobbyManager.AddPlayer += lobby.AddPlayer;
+		lobbyManager.RemovePlayer += lobby.RemovePlayer;
 		
 		gameplayNode.AddChild(lobby);
 	}

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TerrainNoise" load_steps=6 format=3 uid="uid://0d8r05fbconq"]
 
-[ext_resource type="Script" path="res://Source Code/CustomResources/AmplifiedNoise.cs" id="1_l4c84"]
-[ext_resource type="Script" path="res://Source Code/CustomResources/TerrainNoise.cs" id="2_ju6gl"]
+[ext_resource type="Script" path="res://Source Code/AmplifiedNoise.cs" id="1_l4c84"]
+[ext_resource type="Script" path="res://Source Code/TerrainNoise.cs" id="2_ju6gl"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_84kn7"]
 seed = 35
