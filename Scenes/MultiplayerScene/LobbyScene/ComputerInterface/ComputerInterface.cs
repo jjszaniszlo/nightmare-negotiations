@@ -15,11 +15,6 @@ public partial class ComputerInterface : Control
 	{
 		TempCreateLevelElements();
 	}
-
-	public void Enable()
-	{
-		
-	}
 	
 	private void TempCreateLevelElements()
 	{

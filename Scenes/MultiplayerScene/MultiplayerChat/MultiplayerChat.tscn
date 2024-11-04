@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://chsujoh15ewbs"]
 
-[ext_resource type="Script" path="res://Scenes/MultiplayerChat/multiplayer_chat.gd" id="1_b0630"]
+[ext_resource type="Script" path="res://Scenes/MultiplayerScene/MultiplayerChat/multiplayer_chat.gd" id="1_b0630"]
 
 [node name="MultiplayerChat" type="Node2D"]
 script = ExtResource("1_b0630")

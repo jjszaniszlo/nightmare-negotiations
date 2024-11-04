@@ -5,8 +5,8 @@ namespace NightmareNegotiations;
 public partial class Level : Resource
 {
     [Export(PropertyHint.Range, "1,4")]
-    public int Difficulty { get; private set; }
+    public int Difficulty { get; set; }
     
     [Export]
-    public int Reward { get; private set; }
+    public int Reward { get; set; }
 }

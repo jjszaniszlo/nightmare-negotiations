@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://87at3ii1tc2j"]
 
-[ext_resource type="Script" path="res://Scenes/LobbyScene/ComputerInterface/ComputerInterface.cs" id="1_mt1hg"]
+[ext_resource type="Script" path="res://Scenes/MultiplayerScene/LobbyScene/ComputerInterface/ComputerInterface.cs" id="1_mt1hg"]
 [ext_resource type="Texture2D" uid="uid://bd04eoc2u3j5w" path="res://Assets/textures/prototype/Green/texture_10.png" id="1_vy6qr"]
 [ext_resource type="Shader" path="res://Shaders/BackgroundBlur.gdshader" id="2_dg0iw"]
 [ext_resource type="Texture2D" uid="uid://cti8cngogrxdu" path="res://Assets/textures/Red_star.png" id="2_tn34m"]

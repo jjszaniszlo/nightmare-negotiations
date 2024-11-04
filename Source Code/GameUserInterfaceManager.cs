@@ -24,22 +24,28 @@ public partial class GameUserInterfaceManager : Node
             PostProcessing.Visible = false;
 		    var player = (Node3D)PlayerInstances
 			    .GetChildren()
-			    .First(n => long.Parse(((Node3D)n).Name) == NetworkUser.Instance.PeerId);
-		    
-		    player.SetPhysicsProcess(false);
-		    player.GetNode("Head").SetProcessInput(false);
-		    Input.SetMouseMode(Input.MouseModeEnum.Visible);
+			    .FirstOrDefault(n => long.Parse(((Node3D)n).Name) == NetworkUser.Instance.PeerId);
+
+		    if (player != null)
+		    {
+			    player.SetPhysicsProcess(false);
+			    player.GetNode("Head").SetProcessInput(false);
+			    Input.SetMouseMode(Input.MouseModeEnum.Visible);
+		    }
         }
         else
         {
             PostProcessing.Visible = true;
 		    var player = (Node3D)PlayerInstances
 			    .GetChildren()
-			    .First(n => long.Parse(((Node3D)n).Name) == NetworkUser.Instance.PeerId);
-		    
-		    player.SetPhysicsProcess(true);
-		    player.GetNode("Head").SetProcessInput(true);
-		    Input.SetMouseMode(Input.MouseModeEnum.Captured);
+			    .FirstOrDefault(n => long.Parse(((Node3D)n).Name) == NetworkUser.Instance.PeerId);
+
+		    if (player != null)
+		    {
+			    player.SetPhysicsProcess(true);
+			    player.GetNode("Head").SetProcessInput(true);
+			    Input.SetMouseMode(Input.MouseModeEnum.Captured);
+		    }
         }
 
         oldEnabledInterfaces = numEnabledInterfaces;

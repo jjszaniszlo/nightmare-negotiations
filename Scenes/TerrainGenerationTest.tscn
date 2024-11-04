@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bmy2v3h3m43ma"]
+[gd_scene load_steps=19 format=3 uid="uid://bmy2v3h3m43ma"]
 
 [ext_resource type="Script" path="res://Scenes/World/World.gd" id="1_ngxlb"]
 [ext_resource type="Shader" path="res://Shaders/sky.gdshader" id="2_pu4b5"]
@@ -12,10 +12,6 @@
 [ext_resource type="ArrayMesh" uid="uid://yu4su1voybvi" path="res://Resources/meshes/trees/tree_01.tres" id="9_ppvrb"]
 [ext_resource type="ArrayMesh" uid="uid://duj6747nq4qsk" path="res://Resources/meshes/grass/grass.res" id="11_10bwe"]
 [ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="12_f6y1f"]
-[ext_resource type="Script" path="res://Source Code/PauseManager.cs" id="13_y0oe4"]
-[ext_resource type="PackedScene" uid="uid://bbh2gh1fkh0fh" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="14_04n4q"]
-[ext_resource type="Script" path="res://Source Code/Utilities/DelegateOnZeroCounter.cs" id="15_v6wg7"]
-[ext_resource type="PackedScene" uid="uid://dfrffb25vqa1x" path="res://Game Objects/characters/thumb_creature.tscn" id="16_0g1qr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_75hdo"]
 shader = ExtResource("2_pu4b5")
@@ -75,20 +71,6 @@ volumetric_fog_anisotropy = 0.21
 volumetric_fog_ambient_inject = 0.1
 volumetric_fog_sky_affect = 0.6
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ni6n1"]
-shader = ExtResource("7_7y4wm")
-shader_parameter/shake = 0.0
-shader_parameter/noiseQuality = 216.9
-shader_parameter/noiseIntensity = 0.002
-shader_parameter/offsetIntensity = 0.0
-shader_parameter/colorOffsetIntensity = 0.172
-shader_parameter/pixelSize = 500.0
-shader_parameter/grainIntensity = 0.015
-shader_parameter/use_overlay = false
-shader_parameter/use_lens_distortion = false
-shader_parameter/overlay_color = Color(1, 1, 1, 10)
-shader_parameter/lens_distortion_strength = 0.036
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8u8jl"]
 render_priority = 0
 shader = ExtResource("12_f6y1f")
@@ -107,6 +89,20 @@ shader_parameter/grazing_angle_modulation_factor = 50.0
 [sub_resource type="QuadMesh" id="QuadMesh_pv066"]
 flip_faces = true
 size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ni6n1"]
+shader = ExtResource("7_7y4wm")
+shader_parameter/shake = 0.0
+shader_parameter/noiseQuality = 216.9
+shader_parameter/noiseIntensity = 0.002
+shader_parameter/offsetIntensity = 0.0
+shader_parameter/colorOffsetIntensity = 0.172
+shader_parameter/pixelSize = 500.0
+shader_parameter/grainIntensity = 0.015
+shader_parameter/use_overlay = false
+shader_parameter/use_lens_distortion = false
+shader_parameter/overlay_color = Color(1, 1, 1, 10)
+shader_parameter/lens_distortion_strength = 0.036
 
 [node name="TerrainGenerationTest" type="Node3D"]
 script = ExtResource("1_ngxlb")
@@ -144,6 +140,12 @@ directional_shadow_fade_start = 0.1
 
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
+
+[node name="Outline" type="MeshInstance3D" parent="PostProcessing"]
+material_override = SubResource("ShaderMaterial_8u8jl")
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_pv066")
+skeleton = NodePath("../..")
 
 [node name="Pixelify" type="ColorRect" parent="PostProcessing"]
 material = SubResource("ShaderMaterial_ni6n1")
@@ -190,21 +192,3 @@ InstanceScaleRandomize = 2.0
 InstanceRotationRandomize = 0.0
 InstanceMesh = ExtResource("9_ppvrb")
 UpdateFrequency = 0.1
-
-[node name="Outline" type="MeshInstance3D" parent="."]
-material_override = SubResource("ShaderMaterial_8u8jl")
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_pv066")
-
-[node name="InterfaceOnZeroCounter" type="Node" parent="."]
-script = ExtResource("15_v6wg7")
-
-[node name="PauseManager" type="Node" parent="." node_paths=PackedStringArray("PostProcessing")]
-script = ExtResource("13_y0oe4")
-PostProcessing = NodePath("../PostProcessing")
-
-[node name="PauseMenu" parent="PauseManager" instance=ExtResource("14_04n4q")]
-visible = false
-
-[node name="ThumbCreature" parent="." instance=ExtResource("16_0g1qr")]
-transform = Transform3D(-0.929783, 0, 0.368108, 0, 1, 0, -0.368108, 0, -0.929783, -3.72968, 1.07712, 9.40056)

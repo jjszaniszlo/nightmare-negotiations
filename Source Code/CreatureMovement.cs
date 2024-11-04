@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class CreatureMovement : CharacterBody3D
 {
@@ -11,7 +10,7 @@ public partial class CreatureMovement : CharacterBody3D
 		{
 			velocity += GetGravity() * (float)delta;
 		}
-		
+	
 		Velocity = velocity;
 		MoveAndSlide();
 	}
