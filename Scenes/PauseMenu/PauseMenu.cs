@@ -4,17 +4,13 @@ using Godot.Collections;
 using Steamworks;
 using Steamworks.Data;
 
-namespace NightmareNegotiations.Scenes.PauseMenu;
+namespace NightmareNegotiations;
 
-public partial class PauseMenu : Control
+public partial class PauseMenu : Control, IUserInterface
 {
 	[Export] public VBoxContainer PlayerContainer { get; private set; }
 	
 	[Signal] public delegate void OnPauseEventHandler();
-
-	public override void _Ready()
-	{
-	}
 
 	[Rpc(CallLocal = true)]
 	public void RefreshPlayerList(Array<Variant> players)
@@ -52,4 +48,18 @@ public partial class PauseMenu : Control
 		    EmitSignal(SignalName.OnPause);
 	    }
     }
+
+	public void Activate()
+	{
+		Visible = true;
+
+		// TODO: Handle all things that need to happen whilst paused.
+	}
+
+	public void Deactivate()
+	{
+		Visible = false;
+
+		// TODO: Handle all things that need to happen when you need to unpause.
+	}
 }

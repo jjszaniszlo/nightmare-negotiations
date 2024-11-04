@@ -2,7 +2,7 @@
 
 namespace NightmareNegotiations;
 
-public partial class Level : Resource
+public partial class LevelData : Resource
 {
     [Export(PropertyHint.Range, "1,4")]
     public int Difficulty { get; set; }

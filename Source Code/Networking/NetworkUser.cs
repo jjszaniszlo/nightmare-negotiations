@@ -13,4 +13,9 @@ public partial class NetworkUser : Node
     {
         Instance = this;
     }
+
+	public bool IsHost()
+	{
+		return PeerId == 1;
+	}
 }

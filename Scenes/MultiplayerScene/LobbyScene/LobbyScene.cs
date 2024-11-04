@@ -40,13 +40,13 @@ public partial class LobbyScene : Node3D
 
 	// TODO: needs number of levels to generate, for now fix it at 5.
 	// TODO: Generate list of levels based on global difficulty.
-	private List<Level> GenerateLevels()
+	private List<LevelData> GenerateLevels()
 	{
-		var levelList = new List<Level>();
+		var levelList = new List<LevelData>();
 
 		for (int i = 0; i < 5; i++)
 		{
-			var level = new Level();
+			var level = new LevelData();
 
 			var difficulty = Random.Shared.Next() % 4 + 1;
 

@@ -1,13 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://jen0weqs7dy5"]
+[gd_scene load_steps=13 format=3 uid="uid://jen0weqs7dy5"]
 
-[ext_resource type="Script" path="res://Scenes/MultiplayerScene/LobbyScene/LobbyScene.cs" id="1_3roir"]
 [ext_resource type="Texture2D" uid="uid://d0soav6g5f2sn" path="res://Assets/textures/prototype/Dark/texture_01.png" id="2_f585f"]
 [ext_resource type="Texture2D" uid="uid://c35wq32lrv8bh" path="res://Assets/textures/prototype/Dark/texture_08.png" id="3_ghlj6"]
 [ext_resource type="Texture2D" uid="uid://dtrv0y48jnool" path="res://Assets/textures/prototype/Light/texture_01.png" id="4_e1dhm"]
 [ext_resource type="Texture2D" uid="uid://dif18xney7s0j" path="res://Assets/textures/prototype/Orange/texture_01.png" id="5_tm0o4"]
 [ext_resource type="Script" path="res://Source Code/Interactable/ComputerInteractable.cs" id="6_h6x3w"]
-[ext_resource type="Script" path="res://Source Code/GameUserInterfaceManager.cs" id="8_fe72b"]
-[ext_resource type="PackedScene" uid="uid://87at3ii1tc2j" path="res://Scenes/MultiplayerScene/LobbyScene/ComputerInterface/ComputerInterface.tscn" id="10_bgmlx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i3wpa"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -36,7 +33,6 @@ albedo_texture = ExtResource("4_e1dhm")
 albedo_texture = ExtResource("5_tm0o4")
 
 [node name="Lobby" type="Node3D"]
-script = ExtResource("1_3roir")
 
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qucxt")
@@ -102,9 +98,3 @@ light_energy = 10.333
 light_indirect_energy = 0.955
 spot_range = 12.5026
 spot_angle = 67.5
-
-[node name="GameUserInterfaceManager" type="Node" parent="."]
-script = ExtResource("8_fe72b")
-
-[node name="ComputerInterface" parent="GameUserInterfaceManager" instance=ExtResource("10_bgmlx")]
-visible = false

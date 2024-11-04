@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://b2kynnyudrb0x"]
+[gd_scene load_steps=2 format=3 uid="uid://b2kynnyudrb0x"]
+
+[ext_resource type="Script" path="res://Scenes/MultiplayerScene/MultiplayerScene.cs" id="1_adw51"]
 
 [node name="MultiplayerScene" type="Node3D"]
+script = ExtResource("1_adw51")
+
+[node name="MultiplayerInstances" type="Node3D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("../MultiplayerInstances")

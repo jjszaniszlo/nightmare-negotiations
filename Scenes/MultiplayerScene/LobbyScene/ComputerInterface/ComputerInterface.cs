@@ -3,7 +3,7 @@ using Godot;
 
 namespace NightmareNegotiations;
 
-public partial class ComputerInterface : Control
+public partial class ComputerInterface : Control, IUserInterface
 {
 	[Export] public GridContainer GridContainer { get; private set; }
 
@@ -35,16 +35,26 @@ public partial class ComputerInterface : Control
 				EmitSignal(SignalName.OnLevelSelected);
 			};
 
-			newLevelButton.GetNode<RichTextLabel>("Reward").Text =
-				$"[font=res://Assets/fonts/space/SpaceCrusaders-x3DP0.ttf][font_size=30][center]${reward}[/center][/font_size][/font]";
+			newLevelButton
+				.GetNode<RichTextLabel>("Reward").Text =
+					$"[font=res://Assets/fonts/space/SpaceCrusaders-x3DP0.ttf][font_size=30][center]${reward}[/center][/font_size][/font]";
 
 			newLevelButton.Visible = true;
 			GridContainer.AddChild(newLevelButton);
 		}
 	}
 
-	public void CreateContractInterfaceElements(Level[] levels)
+	public void Activate()
 	{
+		Visible = true;
 		
+		// TODO: handle player input halting, mouse capture disable and disabling post processing.
+	}
+
+	public void Deactivate()
+	{
+		Visible = false;
+
+		// TODO: handle player input resuming, mouse capture enable and enabling post processing.
 	}
 }
