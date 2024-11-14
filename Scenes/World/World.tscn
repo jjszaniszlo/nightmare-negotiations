@@ -94,33 +94,6 @@ environment = SubResource("Environment_1rxqi")
 [node name="CharacterBody3D" parent="." instance=ExtResource("4_mlc0o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.48815, 0)
 
-[node name="ItemList" type="ItemList" parent="CharacterBody3D"]
-custom_minimum_size = Vector2(64, 64)
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -203.0
-offset_top = -90.0
-offset_right = 224.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 0
-item_count = 5
-max_columns = 5
-fixed_icon_size = Vector2i(64, 64)
-item_0/text = "1"
-item_0/icon = ExtResource("5_rickq")
-item_1/text = "2"
-item_1/icon = ExtResource("5_rickq")
-item_2/text = "3"
-item_2/icon = ExtResource("5_rickq")
-item_3/text = "4"
-item_3/icon = ExtResource("5_rickq")
-item_4/text = "5"
-item_4/icon = ExtResource("5_rickq")
-
 [node name="Terrain" parent="." instance=ExtResource("5_cs26g")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
@@ -203,6 +176,34 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 362.0
 offset_bottom = 90.0
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer"]
+custom_minimum_size = Vector2(64, 64)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -203.0
+offset_top = -90.0
+offset_right = 224.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/guide_color = Color(0, 0, 0, 1)
+item_count = 5
+max_columns = 5
+fixed_icon_size = Vector2i(64, 64)
+item_0/text = "1"
+item_0/icon = ExtResource("5_rickq")
+item_1/text = "2"
+item_1/icon = ExtResource("5_rickq")
+item_2/text = "3"
+item_2/icon = ExtResource("5_rickq")
+item_3/text = "4"
+item_3/icon = ExtResource("5_rickq")
+item_4/text = "5"
+item_4/icon = ExtResource("5_rickq")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.92083, 0, -0.389965, 0.268019, 0.726383, 0.632877, 0.283264, -0.68729, 0.668875, 0, 0, 0)
