@@ -2,12 +2,12 @@
 extends Node3D
 @onready var player : CharacterBody3D = $CharacterBody3D
 @onready var inventory_interface: Control = $CanvasLayer/InventoryInterface
+@onready var hotbar: ItemList = $CanvasLayer/ItemList
+@onready var inventory_data: InventoryData
 ## This is not a simulation of the actual model but only a extremely simplified version.
 ## I don't know if I made some mistakes in my assumptions. I haven't found a similar solution anywhere.
 ## Most were even more simplified or much more complicated.
-
-
-	
+var selected = 5
 
 
 const HOURS_IN_DAY : float = 24.0
@@ -96,11 +96,31 @@ func _ready() -> void :
 		if moon_base_enegry == 0.0 :
 			moon_base_enegry = moon.light_energy
 	_update()
+	
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#hotbar.select(0)
 
 func _process( delta: float ) -> void :
 	if not Engine.is_editor_hint() : # We don't want a time lapse in the editor
 		day_time += delta * time_scale
-
+	#"""
+	InputMap.load_from_project_settings()
+	if Input.is_action_just_pressed("one") :
+		#selected = 5
+		hotbar.select(0)
+	if Input.is_action_just_pressed("two") :
+		#selected = 5
+		hotbar.select(1)
+	if Input.is_action_just_pressed("three") :
+		#selected = 5
+		hotbar.select(2)
+	if Input.is_action_just_pressed("four") :
+		#selected = 5
+		hotbar.select(3)
+	if Input.is_action_just_pressed("five") :
+		#selected = 5
+		hotbar.select(4)
+		#"""
 func _update() -> void :
 	_update_sun()
 	_update_moon()
@@ -149,3 +169,4 @@ func _update_shader() -> void :
 			"overwritten_time",
 			( day_of_year * HOURS_IN_DAY + day_time ) * 100.0 if use_day_time_for_shader else 0.0
 		)
+		
