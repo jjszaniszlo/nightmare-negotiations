@@ -175,7 +175,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4, 0, 4.309)
 follow_viewport_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
 material = SubResource("ShaderMaterial_u6fx8")
 offset_right = 2560.0
 offset_bottom = 1440.0

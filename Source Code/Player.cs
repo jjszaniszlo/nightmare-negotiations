@@ -22,6 +22,7 @@ public partial class Player : CharacterBody3D
 	public override void _PhysicsProcess(double delta)
 	{
 		ItemList itemList = GetNode<ItemList>("ItemList");
+		
 		if (Input.IsActionPressed("one"))
 		{
 			
