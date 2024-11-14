@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Inventory/slot.gd" id="1_qkkvj"]
 
 [node name="Slot" type="PanelContainer"]
+visible = false
 custom_minimum_size = Vector2(64, 64)
 offset_right = 40.0
 offset_bottom = 40.0

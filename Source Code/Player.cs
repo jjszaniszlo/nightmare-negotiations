@@ -1,11 +1,14 @@
 using Godot;
 
 namespace NightmareNegotiations;
-
 public partial class Player : CharacterBody3D
 {
 	[ExportCategory("Player Movement Options")]
-	
+	//@export var inventory_data: InventoryData
+	//[Export]
+	//public InventoryData inventory_data;
+	[Export]
+	private int selected = 6;
 	[Export]
 	private float speed = 5.0f;
 	[Export]
@@ -18,6 +21,27 @@ public partial class Player : CharacterBody3D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		ItemList itemList = GetNode<ItemList>("ItemList");
+		if (Input.IsActionPressed("one"))
+		{
+			
+		}
+		if (Input.IsActionPressed("two"))
+		{
+			
+		}
+		if (Input.IsActionPressed("three"))
+		{
+			
+		}
+		if (Input.IsActionPressed("four"))
+		{
+			
+		}
+		if (Input.IsActionPressed("five"))
+		{
+			
+		}
 		Vector3 velocity = Velocity;
 
 		// Add the gravity.

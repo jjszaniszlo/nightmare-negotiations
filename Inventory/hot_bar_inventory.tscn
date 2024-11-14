@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdsml5d18bh2l"]
+
+[ext_resource type="PackedScene" uid="uid://bu2n5vegoepre" path="res://Inventory/slot.tscn" id="1_r2ihc"]
+
+[node name="HotBarInventory" type="PanelContainer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Slot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_r2ihc")]
+layout_mode = 2
+
+[node name="Slot2" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_r2ihc")]
+layout_mode = 2
+
+[node name="Slot3" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_r2ihc")]
+layout_mode = 2
+
+[node name="Slot4" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_r2ihc")]
+layout_mode = 2
+
+[node name="Slot5" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_r2ihc")]
+layout_mode = 2
