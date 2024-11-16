@@ -207,6 +207,33 @@ item_3/icon = ExtResource("5_rickq")
 item_4/text = "5"
 item_4/icon = ExtResource("5_rickq")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Button2" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "2"
+
+[node name="Button3" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "3"
+
+[node name="Button4" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "4"
+
+[node name="Button5" type="Button" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "5"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.92083, 0, -0.389965, 0.268019, 0.726383, 0.632877, 0.283264, -0.68729, 0.668875, 0, 0, 0)
 rotation_order = 4

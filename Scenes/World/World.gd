@@ -1,13 +1,12 @@
 @tool
 extends Node3D
 @onready var player : CharacterBody3D = $CharacterBody3D
-@onready var inventory_interface: Control = $CanvasLayer/InventoryInterface
+#@onready var inventory_interface: Control = $CanvasLayer/InventoryInterface
 @onready var hotbar: ItemList = $CanvasLayer/ItemList
-@onready var inventory_data: InventoryData
+#@onready var inventory_data: InventoryData
 ## This is not a simulation of the actual model but only a extremely simplified version.
 ## I don't know if I made some mistakes in my assumptions. I haven't found a similar solution anywhere.
 ## Most were even more simplified or much more complicated.
-var selected = 5
 
 
 const HOURS_IN_DAY : float = 24.0
@@ -100,7 +99,9 @@ func _ready() -> void :
 func _process( delta: float ) -> void :
 	if not Engine.is_editor_hint() : # We don't want a time lapse in the editor
 		day_time += delta * time_scale
-	
+	_move()
+
+func _move() -> void:
 	InputMap.load_from_project_settings() 
 	if Input.is_action_just_pressed("one") :
 		hotbar.select(0)

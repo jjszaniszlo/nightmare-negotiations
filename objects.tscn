@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dn1qxfqcsrjdf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skeu0"]
+albedo_color = Color(1, 0, 1, 1)
+clearcoat_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_qvphc"]
+material = SubResource("StandardMaterial3D_skeu0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7na8"]
+albedo_color = Color(1, 0.347148, 0.715354, 1)
+roughness = 0.0
+clearcoat_enabled = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ov6vd"]
+bounce = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cq3l7"]
+
+[node name="Objects" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_qvphc")
+surface_material_override/0 = SubResource("StandardMaterial3D_y7na8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+physics_material_override = SubResource("PhysicsMaterial_ov6vd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("SphereShape3D_cq3l7")
