@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ur6l3kbi2ajm"]
+
+[ext_resource type="PackedScene" uid="uid://coe27v5n3b4nv" path="res://Assets/models/items/flashlight.fbx" id="1_vbj3m"]
+[ext_resource type="Script" path="res://Source Code/Item/Flashlight.cs" id="2_a5g6w"]
+[ext_resource type="Texture2D" uid="uid://r5hxu7v6yxxt" path="res://Assets/textures/items/flashlight.png" id="2_sbryj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mlbq"]
+albedo_texture = ExtResource("2_sbryj")
+
+[node name="flashlight" node_paths=PackedStringArray("Light") instance=ExtResource("1_vbj3m")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+script = ExtResource("2_a5g6w")
+Light = NodePath("Light")
+
+[node name="Cilindro" parent="." index="0"]
+transform = Transform3D(-86.6025, -50, -4.24403e-05, -50, 86.6025, 0, 7.57104e-06, 4.37114e-06, -485.461, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_2mlbq")
+
+[node name="Light" type="SpotLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.74092)
+light_energy = 0.0
+light_volumetric_fog_energy = 0.939
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 5.0
+distance_fade_length = 5.0
+spot_range = 11.9487
+spot_angle = 19.1876

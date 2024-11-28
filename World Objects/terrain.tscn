@@ -1,21 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6mlaef4yaoyn"]
+[gd_scene load_steps=4 format=3 uid="uid://b6mlaef4yaoyn"]
 
-[ext_resource type="Script" path="res://Source Code/Terrain/TerrainGeneration.cs" id="1_yu8c5"]
 [ext_resource type="Material" uid="uid://r2ypvtjotc7n" path="res://Materials/basic_terrain_material.tres" id="2_xwlm6"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8oesk"]
-frequency = 0.001
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_epytv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4xu2"]
 size = Vector3(19.4412, 1, 19.4714)
 
-[node name="Terrain" type="Node3D" node_paths=PackedStringArray("terrainMesh")]
-script = ExtResource("1_yu8c5")
-terrainMesh = NodePath("MeshInstance3D")
-noise = SubResource("FastNoiseLite_8oesk")
-material = ExtResource("2_xwlm6")
+[node name="Terrain" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)

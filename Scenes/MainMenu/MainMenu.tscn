@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr5hjxyu1v27u"]
+[gd_scene load_steps=6 format=3 uid="uid://dr5hjxyu1v27u"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.cs" id="1_fg4fg"]
+[ext_resource type="Texture2D" uid="uid://cbre2fubo02ha" path="res://Scenes/MainMenu/NNMainMenu.png" id="2_054wh"]
+[ext_resource type="VideoStream" path="res://Scenes/MainMenu/NNMainMenu.ogv" id="2_lsuk7"]
+[ext_resource type="Texture2D" uid="uid://bfg6xw2h8deld" path="res://Scenes/MainMenu/settingsIcon.png" id="3_4i2sb"]
+[ext_resource type="FontFile" uid="uid://dlqbx6rgx31vd" path="res://Scenes/MainMenu/Creepster-Regular.ttf" id="4_0b3s2"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -11,39 +15,86 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fg4fg")
 
-[node name="Main Buttons" type="VBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_054wh")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_lsuk7")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Settings" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+anchor_left = 0.952
+anchor_top = 0.01
+anchor_right = 0.995
+anchor_bottom = 0.089
+offset_left = -0.840088
+offset_top = 0.199999
+offset_right = 1304.6
+offset_bottom = 1334.88
+scale = Vector2(0.06, 0.06)
+theme_override_font_sizes/font_size = 5
+icon = ExtResource("3_4i2sb")
+flat = true
+icon_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.043
-anchor_top = 0.309
-anchor_right = 0.413
-anchor_bottom = 0.691
-offset_left = 0.463997
-offset_top = -0.23201
-offset_right = 0.223969
-offset_bottom = 0.231964
-grow_vertical = 2
+anchor_left = 0.101
+anchor_top = 0.906
+anchor_right = 0.897
+anchor_bottom = 0.974
+offset_left = -0.920013
+offset_top = 0.519958
+offset_right = -0.23999
+offset_bottom = 0.0799561
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="Single Player" type="Button" parent="Main Buttons"]
-custom_minimum_size = Vector2(0, 80)
+[node name="Single Player" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-text = "Singleplayer"
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("4_0b3s2")
+theme_override_font_sizes/font_size = 30
+text = "SINGLEPLAYER"
+flat = true
 
-[node name="Multiplayer" type="Button" parent="Main Buttons"]
-custom_minimum_size = Vector2(0, 80)
+[node name="Multiplayer" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-text = "Multiplayer
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("4_0b3s2")
+theme_override_font_sizes/font_size = 30
+text = "MULTIPLAYER
 "
+flat = true
 
-[node name="Settings" type="Button" parent="Main Buttons"]
-custom_minimum_size = Vector2(0, 40)
+[node name="Quit" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-text = "Settings"
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("4_0b3s2")
+theme_override_font_sizes/font_size = 30
+text = "QUIT"
+flat = true
 
-[node name="Quit" type="Button" parent="Main Buttons"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-text = "Quit"
-
-[connection signal="pressed" from="Main Buttons/Single Player" to="." method="OnSinglePlayerButtonPressed"]
-[connection signal="pressed" from="Main Buttons/Multiplayer" to="." method="OnMultiPlayerButtonPressed"]
+[connection signal="pressed" from="HBoxContainer/Single Player" to="." method="OnSinglePlayerButtonPressed"]
+[connection signal="pressed" from="HBoxContainer/Multiplayer" to="." method="OnMultiPlayerButtonPressed"]

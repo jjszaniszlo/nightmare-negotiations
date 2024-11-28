@@ -1,8 +1,42 @@
 <Project Sdk="Godot.NET.Sdk/4.3.0">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net7.0</TargetFramework>
     <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'ios' ">net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="Facepunch/Facepunch.Steamworks.Posix.dll" />
+    <None Include="Facepunch/Facepunch.Steamworks.Win64.dll" />
+    <None Include="steam_api.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Pack>true</Pack>
+      <PackagePath>lib/net8.0</PackagePath>
+    </None>
+    <None Include="steam_api64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Pack>true</Pack>
+      <PackagePath>lib/net8.0</PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Facepunch.Steamworks.Win64" Condition="$([MSBuild]::IsOSPlatform('Windows'))">
+      <HintPath>./Facepunch/Facepunch.Steamworks.Win64.dll</HintPath>
+      <Pack>true</Pack>
+      <PackagePath>lib/net8.0</PackagePath>
+    </Reference>
+    <Reference Include="Facepunch.Steamworks.Win64" Condition="$([MSBuild]::IsOSPlatform('Linux'))">
+      <HintPath>./Facepunch/Facepunch.Steamworks.Posix.dll</HintPath>
+      <Pack>true</Pack>
+      <PackagePath>lib/net8.0</PackagePath>
+    </Reference>
+    <Reference Include="Facepunch.Steamworks.Win64" Condition="$([MSBuild]::IsOSPlatform('OSX'))">
+      <HintPath>./Facepunch/Facepunch.Steamworks.Posix.dll</HintPath>
+      <Pack>true</Pack>
+      <PackagePath>lib/net8.0</PackagePath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Source Code\Utilities\" />
+  </ItemGroup>
 </Project>

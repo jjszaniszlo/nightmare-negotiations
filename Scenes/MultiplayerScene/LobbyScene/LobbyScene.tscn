@@ -1,0 +1,110 @@
+[gd_scene load_steps=16 format=3 uid="uid://jen0weqs7dy5"]
+
+[ext_resource type="Script" path="res://Scenes/MultiplayerScene/LobbyScene/LobbyScene.cs" id="1_3roir"]
+[ext_resource type="Texture2D" uid="uid://d0soav6g5f2sn" path="res://Assets/textures/prototype/Dark/texture_01.png" id="2_f585f"]
+[ext_resource type="Texture2D" uid="uid://c35wq32lrv8bh" path="res://Assets/textures/prototype/Dark/texture_08.png" id="3_ghlj6"]
+[ext_resource type="Texture2D" uid="uid://dtrv0y48jnool" path="res://Assets/textures/prototype/Light/texture_01.png" id="4_e1dhm"]
+[ext_resource type="Texture2D" uid="uid://dif18xney7s0j" path="res://Assets/textures/prototype/Orange/texture_01.png" id="5_tm0o4"]
+[ext_resource type="Script" path="res://Source Code/Interactable/ComputerInteractable.cs" id="6_h6x3w"]
+[ext_resource type="Script" path="res://Source Code/GameUserInterfaceManager.cs" id="8_fe72b"]
+[ext_resource type="PackedScene" uid="uid://87at3ii1tc2j" path="res://Scenes/MultiplayerScene/LobbyScene/ComputerInterface/ComputerInterface.tscn" id="10_bgmlx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i3wpa"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_energy_multiplier = 0.0
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_m4esx"]
+sky_material = SubResource("ProceduralSkyMaterial_i3wpa")
+
+[sub_resource type="Environment" id="Environment_qucxt"]
+background_mode = 2
+sky = SubResource("Sky_m4esx")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nf4ev"]
+albedo_texture = ExtResource("2_f585f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njl5h"]
+albedo_texture = ExtResource("3_ghlj6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7b8nc"]
+albedo_texture = ExtResource("4_e1dhm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38ttg"]
+albedo_texture = ExtResource("5_tm0o4")
+
+[node name="Lobby" type="Node3D"]
+script = ExtResource("1_3roir")
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qucxt")
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Ceiling" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007, 5, 0)
+snap = 1.0
+use_collision = true
+size = Vector3(15, 0.5, 15)
+material = SubResource("StandardMaterial3D_nf4ev")
+
+[node name="Floor" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.007, -0.25, -0.073)
+snap = 1.0
+use_collision = true
+size = Vector3(15, 0.5, 15)
+material = SubResource("StandardMaterial3D_njl5h")
+
+[node name="Walls" type="Node3D" parent="Level"]
+
+[node name="Wall1" type="CSGBox3D" parent="Level/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 7.5)
+snap = 1.0
+use_collision = true
+size = Vector3(15, 5, 0.5)
+material = SubResource("StandardMaterial3D_7b8nc")
+
+[node name="Wall2" type="CSGBox3D" parent="Level/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.5, 2.5, 0)
+snap = 1.0
+use_collision = true
+size = Vector3(15, 5, 0.5)
+material = SubResource("StandardMaterial3D_7b8nc")
+
+[node name="Wall3" type="CSGBox3D" parent="Level/Walls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.5, 2.5, 0)
+snap = 1.0
+use_collision = true
+size = Vector3(15, 5, 0.5)
+material = SubResource("StandardMaterial3D_7b8nc")
+
+[node name="Wall4" type="CSGBox3D" parent="Level/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -7.5)
+snap = 1.0
+use_collision = true
+size = Vector3(15, 5, 0.5)
+material = SubResource("StandardMaterial3D_7b8nc")
+
+[node name="Computer" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.158132, 1.2275, -6.73905)
+use_collision = true
+collision_layer = 3
+size = Vector3(1, 2.4364, 1)
+material = SubResource("StandardMaterial3D_38ttg")
+script = ExtResource("6_h6x3w")
+
+[node name="RoomLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.5, 0)
+light_color = Color(0.882443, 0.881691, 0.800775, 1)
+light_energy = 10.333
+light_indirect_energy = 0.955
+spot_range = 12.5026
+spot_angle = 67.5
+
+[node name="GameUserInterfaceManager" type="Node" parent="."]
+script = ExtResource("8_fe72b")
+
+[node name="ComputerInterface" parent="GameUserInterfaceManager" instance=ExtResource("10_bgmlx")]
+visible = false

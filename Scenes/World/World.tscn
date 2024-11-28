@@ -1,11 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxp1rkolbqlvf"]
+[gd_scene load_steps=27 format=3 uid="uid://bxp1rkolbqlvf"]
 
 [ext_resource type="Script" path="res://Scenes/World/World.gd" id="1_ed708"]
 [ext_resource type="Shader" path="res://Shaders/sky.gdshader" id="2_liqes"]
 [ext_resource type="Texture2D" uid="uid://kqwn4l6ayr2u" path="res://Assets/textures/stars.png" id="3_xvosu"]
 [ext_resource type="PackedScene" uid="uid://dwgw60ei0hixm" path="res://Game Objects/player.tscn" id="4_mlc0o"]
 [ext_resource type="PackedScene" uid="uid://b6mlaef4yaoyn" path="res://World Objects/terrain.tscn" id="5_cs26g"]
-[ext_resource type="PackedScene" uid="uid://c2au8sgfkivdx" path="res://World Objects/trees/tree_01.tscn" id="6_h33gr"]
+[ext_resource type="PackedScene" uid="uid://dnyly6ilup7dh" path="res://World Objects/trees/tree_01.tscn" id="6_h33gr"]
 [ext_resource type="PackedScene" uid="uid://duiqya4oyoltf" path="res://World Objects/trees/tree_30.tscn" id="7_l1hq7"]
 [ext_resource type="PackedScene" uid="uid://c6gnkm05wjru5" path="res://World Objects/trees/tree_31.tscn" id="8_rcaue"]
 [ext_resource type="PackedScene" uid="uid://cg2pmfr5c7r8g" path="res://World Objects/trees/tree_32.tscn" id="9_nu83i"]
@@ -17,6 +17,9 @@
 [ext_resource type="PackedScene" uid="uid://v0wqg34hked7" path="res://World Objects/bushes/bush_02.tscn" id="15_gbydm"]
 [ext_resource type="PackedScene" uid="uid://biu7foqcuchwj" path="res://World Objects/trees/tree_29.tscn" id="16_d35ql"]
 [ext_resource type="Shader" path="res://Shaders/retro_style.gdshader" id="17_8ucb7"]
+[ext_resource type="Script" path="res://Source Code/PauseHandler.cs" id="18_a3snt"]
+[ext_resource type="PackedScene" uid="uid://bbh2gh1fkh0fh" path="res://Scenes/PauseMenu/PauseMenu.tscn" id="19_chh0t"]
+[ext_resource type="Shader" path="res://Shaders/outline.gdshader" id="20_khamr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vscm0"]
 shader = ExtResource("2_liqes")
@@ -52,12 +55,12 @@ shader_parameter/stars_opacity = 1.0
 shader_parameter/stars_texture = ExtResource("3_xvosu")
 shader_parameter/overwritten_time = 3289.44
 
-[sub_resource type="Sky" id="Sky_y0jol"]
+[sub_resource type="Sky" id="Sky_uttl2"]
 sky_material = SubResource("ShaderMaterial_vscm0")
 
 [sub_resource type="Environment" id="Environment_1rxqi"]
 background_mode = 2
-sky = SubResource("Sky_y0jol")
+sky = SubResource("Sky_uttl2")
 ambient_light_source = 3
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0225
@@ -75,6 +78,25 @@ shader_parameter/use_overlay = false
 shader_parameter/use_lens_distortion = false
 shader_parameter/overlay_color = Color(1, 1, 1, 10)
 shader_parameter/lens_distortion_strength = 0.05
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6gvg"]
+render_priority = 0
+shader = ExtResource("20_khamr")
+shader_parameter/outlineColor = Color(0, 0, 0, 0.78)
+shader_parameter/depth_threshold = 0.025
+shader_parameter/normal_threshold = 0.5
+shader_parameter/normal_smoothing = 0.25
+shader_parameter/max_thickness = 1.3
+shader_parameter/min_thickness = 0.5
+shader_parameter/max_distance = 75.0
+shader_parameter/min_distance = 2.0
+shader_parameter/grazing_fresnel_power = 5.0
+shader_parameter/grazing_angle_mask_power = 1.0
+shader_parameter/grazing_angle_modulation_factor = 50.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_hdyxi"]
+flip_faces = true
+size = Vector2(2, 2)
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_ed708")
@@ -140,10 +162,10 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -6.53573, 0, -1.427)
 [node name="tree29" parent="Natura" instance=ExtResource("16_d35ql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4, 0, 4.309)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PostProcessing" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="Pixelify" type="ColorRect" parent="PostProcessing"]
 material = SubResource("ShaderMaterial_u6fx8")
 offset_right = 2560.0
 offset_bottom = 1440.0
@@ -170,3 +192,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9481, -0.00121021, 11.6736
 
 [node name="tree32" parent="." instance=ExtResource("8_rcaue")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9279, -0.00121021, -26.529)
+
+[node name="PauseHandler" type="Node" parent="." node_paths=PackedStringArray("postProcessing", "pauseMenu", "player")]
+script = ExtResource("18_a3snt")
+postProcessing = NodePath("../PostProcessing")
+pauseMenu = NodePath("PauseMenu")
+player = NodePath("../CharacterBody3D")
+
+[node name="PauseMenu" parent="PauseHandler" instance=ExtResource("19_chh0t")]
+visible = false
+
+[node name="Outline" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Outline"]
+material_override = SubResource("ShaderMaterial_o6gvg")
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_hdyxi")
