@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://m8k1g05yr6vb"]
+
+[ext_resource type="Script" path="res://Game Objects/RadarBlip.cs" id="1_t5gvk"]
+[ext_resource type="Shader" path="res://Shaders/RadarBlip.gdshader" id="2_p1tss"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v84rf"]
+shader = ExtResource("2_p1tss")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_8j8i0"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_t5gvk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_v84rf")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("CanvasTexture_8j8i0")
